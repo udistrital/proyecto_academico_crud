@@ -46,7 +46,7 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/registro_calificado_acreditaciÛn",
+		beego.NSNamespace("/registro_calificado_acreditacion",
 			beego.NSInclude(
 				&controllers.RegistroCalificadoAcreditaciÛnController{},
 			),

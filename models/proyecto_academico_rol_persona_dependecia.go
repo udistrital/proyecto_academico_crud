@@ -11,7 +11,7 @@ import (
 )
 
 type ProyectoAcademicoRolPersonaDependecia struct {
-	Id                             int                           `orm:"column(id);pk"`
+	Id                             int                           `orm:"column(id);pk;auto"`
 	PersonaId                      int                           `orm:"column(persona_id)"`
 	DependenciaId                  int                           `orm:"column(dependencia_id)"`
 	RolId                          int                           `orm:"column(rol_id)"`

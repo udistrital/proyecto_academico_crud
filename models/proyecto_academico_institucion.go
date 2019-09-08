@@ -11,7 +11,7 @@ import (
 )
 
 type ProyectoAcademicoInstitucion struct {
-	Id                       int             `orm:"column(id);pk"`
+	Id                       int             `orm:"column(id);pk;auto"`
 	Codigo                   string          `orm:"column(codigo)"`
 	Nombre                   string          `orm:"column(nombre)"`
 	CodigoSnies              string          `orm:"column(codigo_snies)"`
