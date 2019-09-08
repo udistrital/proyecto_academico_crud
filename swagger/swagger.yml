@@ -1,0 +1,1482 @@
+swagger: "2.0"
+info:
+  title: beego Test API
+  description: beego has a very cool tools to autogenerate documents for your API
+  version: 1.0.0
+  termsOfService: http://beego.me/
+  contact:
+    email: astaxie@gmail.com
+  license:
+    name: Apache 2.0
+    url: http://www.apache.org/licenses/LICENSE-2.0.html
+basePath: /v1
+paths:
+  /enfasis/:
+    get:
+      tags:
+      - enfasis
+      description: get Enfasis
+      operationId: EnfasisController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Enfasis'
+        "403":
+          description: ""
+    post:
+      tags:
+      - enfasis
+      description: create Enfasis
+      operationId: EnfasisController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Enfasis content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Enfasis'
+      responses:
+        "201":
+          description: '{int} models.Enfasis'
+        "403":
+          description: body is empty
+  /enfasis/{id}:
+    get:
+      tags:
+      - enfasis
+      description: get Enfasis by id
+      operationId: EnfasisController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Enfasis'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - enfasis
+      description: update the Enfasis
+      operationId: EnfasisController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Enfasis content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Enfasis'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Enfasis'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - enfasis
+      description: delete the Enfasis
+      operationId: EnfasisController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /institucion_enfasis/:
+    get:
+      tags:
+      - institucion_enfasis
+      description: get InstitucionEnfasis
+      operationId: InstitucionEnfasisController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.InstitucionEnfasis'
+        "403":
+          description: ""
+    post:
+      tags:
+      - institucion_enfasis
+      description: create InstitucionEnfasis
+      operationId: InstitucionEnfasisController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for InstitucionEnfasis content
+        required: true
+        schema:
+          $ref: '#/definitions/models.InstitucionEnfasis'
+      responses:
+        "201":
+          description: '{int} models.InstitucionEnfasis'
+        "403":
+          description: body is empty
+  /institucion_enfasis/{id}:
+    get:
+      tags:
+      - institucion_enfasis
+      description: get InstitucionEnfasis by id
+      operationId: InstitucionEnfasisController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.InstitucionEnfasis'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - institucion_enfasis
+      description: update the InstitucionEnfasis
+      operationId: InstitucionEnfasisController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for InstitucionEnfasis content
+        required: true
+        schema:
+          $ref: '#/definitions/models.InstitucionEnfasis'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.InstitucionEnfasis'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - institucion_enfasis
+      description: delete the InstitucionEnfasis
+      operationId: InstitucionEnfasisController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /metodologia/:
+    get:
+      tags:
+      - metodologia
+      description: get Metodologia
+      operationId: MetodologiaController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Metodologia'
+        "403":
+          description: ""
+    post:
+      tags:
+      - metodologia
+      description: create Metodologia
+      operationId: MetodologiaController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Metodologia content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Metodologia'
+      responses:
+        "201":
+          description: '{int} models.Metodologia'
+        "403":
+          description: body is empty
+  /metodologia/{id}:
+    get:
+      tags:
+      - metodologia
+      description: get Metodologia by id
+      operationId: MetodologiaController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Metodologia'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - metodologia
+      description: update the Metodologia
+      operationId: MetodologiaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Metodologia content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Metodologia'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Metodologia'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - metodologia
+      description: delete the Metodologia
+      operationId: MetodologiaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /nivel_formacion/:
+    get:
+      tags:
+      - nivel_formacion
+      description: get NivelFormacion
+      operationId: NivelFormacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NivelFormacion'
+        "403":
+          description: ""
+    post:
+      tags:
+      - nivel_formacion
+      description: create NivelFormacion
+      operationId: NivelFormacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for NivelFormacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.NivelFormacion'
+      responses:
+        "201":
+          description: '{int} models.NivelFormacion'
+        "403":
+          description: body is empty
+  /nivel_formacion/{id}:
+    get:
+      tags:
+      - nivel_formacion
+      description: get NivelFormacion by id
+      operationId: NivelFormacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NivelFormacion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - nivel_formacion
+      description: update the NivelFormacion
+      operationId: NivelFormacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for NivelFormacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.NivelFormacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.NivelFormacion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - nivel_formacion
+      description: delete the NivelFormacion
+      operationId: NivelFormacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /proyecto_academico_institucion/:
+    get:
+      tags:
+      - proyecto_academico_institucion
+      description: get ProyectoAcademicoInstitucion
+      operationId: ProyectoAcademicoInstitucionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
+        "403":
+          description: ""
+    post:
+      tags:
+      - proyecto_academico_institucion
+      description: create ProyectoAcademicoInstitucion
+      operationId: ProyectoAcademicoInstitucionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ProyectoAcademicoInstitucion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
+      responses:
+        "201":
+          description: '{int} models.ProyectoAcademicoInstitucion'
+        "403":
+          description: body is empty
+  /proyecto_academico_institucion/{id}:
+    get:
+      tags:
+      - proyecto_academico_institucion
+      description: get ProyectoAcademicoInstitucion by id
+      operationId: ProyectoAcademicoInstitucionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - proyecto_academico_institucion
+      description: update the ProyectoAcademicoInstitucion
+      operationId: ProyectoAcademicoInstitucionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ProyectoAcademicoInstitucion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - proyecto_academico_institucion
+      description: delete the ProyectoAcademicoInstitucion
+      operationId: ProyectoAcademicoInstitucionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /proyecto_academico_rol_persona_dependecia/:
+    get:
+      tags:
+      - proyecto_academico_rol_persona_dependecia
+      description: get ProyectoAcademicoRolPersonaDependecia
+      operationId: ProyectoAcademicoRolPersonaDependeciaController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProyectoAcademicoRolPersonaDependecia'
+        "403":
+          description: ""
+    post:
+      tags:
+      - proyecto_academico_rol_persona_dependecia
+      description: create ProyectoAcademicoRolPersonaDependecia
+      operationId: ProyectoAcademicoRolPersonaDependeciaController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for ProyectoAcademicoRolPersonaDependecia content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProyectoAcademicoRolPersonaDependecia'
+      responses:
+        "201":
+          description: '{int} models.ProyectoAcademicoRolPersonaDependecia'
+        "403":
+          description: body is empty
+  /proyecto_academico_rol_persona_dependecia/{id}:
+    get:
+      tags:
+      - proyecto_academico_rol_persona_dependecia
+      description: get ProyectoAcademicoRolPersonaDependecia by id
+      operationId: ProyectoAcademicoRolPersonaDependeciaController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProyectoAcademicoRolPersonaDependecia'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - proyecto_academico_rol_persona_dependecia
+      description: update the ProyectoAcademicoRolPersonaDependecia
+      operationId: ProyectoAcademicoRolPersonaDependeciaController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for ProyectoAcademicoRolPersonaDependecia content
+        required: true
+        schema:
+          $ref: '#/definitions/models.ProyectoAcademicoRolPersonaDependecia'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.ProyectoAcademicoRolPersonaDependecia'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - proyecto_academico_rol_persona_dependecia
+      description: delete the ProyectoAcademicoRolPersonaDependecia
+      operationId: ProyectoAcademicoRolPersonaDependeciaController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /registro_calificado_acreditacion/:
+    get:
+      tags:
+      - registro_calificado_acreditacion
+      description: get RegistroCalificadoAcreditacion
+      operationId: RegistroCalificadoAcreditacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.RegistroCalificadoAcreditacion'
+        "403":
+          description: ""
+    post:
+      tags:
+      - registro_calificado_acreditacion
+      description: create RegistroCalificadoAcreditacion
+      operationId: RegistroCalificadoAcreditacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for RegistroCalificadoAcreditacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.RegistroCalificadoAcreditacion'
+      responses:
+        "201":
+          description: '{int} models.RegistroCalificadoAcreditacion'
+        "403":
+          description: body is empty
+  /registro_calificado_acreditacion/{id}:
+    get:
+      tags:
+      - registro_calificado_acreditacion
+      description: get RegistroCalificadoAcreditacion by id
+      operationId: RegistroCalificadoAcreditacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.RegistroCalificadoAcreditacion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - registro_calificado_acreditacion
+      description: update the RegistroCalificadoAcreditacion
+      operationId: RegistroCalificadoAcreditacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for RegistroCalificadoAcreditacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.RegistroCalificadoAcreditacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.RegistroCalificadoAcreditacion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - registro_calificado_acreditacion
+      description: delete the RegistroCalificadoAcreditacion
+      operationId: RegistroCalificadoAcreditacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /tipo_registro/:
+    get:
+      tags:
+      - tipo_registro
+      description: get TipoRegistro
+      operationId: TipoRegistroController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoRegistro'
+        "403":
+          description: ""
+    post:
+      tags:
+      - tipo_registro
+      description: create TipoRegistro
+      operationId: TipoRegistroController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TipoRegistro content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoRegistro'
+      responses:
+        "201":
+          description: '{int} models.TipoRegistro'
+        "403":
+          description: body is empty
+  /tipo_registro/{id}:
+    get:
+      tags:
+      - tipo_registro
+      description: get TipoRegistro by id
+      operationId: TipoRegistroController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoRegistro'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - tipo_registro
+      description: update the TipoRegistro
+      operationId: TipoRegistroController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TipoRegistro content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoRegistro'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoRegistro'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - tipo_registro
+      description: delete the TipoRegistro
+      operationId: TipoRegistroController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /tipo_titulacion/:
+    get:
+      tags:
+      - tipo_titulacion
+      description: get TipoTitulacion
+      operationId: TipoTitulacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoTitulacion'
+        "403":
+          description: ""
+    post:
+      tags:
+      - tipo_titulacion
+      description: create TipoTitulacion
+      operationId: TipoTitulacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for TipoTitulacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoTitulacion'
+      responses:
+        "201":
+          description: '{int} models.TipoTitulacion'
+        "403":
+          description: body is empty
+  /tipo_titulacion/{id}:
+    get:
+      tags:
+      - tipo_titulacion
+      description: get TipoTitulacion by id
+      operationId: TipoTitulacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoTitulacion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - tipo_titulacion
+      description: update the TipoTitulacion
+      operationId: TipoTitulacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TipoTitulacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TipoTitulacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TipoTitulacion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - tipo_titulacion
+      description: delete the TipoTitulacion
+      operationId: TipoTitulacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+  /titulacion/:
+    get:
+      tags:
+      - titulacion
+      description: get Titulacion
+      operationId: TitulacionController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Titulacion'
+        "403":
+          description: ""
+    post:
+      tags:
+      - titulacion
+      description: create Titulacion
+      operationId: TitulacionController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for Titulacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Titulacion'
+      responses:
+        "201":
+          description: '{int} models.Titulacion'
+        "403":
+          description: body is empty
+  /titulacion/{id}:
+    get:
+      tags:
+      - titulacion
+      description: get Titulacion by id
+      operationId: TitulacionController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Titulacion'
+        "403":
+          description: :id is empty
+    put:
+      tags:
+      - titulacion
+      description: update the Titulacion
+      operationId: TitulacionController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for Titulacion content
+        required: true
+        schema:
+          $ref: '#/definitions/models.Titulacion'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.Titulacion'
+        "403":
+          description: :id is not int
+    delete:
+      tags:
+      - titulacion
+      description: delete the Titulacion
+      operationId: TitulacionController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "403":
+          description: id is empty
+definitions:
+  models.Enfasis:
+    title: Enfasis
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.InstitucionEnfasis:
+    title: InstitucionEnfasis
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      EnfasisId:
+        $ref: '#/definitions/models.Enfasis'
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      ProyectoAcademicoInstitucionId:
+        $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
+  models.Metodologia:
+    title: Metodologia
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.NivelFormacion:
+    title: NivelFormacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.ProyectoAcademicoInstitucion:
+    title: ProyectoAcademicoInstitucion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      AnoActoAdministrativoId:
+        type: integer
+        format: int64
+      AreaConocimientoId:
+        type: integer
+        format: int64
+      CiclosPropedeuticos:
+        type: boolean
+      Codigo:
+        type: string
+      CodigoAbreviacion:
+        type: string
+      CodigoSnies:
+        type: string
+      Competencias:
+        type: string
+      CorreoElectronico:
+        type: string
+      DependenciaId:
+        type: integer
+        format: int64
+      Duracion:
+        type: number
+        format: double
+      EnlaceActoAdministrativo:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      MetodologiaId:
+        $ref: '#/definitions/models.Metodologia'
+      NivelFormacionId:
+        $ref: '#/definitions/models.NivelFormacion'
+      Nombre:
+        type: string
+      NucleoBaseId:
+        type: integer
+        format: int64
+      NumeroActoAdministrativo:
+        type: number
+        format: double
+      NumeroCreditos:
+        type: number
+        format: double
+      TitulacionId:
+        $ref: '#/definitions/models.Titulacion'
+      UnidadTiempoId:
+        type: integer
+        format: int64
+  models.ProyectoAcademicoRolPersonaDependecia:
+    title: ProyectoAcademicoRolPersonaDependecia
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      DependenciaId:
+        type: integer
+        format: int64
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      PersonaId:
+        type: integer
+        format: int64
+      ProyectoAcademicoInstitucionId:
+        $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
+      RolId:
+        type: integer
+        format: int64
+  models.RegistroCalificadoAcreditacion:
+    title: RegistroCalificadoAcreditacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      AnoActoAdministrativoId:
+        type: integer
+        format: int64
+      EnlaceActo:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaCreacionActoAdministrativo:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      NumeroActoAdministrativo:
+        type: number
+        format: double
+      ProyectoAcademicoInstitucionId:
+        $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
+      TipoRegistroId:
+        $ref: '#/definitions/models.TipoRegistro'
+      VencimientoActoAdministrativo:
+        type: string
+        format: datetime
+      VigenciaActoAdministrativo:
+        type: string
+  models.TipoRegistro:
+    title: TipoRegistro
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.TipoTitulacion:
+    title: TipoTitulacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+  models.Titulacion:
+    title: Titulacion
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      CodigoAbreviacion:
+        type: string
+      Descripcion:
+        type: string
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      Nombre:
+        type: string
+      NumeroOrden:
+        type: number
+        format: double
+      TipoTitulacionId:
+        $ref: '#/definitions/models.TipoTitulacion'
+tags:
+- name: metodologia
+  description: |
+    MetodologiaController operations for Metodologia
+- name: nivel_formacion
+  description: |
+    NivelFormacionController operations for NivelFormacion
+- name: enfasis
+  description: |
+    EnfasisController operations for Enfasis
+- name: institucion_enfasis
+  description: |
+    InstitucionEnfasisController operations for InstitucionEnfasis
+- name: tipo_registro
+  description: |
+    TipoRegistroController operations for TipoRegistro
+- name: registro_calificado_acreditacion
+  description: |
+    RegistroCalificadoAcreditacionController operations for RegistroCalificadoAcreditacion
+- name: tipo_titulacion
+  description: |
+    TipoTitulacionController operations for TipoTitulacion
+- name: titulacion
+  description: |
+    TitulacionController operations for Titulacion
+- name: proyecto_academico_institucion
+  description: |
+    ProyectoAcademicoInstitucionController operations for ProyectoAcademicoInstitucion
+- name: proyecto_academico_rol_persona_dependecia
+  description: |
+    ProyectoAcademicoRolPersonaDependeciaController operations for ProyectoAcademicoRolPersonaDependecia
