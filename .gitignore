@@ -1,0 +1,16 @@
+lastupdate.tmp
+.vscode/
+proyecto_academico_crud
+main
+.scannerwork/
+swagger/*.png
+swagger/*.html
+swagger/*.js
+swagger/*.map
+swagger/*.css
+swagger/*.yml
+swagger/css/
+swagger/fonts/
+swagger/images/
+swagger/lang/
+swagger/lib/
