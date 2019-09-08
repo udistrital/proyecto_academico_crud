@@ -1,0 +1,107 @@
+workspace:
+  base: /go
+  path: src/github.com/udistrital/${DRONE_REPO##udistrital/}
+  when:
+    branch: [master, test]
+    
+pipeline:
+
+  
+  # build and test the go program
+  go:
+    image: golang:1.9
+    commands:
+     - go get -t
+     - GOOS=linux GOARCH=amd64 go build -o main
+    when:
+      branch: [master, test]
+  
+   # run beego migration
+  beego_migrate:
+    image: golang:1.9
+    secrets: [ pg_academica_url, pg_academica_user, pg_academica_password, pg_academica_dbname]
+    commands:
+     - go get -t
+     - go get -u github.com/beego/bee
+     - bee migrate -driver=postgres -conn="postgres://$${PG_ACADEMICA_USER}:$${PG_ACADEMICA_PASSWORD}@$${PG_ACADEMICA_URL}:5432/$${PG_ACADEMICA_DBNAME}?sslmode=disable"
+    when:
+      branch: [test]
+
+  # rollback beego migration if it fails
+  beego_rollback:
+    image: golang:1.9
+    secrets: [  pg_academica_url, pg_academica_user, pg_academica_password, pg_academica_dbname]
+    commands:
+     - go get -t
+     - go get -u github.com/beego/bee
+     - bee migrate rollback -driver=postgres -conn="postgres://$${PG_ACADEMICA_USER}:$${PG_ACADEMICA_PASSWORD}@$${PG_ACADEMICA_URL}:5432/$${PG_ACADEMICA_DBNAME}?sslmode=disable"
+    when:
+      status: [failure]
+      branch: [test]
+
+   # Unit Test go 
+    beego_test:
+      image: golang:1.9
+      secrets: [  pg_academica_url, pg_academica_user, pg_academica_password, pg_academica_dbname]
+    commands:
+     - go get -t
+     - go get github.com/DATA-DOG/godog/cmd/godog
+     - go get github.com/xeipuuv/gojsonschema
+     - $${INSCRUD_HTTP_PORT} $${PG_ACADEMICA_USER} $${PG_ACADEMICA_PASSWORD} $${INS_CRUD__PGURLS} $${PG_ACADEMICA_DBNAME} $${INS_CRUD__PGSCHEMA} godog
+     when: 
+      branch: [test]
+      event: [push, pull_request]
+      
+  # build and push docker image to docker hub
+  publish_dockerhub:
+    image: plugins/docker
+    repo: oas0/${DRONE_REPO##udistrital/}
+    secrets: [ docker_username, docker_password ]
+    tag:
+      - ${DRONE_COMMIT:0:7}
+      - latest
+    when:
+      branch: [master, test]
+            
+  # Update service ECS (Elastic Container Service) in AWS
+  go-awsecs:
+    image: golang:1.9
+    secrets: [ aws_access_key_id, aws_secret_access_key ]
+    commands:
+     - case ${DRONE_BRANCH} in
+          test) 
+            AMBIENTE=test 
+            CLUSTER=test
+            ;;
+          master) 
+            AMBIENTE=prod
+            CLUSTER=oas
+            ;;
+       esac
+     - AWS_REGION=us-east-1
+     - SERVICE=${DRONE_REPO##udistrital/}_$AMBIENTE
+     - MYCONTAINER=oas0/${DRONE_REPO##udistrital/}:${DRONE_COMMIT:0:7}
+     - container_name=${DRONE_REPO##udistrital/}
+     - go get -v -u -t github.com/udistrital/go-awsecs/cmd/update-aws-ecs-service
+     - AWS_ACCESS_KEY_ID=$${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=$${AWS_SECRET_ACCESS_KEY} AWS_REGION=$AWS_REGION
+       $GOPATH/bin/update-aws-ecs-service -cluster $CLUSTER -service $SERVICE -container-image $container_name=$MYCONTAINER
+    when:
+      branch: [master, test]
+     
+  #Notify results to telegram
+  #telegram_token is the bot token and telegram_to is the group id that start with "-" character
+  notify_telegram:
+    image: appleboy/drone-telegram    
+    secrets: [ telegram_token, telegram_to ]
+    format: html
+    message: >
+      {{#success build.status}}
+        <code>{{repo.owner}}/{{repo.name}}</code> <a href="{{build.link}}">SUCCESS</a> 
+        <code>{{commit.branch}}</code>@<a href="{{commit.link}}">{{truncate commit.sha 7}}</a>
+      {{else}}
+        <code>{{repo.owner}}/{{repo.name}}</code> <a href="{{build.link}}">FAILURE</a>
+        <code>{{commit.branch}}</code>@<a href="{{commit.link}}">{{truncate commit.sha 7}}</a>
+      {{/success}}
+    when:
+      status: [success, failure]
+      branch: [master, test]
