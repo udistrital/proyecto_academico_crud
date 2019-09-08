@@ -54,7 +54,7 @@ func GetTitulacionById(id int) (v *Titulacion, err error) {
 func GetAllTitulacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Titulacion))
+	qs := o.QueryTable(new(Titulacion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
