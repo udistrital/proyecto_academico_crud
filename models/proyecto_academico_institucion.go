@@ -24,8 +24,8 @@ type ProyectoAcademicoInstitucion struct {
 	Competencias             string          `orm:"column(competencias)"`
 	CodigoAbreviacion        string          `orm:"column(codigo_abreviacion);null"`
 	Activo                   bool            `orm:"column(activo)"`
-	FechaCreacion            time.Time       `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion        time.Time       `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion            time.Time       `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
+	FechaModificacion        time.Time       `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
 	UnidadTiempoId           int             `orm:"column(unidad_tiempo_id)"`
 	AnoActoAdministrativoId  int             `orm:"column(ano_acto_administrativo_id)"`
 	DependenciaId            int             `orm:"column(dependencia_id)"`

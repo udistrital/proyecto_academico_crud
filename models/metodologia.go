@@ -17,8 +17,8 @@ type Metodologia struct {
 	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
 	Activo            bool      `orm:"column(activo)"`
 	NumeroOrden       float64   `orm:"column(numero_orden);null"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
+	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
 }
 
 func (t *Metodologia) TableName() string {
