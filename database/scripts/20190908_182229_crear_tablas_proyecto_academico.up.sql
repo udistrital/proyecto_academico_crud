@@ -4,14 +4,7 @@
 -- Project Site: pgmodeler.io
 -- Model Author: ---
 
--- object: test | type: ROLE --
--- DROP ROLE IF EXISTS test;
-CREATE ROLE test WITH 
-	SUPERUSER
-	INHERIT
-	LOGIN
-	ENCRYPTED PASSWORD '********';
--- ddl-end --
+
 
 
 -- Database creation must be done outside a multicommand file.
@@ -25,9 +18,7 @@ CREATE ROLE test WITH
 -- object: proyecto_academico | type: SCHEMA --
 DROP SCHEMA IF EXISTS proyecto_academico CASCADE;
 CREATE SCHEMA proyecto_academico;
--- ddl-end --
-ALTER SCHEMA proyecto_academico OWNER TO postgres;
--- ddl-end --
+
 
 SET search_path TO pg_catalog,public,proyecto_academico;
 -- ddl-end --
