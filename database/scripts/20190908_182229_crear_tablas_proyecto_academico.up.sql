@@ -1,9 +1,8 @@
 -- Database generated with pgModeler (PostgreSQL Database Modeler).
--- pgModeler  version: 0.9.1
+-- pgModeler  version: 0.9.2-beta
 -- PostgreSQL version: 9.5
 -- Project Site: pgmodeler.io
 -- Model Author: ---
-
 
 
 
@@ -16,16 +15,15 @@
 -- 
 
 -- object: proyecto_academico | type: SCHEMA --
-DROP SCHEMA IF EXISTS proyecto_academico CASCADE;
+-- DROP SCHEMA IF EXISTS proyecto_academico CASCADE;
 CREATE SCHEMA proyecto_academico;
-
 
 SET search_path TO pg_catalog,public,proyecto_academico;
 -- ddl-end --
 
 -- object: proyecto_academico.proyecto_academico_institucion | type: TABLE --
 -- DROP TABLE IF EXISTS proyecto_academico.proyecto_academico_institucion CASCADE;
-CREATE TABLE proyecto_academico.proyecto_academico_institucion(
+CREATE TABLE proyecto_academico.proyecto_academico_institucion (
 	id serial NOT NULL,
 	codigo varchar(6) NOT NULL,
 	nombre character varying(250) NOT NULL,
@@ -42,7 +40,7 @@ CREATE TABLE proyecto_academico.proyecto_academico_institucion(
 	fecha_creacion timestamp NOT NULL,
 	fecha_modificacion timestamp NOT NULL,
 	unidad_tiempo_id integer NOT NULL,
-	ano_acto_administrativo_id integer NOT NULL,
+	ano_acto_administrativo varchar(4) NOT NULL,
 	dependencia_id integer NOT NULL,
 	area_conocimiento_id integer NOT NULL,
 	nucleo_base_id integer NOT NULL,
@@ -87,7 +85,7 @@ COMMENT ON COLUMN proyecto_academico.proyecto_academico_institucion.fecha_modifi
 -- ddl-end --
 COMMENT ON COLUMN proyecto_academico.proyecto_academico_institucion.unidad_tiempo_id IS 'Unidad de tiempo para la duración la formación académica (ej: Años, Semestres). Referencia a la tabla unidad_tiempo';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico.proyecto_academico_institucion.ano_acto_administrativo_id IS 'Campo que referencia a la tabla parametrica año del core, almacena el año en el que se efectuo la resolución del proyecto curricular por parte del concejo superior';
+COMMENT ON COLUMN proyecto_academico.proyecto_academico_institucion.ano_acto_administrativo IS 'Campo que almacena el año en el que se efectuo la resolución del proyecto curricular por parte del concejo superior';
 -- ddl-end --
 COMMENT ON COLUMN proyecto_academico.proyecto_academico_institucion.dependencia_id IS 'Campo que referencia la dependencia del proyecto curricular como facultad ';
 -- ddl-end --
@@ -102,7 +100,7 @@ ALTER TABLE proyecto_academico.proyecto_academico_institucion OWNER TO postgres;
 
 -- object: proyecto_academico.enfasis | type: TABLE --
 -- DROP TABLE IF EXISTS proyecto_academico.enfasis CASCADE;
-CREATE TABLE proyecto_academico.enfasis(
+CREATE TABLE proyecto_academico.enfasis (
 	id serial NOT NULL,
 	nombre character varying(50) NOT NULL,
 	descripcion character varying(250),
@@ -126,7 +124,7 @@ ALTER TABLE proyecto_academico.enfasis OWNER TO test;
 
 -- object: proyecto_academico.metodologia | type: TABLE --
 -- DROP TABLE IF EXISTS proyecto_academico.metodologia CASCADE;
-CREATE TABLE proyecto_academico.metodologia(
+CREATE TABLE proyecto_academico.metodologia (
 	id serial NOT NULL,
 	nombre character varying(50) NOT NULL,
 	descripcion character varying(250),
@@ -167,7 +165,7 @@ ALTER TABLE proyecto_academico.metodologia OWNER TO postgres;
 
 -- object: proyecto_academico.nivel_formacion | type: TABLE --
 -- DROP TABLE IF EXISTS proyecto_academico.nivel_formacion CASCADE;
-CREATE TABLE proyecto_academico.nivel_formacion(
+CREATE TABLE proyecto_academico.nivel_formacion (
 	id serial NOT NULL,
 	nombre character varying(50) NOT NULL,
 	descripcion character varying(250),
@@ -208,7 +206,7 @@ ALTER TABLE proyecto_academico.nivel_formacion OWNER TO postgres;
 
 -- object: proyecto_academico.titulacion | type: TABLE --
 -- DROP TABLE IF EXISTS proyecto_academico.titulacion CASCADE;
-CREATE TABLE proyecto_academico.titulacion(
+CREATE TABLE proyecto_academico.titulacion (
 	id serial NOT NULL,
 	nombre character varying(250) NOT NULL,
 	descripcion character varying(250),
@@ -269,9 +267,9 @@ REFERENCES proyecto_academico.nivel_formacion (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: proyecto_academico.institucion_enfasis | type: TABLE --
--- DROP TABLE IF EXISTS proyecto_academico.institucion_enfasis CASCADE;
-CREATE TABLE proyecto_academico.institucion_enfasis(
+-- object: proyecto_academico.proyecto_academico_enfasis | type: TABLE --
+-- DROP TABLE IF EXISTS proyecto_academico.proyecto_academico_enfasis CASCADE;
+CREATE TABLE proyecto_academico.proyecto_academico_enfasis (
 	id serial NOT NULL,
 	activo boolean NOT NULL,
 	fecha_creacion timestamp NOT NULL,
@@ -282,35 +280,35 @@ CREATE TABLE proyecto_academico.institucion_enfasis(
 
 );
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico.institucion_enfasis.activo IS 'Campo para el registro si esta activo ';
+COMMENT ON COLUMN proyecto_academico.proyecto_academico_enfasis.activo IS 'Campo para el registro si esta activo ';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico.institucion_enfasis.fecha_creacion IS 'Fecha de creacion de la tabla ';
+COMMENT ON COLUMN proyecto_academico.proyecto_academico_enfasis.fecha_creacion IS 'Fecha de creacion de la tabla ';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico.institucion_enfasis.fecha_modificacion IS 'Fecha de modificacion de la tabla';
+COMMENT ON COLUMN proyecto_academico.proyecto_academico_enfasis.fecha_modificacion IS 'Fecha de modificacion de la tabla';
 -- ddl-end --
-ALTER TABLE proyecto_academico.institucion_enfasis OWNER TO postgres;
+ALTER TABLE proyecto_academico.proyecto_academico_enfasis OWNER TO postgres;
 -- ddl-end --
 
--- object: fk_proyecto_academico_institucion_institucion_enfasis | type: CONSTRAINT --
--- ALTER TABLE proyecto_academico.institucion_enfasis DROP CONSTRAINT IF EXISTS fk_proyecto_academico_institucion_institucion_enfasis CASCADE;
-ALTER TABLE proyecto_academico.institucion_enfasis ADD CONSTRAINT fk_proyecto_academico_institucion_institucion_enfasis FOREIGN KEY (proyecto_academico_institucion_id)
+-- object: fk_proyecto_academico_institucion_proyecto_academico__4289 | type: CONSTRAINT --
+-- ALTER TABLE proyecto_academico.proyecto_academico_enfasis DROP CONSTRAINT IF EXISTS fk_proyecto_academico_institucion_proyecto_academico__4289 CASCADE;
+ALTER TABLE proyecto_academico.proyecto_academico_enfasis ADD CONSTRAINT fk_proyecto_academico_institucion_proyecto_academico__4289 FOREIGN KEY (proyecto_academico_institucion_id)
 REFERENCES proyecto_academico.proyecto_academico_institucion (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: fk_enfasis_institucion_enfasis | type: CONSTRAINT --
--- ALTER TABLE proyecto_academico.institucion_enfasis DROP CONSTRAINT IF EXISTS fk_enfasis_institucion_enfasis CASCADE;
-ALTER TABLE proyecto_academico.institucion_enfasis ADD CONSTRAINT fk_enfasis_institucion_enfasis FOREIGN KEY (enfasis_id)
+-- object: fk_enfasis_proyecto_academico_enfasis | type: CONSTRAINT --
+-- ALTER TABLE proyecto_academico.proyecto_academico_enfasis DROP CONSTRAINT IF EXISTS fk_enfasis_proyecto_academico_enfasis CASCADE;
+ALTER TABLE proyecto_academico.proyecto_academico_enfasis ADD CONSTRAINT fk_enfasis_proyecto_academico_enfasis FOREIGN KEY (enfasis_id)
 REFERENCES proyecto_academico.enfasis (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: proyecto_academico."registro_calificado_acreditación" | type: TABLE --
--- DROP TABLE IF EXISTS proyecto_academico."registro_calificado_acreditación" CASCADE;
-CREATE TABLE proyecto_academico."registro_calificado_acreditación"(
+-- object: proyecto_academico.registro_calificado_acreditacion | type: TABLE --
+-- DROP TABLE IF EXISTS proyecto_academico.registro_calificado_acreditacion CASCADE;
+CREATE TABLE proyecto_academico.registro_calificado_acreditacion (
 	id serial NOT NULL,
 	numero_acto_administrativo numeric(8) NOT NULL,
-	ano_acto_administrativo_id integer NOT NULL,
+	ano_acto_administrativo_id varchar(4) NOT NULL,
 	fecha_creacion_acto_administrativo timestamp NOT NULL,
 	vigencia_acto_administrativo text NOT NULL,
 	vencimiento_acto_administrativo timestamp NOT NULL,
@@ -324,41 +322,41 @@ CREATE TABLE proyecto_academico."registro_calificado_acreditación"(
 
 );
 -- ddl-end --
-COMMENT ON TABLE proyecto_academico."registro_calificado_acreditación" IS 'Tabla para el registro de la información de los registro califado y los registros de alta calidad de los proyectos curriculares';
+COMMENT ON TABLE proyecto_academico.registro_calificado_acreditacion IS 'Tabla para el registro de la información de los registro califado y los registros de alta calidad de los proyectos curriculares';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".id IS 'Campo para el identificador del registro';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.id IS 'Campo para el identificador del registro';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".numero_acto_administrativo IS 'Campo para el registro del numero de resolución del registro calificado';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.numero_acto_administrativo IS 'Campo para el registro del numero de resolución del registro calificado';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".ano_acto_administrativo_id IS 'Campo que referencia del esquema core el año de la resolución del registro calificado';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.ano_acto_administrativo_id IS 'Campo que registra el año de la resolución del registro calificado';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".fecha_creacion_acto_administrativo IS 'Campo para el registro de la fecha de creación de la resolución del registro calificado';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.fecha_creacion_acto_administrativo IS 'Campo para el registro de la fecha de creación de la resolución del registro calificado';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".vigencia_acto_administrativo IS 'Campo para el registro de la vigencia del registro calificado, se ingresa una fecha en meses y años el dia se definie por cliente en 0.';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.vigencia_acto_administrativo IS 'Campo para el registro de la vigencia del registro calificado, se ingresa una fecha en meses y años el dia se definie por cliente en 0.';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".vencimiento_acto_administrativo IS 'Campo para el registro de la fecha de vencimiento del registro calificado, este se calcula con los campos de fecha_creacion_registro_calificado y el campo vigencia_registro_calificado';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.vencimiento_acto_administrativo IS 'Campo para el registro de la fecha de vencimiento del registro calificado, este se calcula con los campos de fecha_creacion_registro_calificado y el campo vigencia_registro_calificado';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".enlace_acto IS 'Campo para registrar el enlace del documento de acto administrativo';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.enlace_acto IS 'Campo para registrar el enlace del documento de acto administrativo';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".activo IS 'Campo para el registro activo';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.activo IS 'Campo para el registro activo';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".fecha_creacion IS 'Fecha de creacion de un registro';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.fecha_creacion IS 'Fecha de creacion de un registro';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".fecha_modificacion IS 'Fecha de modificacion de registro';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.fecha_modificacion IS 'Fecha de modificacion de registro';
 -- ddl-end --
-ALTER TABLE proyecto_academico."registro_calificado_acreditación" OWNER TO postgres;
+ALTER TABLE proyecto_academico.registro_calificado_acreditacion OWNER TO postgres;
 -- ddl-end --
 
--- object: fk_proyecto_academico_institucion_registro_calificado_ac_4253 | type: CONSTRAINT --
--- ALTER TABLE proyecto_academico."registro_calificado_acreditación" DROP CONSTRAINT IF EXISTS fk_proyecto_academico_institucion_registro_calificado_ac_4253 CASCADE;
-ALTER TABLE proyecto_academico."registro_calificado_acreditación" ADD CONSTRAINT fk_proyecto_academico_institucion_registro_calificado_ac_4253 FOREIGN KEY (proyecto_academico_institucion_id)
+-- object: fk_proyecto_academico_institucion_registro_calificado_ac_4297 | type: CONSTRAINT --
+-- ALTER TABLE proyecto_academico.registro_calificado_acreditacion DROP CONSTRAINT IF EXISTS fk_proyecto_academico_institucion_registro_calificado_ac_4297 CASCADE;
+ALTER TABLE proyecto_academico.registro_calificado_acreditacion ADD CONSTRAINT fk_proyecto_academico_institucion_registro_calificado_ac_4297 FOREIGN KEY (proyecto_academico_institucion_id)
 REFERENCES proyecto_academico.proyecto_academico_institucion (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: proyecto_academico.tipo_registro | type: TABLE --
 -- DROP TABLE IF EXISTS proyecto_academico.tipo_registro CASCADE;
-CREATE TABLE proyecto_academico.tipo_registro(
+CREATE TABLE proyecto_academico.tipo_registro (
 	id serial NOT NULL,
 	nombre character varying(50) NOT NULL,
 	descripcion character varying(250),
@@ -382,7 +380,7 @@ ALTER TABLE proyecto_academico.tipo_registro OWNER TO test;
 
 -- object: proyecto_academico.proyecto_academico_rol_persona_dependecia | type: TABLE --
 -- DROP TABLE IF EXISTS proyecto_academico.proyecto_academico_rol_persona_dependecia CASCADE;
-CREATE TABLE proyecto_academico.proyecto_academico_rol_persona_dependecia(
+CREATE TABLE proyecto_academico.proyecto_academico_rol_persona_dependecia (
 	id serial NOT NULL,
 	persona_id integer NOT NULL,
 	dependencia_id integer NOT NULL,
@@ -414,16 +412,16 @@ COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.f
 ALTER TABLE proyecto_academico.proyecto_academico_rol_persona_dependecia OWNER TO postgres;
 -- ddl-end --
 
--- object: "fk_tipo_registro_registro_calificado_acreditación" | type: CONSTRAINT --
--- ALTER TABLE proyecto_academico."registro_calificado_acreditación" DROP CONSTRAINT IF EXISTS "fk_tipo_registro_registro_calificado_acreditación" CASCADE;
-ALTER TABLE proyecto_academico."registro_calificado_acreditación" ADD CONSTRAINT "fk_tipo_registro_registro_calificado_acreditación" FOREIGN KEY (tipo_registro_id)
+-- object: fk_tipo_registro_registro_calificado_acreditacion | type: CONSTRAINT --
+-- ALTER TABLE proyecto_academico.registro_calificado_acreditacion DROP CONSTRAINT IF EXISTS fk_tipo_registro_registro_calificado_acreditacion CASCADE;
+ALTER TABLE proyecto_academico.registro_calificado_acreditacion ADD CONSTRAINT fk_tipo_registro_registro_calificado_acreditacion FOREIGN KEY (tipo_registro_id)
 REFERENCES proyecto_academico.tipo_registro (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
 -- object: proyecto_academico.tipo_titulacion | type: TABLE --
 -- DROP TABLE IF EXISTS proyecto_academico.tipo_titulacion CASCADE;
-CREATE TABLE proyecto_academico.tipo_titulacion(
+CREATE TABLE proyecto_academico.tipo_titulacion (
 	id serial NOT NULL,
 	nombre character varying(250) NOT NULL,
 	descripcion character varying(250),
@@ -462,9 +460,9 @@ REFERENCES proyecto_academico.tipo_titulacion (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: fk_proyecto_academico_institucion_proyecto_academico_rol_4259 | type: CONSTRAINT --
--- ALTER TABLE proyecto_academico.proyecto_academico_rol_persona_dependecia DROP CONSTRAINT IF EXISTS fk_proyecto_academico_institucion_proyecto_academico_rol_4259 CASCADE;
-ALTER TABLE proyecto_academico.proyecto_academico_rol_persona_dependecia ADD CONSTRAINT fk_proyecto_academico_institucion_proyecto_academico_rol_4259 FOREIGN KEY (proyecto_academico_institucion_id)
+-- object: fk_proyecto_academico_institucion_proyecto_academico_rol_4295 | type: CONSTRAINT --
+-- ALTER TABLE proyecto_academico.proyecto_academico_rol_persona_dependecia DROP CONSTRAINT IF EXISTS fk_proyecto_academico_institucion_proyecto_academico_rol_4295 CASCADE;
+ALTER TABLE proyecto_academico.proyecto_academico_rol_persona_dependecia ADD CONSTRAINT fk_proyecto_academico_institucion_proyecto_academico_rol_4295 FOREIGN KEY (proyecto_academico_institucion_id)
 REFERENCES proyecto_academico.proyecto_academico_institucion (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --

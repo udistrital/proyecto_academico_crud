@@ -12,13 +12,13 @@ import (
 	"github.com/astaxie/beego/logs"
 )
 
-// InstitucionEnfasisController operations for InstitucionEnfasis
-type InstitucionEnfasisController struct {
+// ProyectoAcademicoEnfasisController operations for ProyectoAcademicoEnfasis
+type ProyectoAcademicoEnfasisController struct {
 	beego.Controller
 }
 
 // URLMapping ...
-func (c *InstitucionEnfasisController) URLMapping() {
+func (c *ProyectoAcademicoEnfasisController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetOne", c.GetOne)
 	c.Mapping("GetAll", c.GetAll)
@@ -28,15 +28,15 @@ func (c *InstitucionEnfasisController) URLMapping() {
 
 // Post ...
 // @Title Post
-// @Description create InstitucionEnfasis
-// @Param	body		body 	models.InstitucionEnfasis	true		"body for InstitucionEnfasis content"
-// @Success 201 {int} models.InstitucionEnfasis
+// @Description create ProyectoAcademicoEnfasis
+// @Param	body		body 	models.ProyectoAcademicoEnfasis	true		"body for ProyectoAcademicoEnfasis content"
+// @Success 201 {int} models.ProyectoAcademicoEnfasis
 // @Failure 400 the request contains incorrect syntax
 // @router / [post]
-func (c *InstitucionEnfasisController) Post() {
-	var v models.InstitucionEnfasis
+func (c *ProyectoAcademicoEnfasisController) Post() {
+	var v models.ProyectoAcademicoEnfasis
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if _, err := models.AddInstitucionEnfasis(&v); err == nil {
+		if _, err := models.AddProyectoAcademicoEnfasis(&v); err == nil {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
@@ -56,15 +56,15 @@ func (c *InstitucionEnfasisController) Post() {
 
 // GetOne ...
 // @Title Get One
-// @Description get InstitucionEnfasis by id
+// @Description get ProyectoAcademicoEnfasis by id
 // @Param	id		path 	string	true		"The key for staticblock"
-// @Success 200 {object} models.InstitucionEnfasis
+// @Success 200 {object} models.ProyectoAcademicoEnfasis
 // @Failure 404 not found resource
 // @router /:id [get]
-func (c *InstitucionEnfasisController) GetOne() {
+func (c *ProyectoAcademicoEnfasisController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v, err := models.GetInstitucionEnfasisById(id)
+	v, err := models.GetProyectoAcademicoEnfasisById(id)
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
@@ -78,17 +78,17 @@ func (c *InstitucionEnfasisController) GetOne() {
 
 // GetAll ...
 // @Title Get All
-// @Description get InstitucionEnfasis
+// @Description get ProyectoAcademicoEnfasis
 // @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
 // @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
 // @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
 // @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
-// @Success 200 {object} models.InstitucionEnfasis
+// @Success 200 {object} models.ProyectoAcademicoEnfasis
 // @Failure 404 not found resource
 // @router / [get]
-func (c *InstitucionEnfasisController) GetAll() {
+func (c *ProyectoAcademicoEnfasisController) GetAll() {
 	var fields []string
 	var sortby []string
 	var order []string
@@ -130,7 +130,7 @@ func (c *InstitucionEnfasisController) GetAll() {
 		}
 	}
 
-	l, err := models.GetAllInstitucionEnfasis(query, fields, sortby, order, offset, limit)
+	l, err := models.GetAllProyectoAcademicoEnfasis(query, fields, sortby, order, offset, limit)
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
@@ -147,18 +147,18 @@ func (c *InstitucionEnfasisController) GetAll() {
 
 // Put ...
 // @Title Put
-// @Description update the InstitucionEnfasis
+// @Description update the ProyectoAcademicoEnfasis
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.InstitucionEnfasis	true		"body for InstitucionEnfasis content"
-// @Success 200 {object} models.InstitucionEnfasis
+// @Param	body		body 	models.ProyectoAcademicoEnfasis	true		"body for ProyectoAcademicoEnfasis content"
+// @Success 200 {object} models.ProyectoAcademicoEnfasis
 // @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
-func (c *InstitucionEnfasisController) Put() {
+func (c *ProyectoAcademicoEnfasisController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	v := models.InstitucionEnfasis{Id: id}
+	v := models.ProyectoAcademicoEnfasis{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		if err := models.UpdateInstitucionEnfasisById(&v); err == nil {
+		if err := models.UpdateProyectoAcademicoEnfasisById(&v); err == nil {
 			c.Data["json"] = v
 		} else {
 			logs.Error(err)
@@ -177,15 +177,15 @@ func (c *InstitucionEnfasisController) Put() {
 
 // Delete ...
 // @Title Delete
-// @Description delete the InstitucionEnfasis
+// @Description delete the ProyectoAcademicoEnfasis
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
 // @Failure 404 not found resource
 // @router /:id [delete]
-func (c *InstitucionEnfasisController) Delete() {
+func (c *ProyectoAcademicoEnfasisController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	if err := models.DeleteInstitucionEnfasis(id); err == nil {
+	if err := models.DeleteProyectoAcademicoEnfasis(id); err == nil {
 		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
 		logs.Error(err)

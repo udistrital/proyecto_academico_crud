@@ -13,7 +13,7 @@ import (
 type RegistroCalificadoAcreditacion struct {
 	Id                              int                           `orm:"column(id);pk;auto"`
 	NumeroActoAdministrativo        float64                       `orm:"column(numero_acto_administrativo)"`
-	AnoActoAdministrativoId         int                           `orm:"column(ano_acto_administrativo_id)"`
+	AnoActoAdministrativo           string                        `orm:"column(ano_acto_administrativo)"`
 	FechaCreacionActoAdministrativo time.Time                     `orm:"column(fecha_creacion_acto_administrativo);type(timestamp without time zone)"`
 	VigenciaActoAdministrativo      string                        `orm:"column(vigencia_acto_administrativo)"`
 	VencimientoActoAdministrativo   time.Time                     `orm:"column(vencimiento_acto_administrativo);type(timestamp without time zone)"`
