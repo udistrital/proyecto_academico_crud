@@ -14,10 +14,13 @@ type TrProyectoAcademico struct {
 
 // AddTransaccionProyectoAcademica Transacción para registrar toda la información de un proyecto academico
 func AddTransaccionProyectoAcademica(m *TrProyectoAcademico) (err error) {
+	fmt.Println("entro add")
 	o := orm.NewOrm()
 	err = o.Begin()
+
 	if idProyecto, errTr := o.Insert(m.ProyectoAcademicoInstitucion); errTr == nil {
 		fmt.Println(idProyecto)
+
 		for _, v := range *m.Registro {
 			v.ProyectoAcademicoInstitucionId.Id = int(idProyecto)
 			if _, errTr = o.Insert(&v); errTr != nil {
@@ -27,6 +30,7 @@ func AddTransaccionProyectoAcademica(m *TrProyectoAcademico) (err error) {
 				return
 			}
 		}
+
 		for _, v := range *m.Enfasis {
 			v.ProyectoAcademicoInstitucionId.Id = int(idProyecto)
 			if _, errTr = o.Insert(&v); errTr != nil {

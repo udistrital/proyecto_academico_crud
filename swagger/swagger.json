@@ -1744,9 +1744,45 @@
                     }
                 }
             }
+        },
+        "/tr_proyecto_academico/": {
+            "post": {
+                "tags": [
+                    "tr_proyecto_academico"
+                ],
+                "description": "create the TrProyectoAcademico",
+                "operationId": "TrProyectoAcademicoController.PostTrProyectoAcademica",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TrProyectoAcademica content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademico"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TrProyectoAcademica"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
         }
     },
     "definitions": {
+        "19305.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+            "title": "RegistroCalificadoAcreditacion",
+            "type": "object"
+        },
+        "19369.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+            "title": "ProyectoAcademicoEnfasis",
+            "type": "object"
+        },
         "models.Enfasis": {
             "title": "Enfasis",
             "type": "object",
@@ -2149,6 +2185,21 @@
                     "$ref": "#/definitions/models.TipoTitulacion"
                 }
             }
+        },
+        "models.TrProyectoAcademico": {
+            "title": "TrProyectoAcademico",
+            "type": "object",
+            "properties": {
+                "Enfasis": {
+                    "$ref": "#/definitions/19369.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                },
+                "ProyectoAcademicoInstitucion": {
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                },
+                "Registro": {
+                    "$ref": "#/definitions/19305.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                }
+            }
         }
     },
     "tags": [
@@ -2187,6 +2238,10 @@
         {
             "name": "proyecto_academico_institucion",
             "description": "ProyectoAcademicoInstitucionController operations for ProyectoAcademicoInstitucion\n"
+        },
+        {
+            "name": "tr_proyecto_academico",
+            "description": "Operations for TrProyectoAcademico\n"
         },
         {
             "name": "proyecto_academico_rol_persona_dependecia",

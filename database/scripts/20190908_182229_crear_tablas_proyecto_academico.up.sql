@@ -308,7 +308,7 @@ ON DELETE SET NULL ON UPDATE CASCADE;
 CREATE TABLE proyecto_academico.registro_calificado_acreditacion (
 	id serial NOT NULL,
 	numero_acto_administrativo numeric(8) NOT NULL,
-	ano_acto_administrativo_id varchar(4) NOT NULL,
+	ano_acto_administrativo varchar(4) NOT NULL,
 	fecha_creacion_acto_administrativo timestamp NOT NULL,
 	vigencia_acto_administrativo text NOT NULL,
 	vencimiento_acto_administrativo timestamp NOT NULL,
@@ -328,7 +328,7 @@ COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.id IS 'Cam
 -- ddl-end --
 COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.numero_acto_administrativo IS 'Campo para el registro del numero de resolución del registro calificado';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.ano_acto_administrativo_id IS 'Campo que registra el año de la resolución del registro calificado';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.ano_acto_administrativo IS 'Campo que registra el año de la resolución del registro calificado';
 -- ddl-end --
 COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.fecha_creacion_acto_administrativo IS 'Campo para el registro de la fecha de creación de la resolución del registro calificado';
 -- ddl-end --
