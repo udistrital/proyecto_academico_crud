@@ -1772,6 +1772,35 @@
                     }
                 }
             }
+        },
+        "/tr_proyecto_academico/{id}": {
+            "get": {
+                "tags": [
+                    "tr_proyecto_academico"
+                ],
+                "description": "get TrProyectoAcademicoController",
+                "operationId": "TrProyectoAcademicoController.Get  By Id",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoController"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
         }
     },
     "definitions": {
@@ -2200,6 +2229,10 @@
                     "$ref": "#/definitions/19305.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 }
             }
+        },
+        "models.TrProyectoAcademicoController": {
+            "title": "TrProyectoAcademicoController",
+            "type": "object"
         }
     },
     "tags": [

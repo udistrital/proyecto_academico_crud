@@ -12,6 +12,47 @@ type TrProyectoAcademico struct {
 	Enfasis                      *[]ProyectoAcademicoEnfasis
 }
 
+// GetProyectoAcademicasById Transacción para consultar todas las proyectos academicos con toda la información de las mismas
+func GetProyectoAcademicasById(id int) (v []interface{}, err error) {
+	fmt.Println("entro al modelo")
+	o := orm.NewOrm()
+	var proyectos []*ProyectoAcademicoInstitucion
+
+	if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Id", id).Filter("Activo", true).All(&proyectos); err == nil {
+
+		for _, proyecto := range proyectos {
+
+			proyectoAcademico := proyecto
+			fmt.Println("err ojoooo /n", proyecto)
+
+			var registroProyectos []RegistroCalificadoAcreditacion
+			if _, err := o.QueryTable(new(RegistroCalificadoAcreditacion)).RelatedSel().Filter("Id", id).All(&registroProyectos); err != nil {
+				//fmt.Println("registro/n", registroProyectos)
+				return nil, err
+			}
+
+			var enfasiproyectos []ProyectoAcademicoEnfasis
+			if _, err := o.QueryTable(new(ProyectoAcademicoEnfasis)).RelatedSel().Filter("Id", id).All(&enfasiproyectos); err != nil {
+				return nil, err
+			}
+
+			v = append(v, map[string]interface{}{
+				"Id":           proyectoAcademico.Id,
+				"Codigo":       proyectoAcademico.Codigo,
+				"Nombre":       proyectoAcademico.Nombre,
+				"Codigo SNIES": proyectoAcademico.CodigoSnies,
+				"Duracion":     proyectoAcademico.Duracion,
+				"Año Acto":     proyectoAcademico.AnoActoAdministrativo,
+				"Registro":     &registroProyectos,
+				"Enfasis":      &enfasiproyectos,
+			})
+		}
+
+		return v, nil
+	}
+	return nil, err
+}
+
 // AddTransaccionProyectoAcademica Transacción para registrar toda la información de un proyecto academico
 func AddTransaccionProyectoAcademica(m *TrProyectoAcademico) (err error) {
 	fmt.Println("entro add")

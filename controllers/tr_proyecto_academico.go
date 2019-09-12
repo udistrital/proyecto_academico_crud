@@ -3,6 +3,7 @@ package controllers
 import (
 	"encoding/json"
 	"fmt"
+	"strconv"
 
 	"github.com/udistrital/proyecto_academico_crud/models"
 
@@ -17,9 +18,35 @@ type TrProyectoAcademicoController struct {
 
 func (c *TrProyectoAcademicoController) URLMapping() {
 	c.Mapping("Post", c.Post)
-	//c.Mapping("GetAllById", c.GetAllById)
+	c.Mapping("GetById", c.GetById)
 	c.Mapping("Delete", c.Delete)
 	c.Mapping("Put", c.Put)
+}
+
+// GetById ...
+// @Title Get  By Id
+// @Description get TrProyectoAcademicoController
+// @Param	id		path 	string	true		"Id"
+// @Success 200 {object} models.TrProyectoAcademicoController
+// @Failure 404 not found resource
+// @router /:id [get]
+func (c *TrProyectoAcademicoController) GetById() {
+	fmt.Println("entro a get")
+	idProyectoStr := c.Ctx.Input.Param(":id")
+	idProyecto, _ := strconv.Atoi(idProyectoStr)
+	l, err := models.GetProyectoAcademicasById(idProyecto)
+	if err != nil {
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
+	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
+		c.Data["json"] = l
+	}
+	c.ServeJSON()
 }
 
 // @Title PostTrProyectoAcademica

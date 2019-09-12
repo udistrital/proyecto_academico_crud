@@ -1179,6 +1179,25 @@ paths:
           description: '{int} models.TrProyectoAcademica'
         "400":
           description: the request contains incorrect syntax
+  /tr_proyecto_academico/{id}:
+    get:
+      tags:
+      - tr_proyecto_academico
+      description: get TrProyectoAcademicoController
+      operationId: TrProyectoAcademicoController.Get  By Id
+      parameters:
+      - in: path
+        name: id
+        description: Id
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TrProyectoAcademicoController'
+        "404":
+          description: not found resource
 definitions:
   19305.<nil>.RegistroCalificadoAcreditacion:
     title: RegistroCalificadoAcreditacion
@@ -1481,6 +1500,9 @@ definitions:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       Registro:
         $ref: '#/definitions/19305.<nil>.RegistroCalificadoAcreditacion'
+  models.TrProyectoAcademicoController:
+    title: TrProyectoAcademicoController
+    type: object
 tags:
 - name: metodologia
   description: |
