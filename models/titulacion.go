@@ -20,6 +20,7 @@ type Titulacion struct {
 	FechaCreacion     time.Time       `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
 	FechaModificacion time.Time       `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
 	TipoTitulacionId  *TipoTitulacion `orm:"column(tipo_titulacion_id);rel(fk)"`
+	ProyectoAcademicoInstitucionId *ProyectoAcademicoInstitucion `orm:"column(proyecto_academico_institucion_id);rel(fk)"`
 }
 
 func (t *Titulacion) TableName() string {

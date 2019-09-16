@@ -285,9 +285,9 @@ REFERENCES proyecto_academico.enfasis (id) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
--- object: proyecto_academico."registro_calificado_acreditación" | type: TABLE --
--- DROP TABLE IF EXISTS proyecto_academico."registro_calificado_acreditación" CASCADE;
-CREATE TABLE proyecto_academico."registro_calificado_acreditación" (
+-- object: proyecto_academico.registro_calificado_acreditacion | type: TABLE --
+-- DROP TABLE IF EXISTS proyecto_academico.registro_calificado_acreditacion CASCADE;
+CREATE TABLE proyecto_academico.registro_calificado_acreditacion (
 	id serial NOT NULL,
 	numero_acto_administrativo numeric(8) NOT NULL,
 	ano_acto_administrativo_id integer NOT NULL,
@@ -304,32 +304,32 @@ CREATE TABLE proyecto_academico."registro_calificado_acreditación" (
 
 );
 -- ddl-end --
-COMMENT ON TABLE proyecto_academico."registro_calificado_acreditación" IS 'Tabla para el registro de la información de los registro califado y los registros de alta calidad de los proyectos curriculares';
+COMMENT ON TABLE proyecto_academico.registro_calificado_acreditacion IS 'Tabla para el registro de la información de los registro califado y los registros de alta calidad de los proyectos curriculares';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".id IS 'Campo para el identificador del registro';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.id IS 'Campo para el identificador del registro';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".numero_acto_administrativo IS 'Campo para el registro del numero de resolución del registro calificado';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.numero_acto_administrativo IS 'Campo para el registro del numero de resolución del registro calificado';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".ano_acto_administrativo_id IS 'Campo que referencia del esquema core el año de la resolución del registro calificado';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.ano_acto_administrativo_id IS 'Campo que referencia del esquema core el año de la resolución del registro calificado';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".fecha_creacion_acto_administrativo IS 'Campo para el registro de la fecha de creación de la resolución del registro calificado';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.fecha_creacion_acto_administrativo IS 'Campo para el registro de la fecha de creación de la resolución del registro calificado';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".vigencia_acto_administrativo IS 'Campo para el registro de la vigencia del registro calificado, se ingresa una fecha en meses y años el dia se definie por cliente en 0.';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.vigencia_acto_administrativo IS 'Campo para el registro de la vigencia del registro calificado, se ingresa una fecha en meses y años el dia se definie por cliente en 0.';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".vencimiento_acto_administrativo IS 'Campo para el registro de la fecha de vencimiento del registro calificado, este se calcula con los campos de fecha_creacion_registro_calificado y el campo vigencia_registro_calificado';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.vencimiento_acto_administrativo IS 'Campo para el registro de la fecha de vencimiento del registro calificado, este se calcula con los campos de fecha_creacion_registro_calificado y el campo vigencia_registro_calificado';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".enlace_acto IS 'Campo para registrar el enlace del documento de acto administrativo';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.enlace_acto IS 'Campo para registrar el enlace del documento de acto administrativo';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".activo IS 'Campo para el registro activo';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.activo IS 'Campo para el registro activo';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".fecha_creacion IS 'Fecha de creacion de un registro';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.fecha_creacion IS 'Fecha de creacion de un registro';
 -- ddl-end --
-COMMENT ON COLUMN proyecto_academico."registro_calificado_acreditación".fecha_modificacion IS 'Fecha de modificacion de registro';
+COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.fecha_modificacion IS 'Fecha de modificacion de registro';
 -- ddl-end --
 
 -- object: fk_proyecto_academico_institucion_registro_calificado_ac_4555 | type: CONSTRAINT --
--- ALTER TABLE proyecto_academico."registro_calificado_acreditación" DROP CONSTRAINT IF EXISTS fk_proyecto_academico_institucion_registro_calificado_ac_4555 CASCADE;
-ALTER TABLE proyecto_academico."registro_calificado_acreditación" ADD CONSTRAINT fk_proyecto_academico_institucion_registro_calificado_ac_4555 FOREIGN KEY (proyecto_academico_institucion_id)
+-- ALTER TABLE proyecto_academico.registro_calificado_acreditacion DROP CONSTRAINT IF EXISTS fk_proyecto_academico_institucion_registro_calificado_ac_4555 CASCADE;
+ALTER TABLE proyecto_academico.registro_calificado_acreditacion ADD CONSTRAINT fk_proyecto_academico_institucion_registro_calificado_ac_4555 FOREIGN KEY (proyecto_academico_institucion_id)
 REFERENCES proyecto_academico.proyecto_academico_institucion (id) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
@@ -389,8 +389,8 @@ COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.f
 -- ddl-end --
 
 -- object: "fk_tipo_registro_registro_calificado_acreditación" | type: CONSTRAINT --
--- ALTER TABLE proyecto_academico."registro_calificado_acreditación" DROP CONSTRAINT IF EXISTS "fk_tipo_registro_registro_calificado_acreditación" CASCADE;
-ALTER TABLE proyecto_academico."registro_calificado_acreditación" ADD CONSTRAINT "fk_tipo_registro_registro_calificado_acreditación" FOREIGN KEY (tipo_registro_id)
+-- ALTER TABLE proyecto_academico.registro_calificado_acreditacion DROP CONSTRAINT IF EXISTS "fk_tipo_registro_registro_calificado_acreditación" CASCADE;
+ALTER TABLE proyecto_academico.registro_calificado_acreditacion ADD CONSTRAINT "fk_tipo_registro_registro_calificado_acreditación" FOREIGN KEY (tipo_registro_id)
 REFERENCES proyecto_academico.tipo_registro (id) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
