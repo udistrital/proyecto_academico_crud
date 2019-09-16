@@ -79,3 +79,34 @@ func (c *TrProyectoAcademicoController) Post() {
 	}
 	c.ServeJSON()
 }
+
+// Put ...
+// @Title Put
+// @Description update the TrProyectoAcademico
+// @Param	id		path 	string	true		"The id you want to update"
+// @Param	body		body 	models.TrProyectoAcademico	true		"body for TrProyectoAcademico content"
+// @Success 200 {object} models.TrProyectoAcademico
+// @Failure 400 the request contains incorrect syntax
+// @router /informacion_basica/:id [put]
+func (c *TrProyectoAcademicoController) Put() {
+	idStr := c.Ctx.Input.Param(":id")
+	id, _ := strconv.Atoi(idStr)
+	var v models.TrProyectoAcademico
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		v.ProyectoAcademicoInstitucion.Id = id
+		if err := models.UpdateTransaccionProyectoAcademica(&v); err == nil {
+			c.Data["json"] = v
+		} else {
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
+			c.Abort("400")
+		}
+	} else {
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
+	}
+	c.ServeJSON()
+}

@@ -126,6 +126,121 @@ paths:
           description: '{string} delete success!'
         "404":
           description: not found resource
+  /institucion_enfasis/:
+    get:
+      tags:
+      - institucion_enfasis
+      description: get InstitucionEnfasis
+      operationId: InstitucionEnfasisController.Get All
+      parameters:
+      - in: query
+        name: query
+        description: Filter. e.g. col1:v1,col2:v2 ...
+        type: string
+      - in: query
+        name: fields
+        description: Fields returned. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: sortby
+        description: Sorted-by fields. e.g. col1,col2 ...
+        type: string
+      - in: query
+        name: order
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
+        type: string
+      - in: query
+        name: limit
+        description: Limit the size of result set. Must be an integer
+        type: string
+      - in: query
+        name: offset
+        description: Start position of result set. Must be an integer
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.InstitucionEnfasis'
+        "404":
+          description: not found resource
+    post:
+      tags:
+      - institucion_enfasis
+      description: create InstitucionEnfasis
+      operationId: InstitucionEnfasisController.Post
+      parameters:
+      - in: body
+        name: body
+        description: body for InstitucionEnfasis content
+        required: true
+        schema:
+          $ref: '#/definitions/models.InstitucionEnfasis'
+      responses:
+        "201":
+          description: '{int} models.InstitucionEnfasis'
+        "400":
+          description: the request contains incorrect syntax
+  /institucion_enfasis/{id}:
+    get:
+      tags:
+      - institucion_enfasis
+      description: get InstitucionEnfasis by id
+      operationId: InstitucionEnfasisController.Get One
+      parameters:
+      - in: path
+        name: id
+        description: The key for staticblock
+        required: true
+        type: string
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.InstitucionEnfasis'
+        "404":
+          description: not found resource
+    put:
+      tags:
+      - institucion_enfasis
+      description: update the InstitucionEnfasis
+      operationId: InstitucionEnfasisController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for InstitucionEnfasis content
+        required: true
+        schema:
+          $ref: '#/definitions/models.InstitucionEnfasis'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.InstitucionEnfasis'
+        "400":
+          description: the request contains incorrect syntax
+    delete:
+      tags:
+      - institucion_enfasis
+      description: delete the InstitucionEnfasis
+      operationId: InstitucionEnfasisController.Delete
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to delete
+        required: true
+        type: string
+      responses:
+        "200":
+          description: '{string} delete success!'
+        "404":
+          description: not found resource
   /metodologia/:
     get:
       tags:
@@ -345,121 +460,6 @@ paths:
       - nivel_formacion
       description: delete the NivelFormacion
       operationId: NivelFormacionController.Delete
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to delete
-        required: true
-        type: string
-      responses:
-        "200":
-          description: '{string} delete success!'
-        "404":
-          description: not found resource
-  /proyecto_academico_enfasis/:
-    get:
-      tags:
-      - proyecto_academico_enfasis
-      description: get ProyectoAcademicoEnfasis
-      operationId: ProyectoAcademicoEnfasisController.Get All
-      parameters:
-      - in: query
-        name: query
-        description: Filter. e.g. col1:v1,col2:v2 ...
-        type: string
-      - in: query
-        name: fields
-        description: Fields returned. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: sortby
-        description: Sorted-by fields. e.g. col1,col2 ...
-        type: string
-      - in: query
-        name: order
-        description: Order corresponding to each sortby field, if single value, apply
-          to all sortby fields. e.g. desc,asc ...
-        type: string
-      - in: query
-        name: limit
-        description: Limit the size of result set. Must be an integer
-        type: string
-      - in: query
-        name: offset
-        description: Start position of result set. Must be an integer
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.ProyectoAcademicoEnfasis'
-        "404":
-          description: not found resource
-    post:
-      tags:
-      - proyecto_academico_enfasis
-      description: create ProyectoAcademicoEnfasis
-      operationId: ProyectoAcademicoEnfasisController.Post
-      parameters:
-      - in: body
-        name: body
-        description: body for ProyectoAcademicoEnfasis content
-        required: true
-        schema:
-          $ref: '#/definitions/models.ProyectoAcademicoEnfasis'
-      responses:
-        "201":
-          description: '{int} models.ProyectoAcademicoEnfasis'
-        "400":
-          description: the request contains incorrect syntax
-  /proyecto_academico_enfasis/{id}:
-    get:
-      tags:
-      - proyecto_academico_enfasis
-      description: get ProyectoAcademicoEnfasis by id
-      operationId: ProyectoAcademicoEnfasisController.Get One
-      parameters:
-      - in: path
-        name: id
-        description: The key for staticblock
-        required: true
-        type: string
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.ProyectoAcademicoEnfasis'
-        "404":
-          description: not found resource
-    put:
-      tags:
-      - proyecto_academico_enfasis
-      description: update the ProyectoAcademicoEnfasis
-      operationId: ProyectoAcademicoEnfasisController.Put
-      parameters:
-      - in: path
-        name: id
-        description: The id you want to update
-        required: true
-        type: string
-      - in: body
-        name: body
-        description: body for ProyectoAcademicoEnfasis content
-        required: true
-        schema:
-          $ref: '#/definitions/models.ProyectoAcademicoEnfasis'
-      responses:
-        "200":
-          description: ""
-          schema:
-            $ref: '#/definitions/models.ProyectoAcademicoEnfasis'
-        "400":
-          description: the request contains incorrect syntax
-    delete:
-      tags:
-      - proyecto_academico_enfasis
-      description: delete the ProyectoAcademicoEnfasis
-      operationId: ProyectoAcademicoEnfasisController.Delete
       parameters:
       - in: path
         name: id
@@ -1198,12 +1198,40 @@ paths:
             $ref: '#/definitions/models.TrProyectoAcademicoController'
         "404":
           description: not found resource
+  /tr_proyecto_academico/informacion_basica/{id}:
+    put:
+      tags:
+      - tr_proyecto_academico
+      description: update the TrProyectoAcademico
+      operationId: TrProyectoAcademicoController.Put
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TrProyectoAcademico content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TrProyectoAcademico'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TrProyectoAcademico'
+        "400":
+          description: the request contains incorrect syntax
 definitions:
-  51004.<nil>.RegistroCalificadoAcreditacion:
+  50881.<nil>.RegistroCalificadoAcreditacion:
     title: RegistroCalificadoAcreditacion
     type: object
-  51069.<nil>.ProyectoAcademicoEnfasis:
-    title: ProyectoAcademicoEnfasis
+  50946.<nil>.InstitucionEnfasis:
+    title: InstitucionEnfasis
+    type: object
+  50987.<nil>.Titulacion:
+    title: Titulacion
     type: object
   models.Enfasis:
     title: Enfasis
@@ -1229,6 +1257,25 @@ definitions:
       NumeroOrden:
         type: number
         format: double
+  models.InstitucionEnfasis:
+    title: InstitucionEnfasis
+    type: object
+    properties:
+      Activo:
+        type: boolean
+      EnfasisId:
+        $ref: '#/definitions/models.Enfasis'
+      FechaCreacion:
+        type: string
+        format: datetime
+      FechaModificacion:
+        type: string
+        format: datetime
+      Id:
+        type: integer
+        format: int64
+      ProyectoAcademicoInstitucionId:
+        $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
   models.Metodologia:
     title: Metodologia
     type: object
@@ -1277,32 +1324,13 @@ definitions:
       NumeroOrden:
         type: number
         format: double
-  models.ProyectoAcademicoEnfasis:
-    title: ProyectoAcademicoEnfasis
-    type: object
-    properties:
-      Activo:
-        type: boolean
-      EnfasisId:
-        $ref: '#/definitions/models.Enfasis'
-      FechaCreacion:
-        type: string
-        format: datetime
-      FechaModificacion:
-        type: string
-        format: datetime
-      Id:
-        type: integer
-        format: int64
-      ProyectoAcademicoInstitucionId:
-        $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
   models.ProyectoAcademicoInstitucion:
     title: ProyectoAcademicoInstitucion
     type: object
     properties:
       Activo:
         type: boolean
-      AnoActoAdministrativo:
+      AnoActoAdministrativoId:
         type: string
       AreaConocimientoId:
         type: integer
@@ -1351,8 +1379,6 @@ definitions:
       NumeroCreditos:
         type: number
         format: double
-      TitulacionId:
-        $ref: '#/definitions/models.Titulacion'
       UnidadTiempoId:
         type: integer
         format: int64
@@ -1388,7 +1414,7 @@ definitions:
     properties:
       Activo:
         type: boolean
-      AnoActoAdministrativo:
+      AnoActoAdministrativoId:
         type: string
       EnlaceActo:
         type: string
@@ -1488,6 +1514,8 @@ definitions:
       NumeroOrden:
         type: number
         format: double
+      ProyectoAcademicoInstitucionId:
+        $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       TipoTitulacionId:
         $ref: '#/definitions/models.TipoTitulacion'
   models.TrProyectoAcademico:
@@ -1495,11 +1523,13 @@ definitions:
     type: object
     properties:
       Enfasis:
-        $ref: '#/definitions/51069.<nil>.ProyectoAcademicoEnfasis'
+        $ref: '#/definitions/50946.<nil>.InstitucionEnfasis'
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       Registro:
-        $ref: '#/definitions/51004.<nil>.RegistroCalificadoAcreditacion'
+        $ref: '#/definitions/50881.<nil>.RegistroCalificadoAcreditacion'
+      Titulaciones:
+        $ref: '#/definitions/50987.<nil>.Titulacion'
   models.TrProyectoAcademicoController:
     title: TrProyectoAcademicoController
     type: object
@@ -1513,9 +1543,9 @@ tags:
 - name: enfasis
   description: |
     EnfasisController operations for Enfasis
-- name: proyecto_academico_enfasis
+- name: institucion_enfasis
   description: |
-    ProyectoAcademicoEnfasisController operations for ProyectoAcademicoEnfasis
+    InstitucionEnfasisController operations for InstitucionEnfasis
 - name: tipo_registro
   description: |
     TipoRegistroController operations for TipoRegistro
