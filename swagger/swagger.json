@@ -1804,11 +1804,11 @@
         }
     },
     "definitions": {
-        "19305.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+        "51004.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
             "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
-        "19369.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "51069.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
@@ -2220,13 +2220,13 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/19369.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/51069.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Registro": {
-                    "$ref": "#/definitions/19305.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                    "$ref": "#/definitions/51004.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 }
             }
         },
