@@ -18,7 +18,7 @@
 -- DROP SCHEMA IF EXISTS proyecto_academico CASCADE;
 CREATE SCHEMA proyecto_academico;
 
-SET search_path TO pg_catalog,public,proyecto_academico;
+SET search_path TO public,proyecto_academico;
 -- ddl-end --
 
 -- object: proyecto_academico.proyecto_academico_institucion | type: TABLE --
@@ -95,8 +95,6 @@ COMMENT ON COLUMN proyecto_academico.proyecto_academico_institucion.nucleo_base_
 -- ddl-end --
 COMMENT ON CONSTRAINT pk_programa_academico ON proyecto_academico.proyecto_academico_institucion  IS 'Llave primaria de la tabla programa_academico';
 -- ddl-end --
-ALTER TABLE proyecto_academico.proyecto_academico_institucion OWNER TO postgres;
--- ddl-end --
 
 -- object: proyecto_academico.enfasis | type: TABLE --
 -- DROP TABLE IF EXISTS proyecto_academico.enfasis CASCADE;
@@ -160,8 +158,7 @@ COMMENT ON CONSTRAINT pk_metodologia ON proyecto_academico.metodologia  IS 'Llav
 -- ddl-end --
 COMMENT ON CONSTRAINT uq_nombre_metodologia ON proyecto_academico.metodologia  IS 'Restricción para que no se repita el nombre de las metodologías';
 -- ddl-end --
-ALTER TABLE proyecto_academico.metodologia OWNER TO postgres;
--- ddl-end --
+--
 
 -- object: proyecto_academico.nivel_formacion | type: TABLE --
 -- DROP TABLE IF EXISTS proyecto_academico.nivel_formacion CASCADE;
@@ -200,8 +197,6 @@ COMMENT ON COLUMN proyecto_academico.nivel_formacion.fecha_modificacion IS 'Fech
 COMMENT ON CONSTRAINT pk_nivel_formacion ON proyecto_academico.nivel_formacion  IS 'Llave primaria de la tabla nivel_formacion';
 -- ddl-end --
 COMMENT ON CONSTRAINT uq_nombre_nivel_formacion ON proyecto_academico.nivel_formacion  IS 'Restricción para que no se repita el nombre de los niveles de formación';
--- ddl-end --
-ALTER TABLE proyecto_academico.nivel_formacion OWNER TO postgres;
 -- ddl-end --
 
 -- object: proyecto_academico.titulacion | type: TABLE --
@@ -243,8 +238,6 @@ COMMENT ON CONSTRAINT pk_titulacion ON proyecto_academico.titulacion  IS 'Llave 
 -- ddl-end --
 COMMENT ON CONSTRAINT uq_nombre_titulacion ON proyecto_academico.titulacion  IS 'Restricción para que no se repita el nombre de las titulaciones';
 -- ddl-end --
-ALTER TABLE proyecto_academico.titulacion OWNER TO postgres;
--- ddl-end --
 
 -- object: fk_titulacion_proyecto_academico_institucion | type: CONSTRAINT --
 -- ALTER TABLE proyecto_academico.proyecto_academico_institucion DROP CONSTRAINT IF EXISTS fk_titulacion_proyecto_academico_institucion CASCADE;
@@ -285,8 +278,6 @@ COMMENT ON COLUMN proyecto_academico.proyecto_academico_enfasis.activo IS 'Campo
 COMMENT ON COLUMN proyecto_academico.proyecto_academico_enfasis.fecha_creacion IS 'Fecha de creacion de la tabla ';
 -- ddl-end --
 COMMENT ON COLUMN proyecto_academico.proyecto_academico_enfasis.fecha_modificacion IS 'Fecha de modificacion de la tabla';
--- ddl-end --
-ALTER TABLE proyecto_academico.proyecto_academico_enfasis OWNER TO postgres;
 -- ddl-end --
 
 -- object: fk_proyecto_academico_institucion_proyecto_academico__4289 | type: CONSTRAINT --
@@ -343,8 +334,6 @@ COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.activo IS 
 COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.fecha_creacion IS 'Fecha de creacion de un registro';
 -- ddl-end --
 COMMENT ON COLUMN proyecto_academico.registro_calificado_acreditacion.fecha_modificacion IS 'Fecha de modificacion de registro';
--- ddl-end --
-ALTER TABLE proyecto_academico.registro_calificado_acreditacion OWNER TO postgres;
 -- ddl-end --
 
 -- object: fk_proyecto_academico_institucion_registro_calificado_ac_4297 | type: CONSTRAINT --
@@ -409,8 +398,6 @@ COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.f
 -- ddl-end --
 COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.fecha_modificacion IS 'Fecha de modificación de un registro';
 -- ddl-end --
-ALTER TABLE proyecto_academico.proyecto_academico_rol_persona_dependecia OWNER TO postgres;
--- ddl-end --
 
 -- object: fk_tipo_registro_registro_calificado_acreditacion | type: CONSTRAINT --
 -- ALTER TABLE proyecto_academico.registro_calificado_acreditacion DROP CONSTRAINT IF EXISTS fk_tipo_registro_registro_calificado_acreditacion CASCADE;
@@ -450,8 +437,6 @@ COMMENT ON COLUMN proyecto_academico.tipo_titulacion.fecha_creacion IS 'Fecha de
 -- ddl-end --
 COMMENT ON COLUMN proyecto_academico.tipo_titulacion.fecha_modificacion IS 'Fecha de modificacion de  tipo titulacion';
 -- ddl-end --
-ALTER TABLE proyecto_academico.tipo_titulacion OWNER TO postgres;
--- ddl-end --
 
 -- object: fk_tipo_titulacion_titulacion | type: CONSTRAINT --
 -- ALTER TABLE proyecto_academico.titulacion DROP CONSTRAINT IF EXISTS fk_tipo_titulacion_titulacion CASCADE;
@@ -467,4 +452,9 @@ REFERENCES proyecto_academico.proyecto_academico_institucion (id) MATCH FULL
 ON DELETE SET NULL ON UPDATE CASCADE;
 -- ddl-end --
 
+
+-- Permisos de usuario
+GRANT USAGE ON SCHEMA proyecto_academico TO test;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA proyecto_academico TO test;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA proyecto_academico TO test;
 
