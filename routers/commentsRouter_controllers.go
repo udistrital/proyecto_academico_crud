@@ -477,7 +477,7 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/udistrital/proyecto_academico_crud/controllers:TrProyectoAcademicoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/proyecto_academico_crud/controllers:TrProyectoAcademicoController"],
         beego.ControllerComments{
-            Method: "Put",
+            Method: "PutInformacionBasica",
             Router: `/informacion_basica/:id`,
             AllowHTTPMethods: []string{"put"},
             MethodParams: param.Make(),

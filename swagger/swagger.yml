@@ -1202,8 +1202,8 @@ paths:
     put:
       tags:
       - tr_proyecto_academico
-      description: update the TrProyectoAcademico
-      operationId: TrProyectoAcademicoController.Put
+      description: update the TrProyectoAcademicoPutInfoBasica
+      operationId: TrProyectoAcademicoController.PutInformacionBasica
       parameters:
       - in: path
         name: id
@@ -1212,15 +1212,15 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for TrProyectoAcademico content
+        description: body for TrProyectoAcademicoPutInfoBasica content
         required: true
         schema:
-          $ref: '#/definitions/models.TrProyectoAcademico'
+          $ref: '#/definitions/models.TrProyectoAcademicoPutInfoBasica'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.TrProyectoAcademico'
+            $ref: '#/definitions/models.TrProyectoAcademicoPutInfoBasica'
         "400":
           description: the request contains incorrect syntax
 definitions:
@@ -1231,6 +1231,9 @@ definitions:
     title: InstitucionEnfasis
     type: object
   50987.<nil>.Titulacion:
+    title: Titulacion
+    type: object
+  51134.<nil>.Titulacion:
     title: Titulacion
     type: object
   models.Enfasis:
@@ -1533,6 +1536,14 @@ definitions:
   models.TrProyectoAcademicoController:
     title: TrProyectoAcademicoController
     type: object
+  models.TrProyectoAcademicoPutInfoBasica:
+    title: TrProyectoAcademicoPutInfoBasica
+    type: object
+    properties:
+      ProyectoAcademicoInstitucion:
+        $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
+      Titulaciones:
+        $ref: '#/definitions/51134.<nil>.Titulacion'
 tags:
 - name: metodologia
   description: |

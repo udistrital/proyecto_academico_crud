@@ -1778,8 +1778,8 @@
                 "tags": [
                     "tr_proyecto_academico"
                 ],
-                "description": "update the TrProyectoAcademico",
-                "operationId": "TrProyectoAcademicoController.Put",
+                "description": "update the TrProyectoAcademicoPutInfoBasica",
+                "operationId": "TrProyectoAcademicoController.PutInformacionBasica",
                 "parameters": [
                     {
                         "in": "path",
@@ -1791,10 +1791,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for TrProyectoAcademico content",
+                        "description": "body for TrProyectoAcademicoPutInfoBasica content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.TrProyectoAcademico"
+                            "$ref": "#/definitions/models.TrProyectoAcademicoPutInfoBasica"
                         }
                     }
                 ],
@@ -1802,7 +1802,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.TrProyectoAcademico"
+                            "$ref": "#/definitions/models.TrProyectoAcademicoPutInfoBasica"
                         }
                     },
                     "400": {
@@ -1851,6 +1851,10 @@
             "type": "object"
         },
         "50987.\u003cnil\u003e.Titulacion": {
+            "title": "Titulacion",
+            "type": "object"
+        },
+        "51134.\u003cnil\u003e.Titulacion": {
             "title": "Titulacion",
             "type": "object"
         },
@@ -2278,6 +2282,18 @@
         "models.TrProyectoAcademicoController": {
             "title": "TrProyectoAcademicoController",
             "type": "object"
+        },
+        "models.TrProyectoAcademicoPutInfoBasica": {
+            "title": "TrProyectoAcademicoPutInfoBasica",
+            "type": "object",
+            "properties": {
+                "ProyectoAcademicoInstitucion": {
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                },
+                "Titulaciones": {
+                    "$ref": "#/definitions/51134.\u003cnil\u003e.Titulacion"
+                }
+            }
         }
     },
     "tags": [

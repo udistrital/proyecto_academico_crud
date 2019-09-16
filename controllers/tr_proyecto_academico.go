@@ -19,8 +19,7 @@ type TrProyectoAcademicoController struct {
 func (c *TrProyectoAcademicoController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetById", c.GetById)
-	c.Mapping("Delete", c.Delete)
-	c.Mapping("Put", c.Put)
+	c.Mapping("PutInformacionBasica", c.PutInformacionBasica)
 }
 
 // GetById ...
@@ -81,17 +80,17 @@ func (c *TrProyectoAcademicoController) Post() {
 }
 
 // Put ...
-// @Title Put
-// @Description update the TrProyectoAcademico
+// @Title PutInformacionBasica
+// @Description update the TrProyectoAcademicoPutInfoBasica
 // @Param	id		path 	string	true		"The id you want to update"
-// @Param	body		body 	models.TrProyectoAcademico	true		"body for TrProyectoAcademico content"
-// @Success 200 {object} models.TrProyectoAcademico
+// @Param	body		body 	models.TrProyectoAcademicoPutInfoBasica	true		"body for TrProyectoAcademicoPutInfoBasica content"
+// @Success 200 {object} models.TrProyectoAcademicoPutInfoBasica
 // @Failure 400 the request contains incorrect syntax
 // @router /informacion_basica/:id [put]
-func (c *TrProyectoAcademicoController) Put() {
+func (c *TrProyectoAcademicoController) PutInformacionBasica() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
-	var v models.TrProyectoAcademico
+	var v models.TrProyectoAcademicoPutInfoBasica
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		v.ProyectoAcademicoInstitucion.Id = id
 		if err := models.UpdateTransaccionProyectoAcademica(&v); err == nil {
