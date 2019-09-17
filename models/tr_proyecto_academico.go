@@ -211,3 +211,46 @@ func UpdateTransaccionProyectoAcademicoEnfasis(m *TrProyectoAcademicoPutEnfasis)
 
 	return
 }
+
+// UpdateTransaccionProyectoAcademicoRegistro Transacción para actualizar toda los registros de un proyecto academico
+func UpdateTransaccionProyectoAcademicoRegistro(m *TrProyectoAcademicoPutRegistro) (err error) {
+	o := orm.NewOrm()
+	err = o.Begin()
+
+	for _, v := range *m.Registro {
+		var registro RegistroCalificadoAcreditacion
+		fmt.Println("TipoRegistroId__Id", v.TipoRegistroId.Id, "ProyectoAcademicoInstitucionId__Id", v.ProyectoAcademicoInstitucionId.Id)
+		if errTr := o.QueryTable(new(RegistroCalificadoAcreditacion)).RelatedSel().Filter("TipoRegistroId__Id",v.TipoRegistroId.Id).Filter("ProyectoAcademicoInstitucionId__Id",v.ProyectoAcademicoInstitucionId.Id).One(&registro); errTr == nil{
+			// Si existe hace update
+			v.Id = registro.Id
+			if _, errTr = o.Update(&v,"NumeroActoAdministrativo","AnoActoAdministrativoId","FechaCreacionActoAdministrativo","VigenciaActoAdministrativo","VencimientoActoAdministrativo","EnlaceActo","Activo"); errTr != nil {
+				err = errTr
+				fmt.Println(err)
+				_ = o.Rollback()
+				return
+			} else {
+				fmt.Println("update para registro",registro.Id)
+			}
+		} else {
+			if errTr == orm.ErrNoRows {
+				v.ProyectoAcademicoInstitucionId.Id = m.ProyectoAcademicoInstitucion.Id
+				if idRegistro, errTr := o.Insert(&v); errTr != nil {
+					err = errTr
+					fmt.Println(err)
+					_ = o.Rollback()
+					return
+				} else {
+					fmt.Println("insert para registro",idRegistro)
+				}
+			} else {
+				err = errTr
+				fmt.Println(err)
+				_ = o.Rollback()
+				return
+			}
+		}
+	}
+	_ = o.Commit()
+
+	return
+}
