@@ -1773,6 +1773,44 @@
                 }
             }
         },
+        "/tr_proyecto_academico/enfasis/{id}": {
+            "put": {
+                "tags": [
+                    "tr_proyecto_academico"
+                ],
+                "description": "update the TrProyectoAcademicoPutEnfasis",
+                "operationId": "TrProyectoAcademicoController.PutProyectoEnfasis",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TrProyectoAcademicoPutEnfasis content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoPutEnfasis"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoPutEnfasis"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
         "/tr_proyecto_academico/informacion_basica/{id}": {
             "put": {
                 "tags": [
@@ -1803,6 +1841,44 @@
                         "description": "",
                         "schema": {
                             "$ref": "#/definitions/models.TrProyectoAcademicoPutInfoBasica"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/tr_proyecto_academico/registro/{id}": {
+            "put": {
+                "tags": [
+                    "tr_proyecto_academico"
+                ],
+                "description": "update the TrProyectoAcademicoPutRegistro",
+                "operationId": "TrProyectoAcademicoController.PutProyectoRegistro",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TrProyectoAcademicoPutRegistro content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoPutRegistro"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoPutRegistro"
                         }
                     },
                     "400": {
@@ -1856,6 +1932,14 @@
         },
         "51134.\u003cnil\u003e.Titulacion": {
             "title": "Titulacion",
+            "type": "object"
+        },
+        "51290.\u003cnil\u003e.InstitucionEnfasis": {
+            "title": "InstitucionEnfasis",
+            "type": "object"
+        },
+        "51455.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+            "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
         "models.Enfasis": {
@@ -2283,6 +2367,18 @@
             "title": "TrProyectoAcademicoController",
             "type": "object"
         },
+        "models.TrProyectoAcademicoPutEnfasis": {
+            "title": "TrProyectoAcademicoPutEnfasis",
+            "type": "object",
+            "properties": {
+                "Enfasis": {
+                    "$ref": "#/definitions/51290.\u003cnil\u003e.InstitucionEnfasis"
+                },
+                "ProyectoAcademicoInstitucion": {
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                }
+            }
+        },
         "models.TrProyectoAcademicoPutInfoBasica": {
             "title": "TrProyectoAcademicoPutInfoBasica",
             "type": "object",
@@ -2292,6 +2388,18 @@
                 },
                 "Titulaciones": {
                     "$ref": "#/definitions/51134.\u003cnil\u003e.Titulacion"
+                }
+            }
+        },
+        "models.TrProyectoAcademicoPutRegistro": {
+            "title": "TrProyectoAcademicoPutRegistro",
+            "type": "object",
+            "properties": {
+                "ProyectoAcademicoInstitucion": {
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                },
+                "Registro": {
+                    "$ref": "#/definitions/51455.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 }
             }
         }

@@ -1198,6 +1198,31 @@ paths:
             $ref: '#/definitions/models.TrProyectoAcademicoController'
         "404":
           description: not found resource
+  /tr_proyecto_academico/enfasis/{id}:
+    put:
+      tags:
+      - tr_proyecto_academico
+      description: update the TrProyectoAcademicoPutEnfasis
+      operationId: TrProyectoAcademicoController.PutProyectoEnfasis
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TrProyectoAcademicoPutEnfasis content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TrProyectoAcademicoPutEnfasis'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TrProyectoAcademicoPutEnfasis'
+        "400":
+          description: the request contains incorrect syntax
   /tr_proyecto_academico/informacion_basica/{id}:
     put:
       tags:
@@ -1223,6 +1248,31 @@ paths:
             $ref: '#/definitions/models.TrProyectoAcademicoPutInfoBasica'
         "400":
           description: the request contains incorrect syntax
+  /tr_proyecto_academico/registro/{id}:
+    put:
+      tags:
+      - tr_proyecto_academico
+      description: update the TrProyectoAcademicoPutRegistro
+      operationId: TrProyectoAcademicoController.PutProyectoRegistro
+      parameters:
+      - in: path
+        name: id
+        description: The id you want to update
+        required: true
+        type: string
+      - in: body
+        name: body
+        description: body for TrProyectoAcademicoPutRegistro content
+        required: true
+        schema:
+          $ref: '#/definitions/models.TrProyectoAcademicoPutRegistro'
+      responses:
+        "200":
+          description: ""
+          schema:
+            $ref: '#/definitions/models.TrProyectoAcademicoPutRegistro'
+        "400":
+          description: the request contains incorrect syntax
 definitions:
   50881.<nil>.RegistroCalificadoAcreditacion:
     title: RegistroCalificadoAcreditacion
@@ -1235,6 +1285,12 @@ definitions:
     type: object
   51134.<nil>.Titulacion:
     title: Titulacion
+    type: object
+  51290.<nil>.InstitucionEnfasis:
+    title: InstitucionEnfasis
+    type: object
+  51455.<nil>.RegistroCalificadoAcreditacion:
+    title: RegistroCalificadoAcreditacion
     type: object
   models.Enfasis:
     title: Enfasis
@@ -1536,6 +1592,14 @@ definitions:
   models.TrProyectoAcademicoController:
     title: TrProyectoAcademicoController
     type: object
+  models.TrProyectoAcademicoPutEnfasis:
+    title: TrProyectoAcademicoPutEnfasis
+    type: object
+    properties:
+      Enfasis:
+        $ref: '#/definitions/51290.<nil>.InstitucionEnfasis'
+      ProyectoAcademicoInstitucion:
+        $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
   models.TrProyectoAcademicoPutInfoBasica:
     title: TrProyectoAcademicoPutInfoBasica
     type: object
@@ -1544,6 +1608,14 @@ definitions:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       Titulaciones:
         $ref: '#/definitions/51134.<nil>.Titulacion'
+  models.TrProyectoAcademicoPutRegistro:
+    title: TrProyectoAcademicoPutRegistro
+    type: object
+    properties:
+      ProyectoAcademicoInstitucion:
+        $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
+      Registro:
+        $ref: '#/definitions/51455.<nil>.RegistroCalificadoAcreditacion'
 tags:
 - name: metodologia
   description: |

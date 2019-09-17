@@ -20,6 +20,8 @@ func (c *TrProyectoAcademicoController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetById", c.GetById)
 	c.Mapping("PutInformacionBasica", c.PutInformacionBasica)
+	c.Mapping("PutProyectoEnfasis", c.PutProyectoEnfasis)
+	c.Mapping("PutProyectoRegistro", c.PutProyectoRegistro)
 }
 
 // GetById ...
@@ -93,7 +95,7 @@ func (c *TrProyectoAcademicoController) PutInformacionBasica() {
 	var v models.TrProyectoAcademicoPutInfoBasica
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		v.ProyectoAcademicoInstitucion.Id = id
-		if err := models.UpdateTransaccionProyectoAcademica(&v); err == nil {
+		if err := models.UpdateTransaccionProyectoAcademico(&v); err == nil {
 			c.Data["json"] = v
 		} else {
 			logs.Error(err)
@@ -109,3 +111,35 @@ func (c *TrProyectoAcademicoController) PutInformacionBasica() {
 	}
 	c.ServeJSON()
 }
+
+// Put ...
+// @Title PutProyectoEnfasis
+// @Description update the TrProyectoAcademicoPutEnfasis
+// @Param	id		path 	string	true		"The id you want to update"
+// @Param	body		body 	models.TrProyectoAcademicoPutEnfasis	true		"body for TrProyectoAcademicoPutEnfasis content"
+// @Success 200 {object} models.TrProyectoAcademicoPutEnfasis
+// @Failure 400 the request contains incorrect syntax
+// @router /enfasis/:id [put]
+func (c *TrProyectoAcademicoController) PutProyectoEnfasis() {
+	idStr := c.Ctx.Input.Param(":id")
+	id, _ := strconv.Atoi(idStr)
+	var v models.TrProyectoAcademicoPutEnfasis
+	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
+		v.ProyectoAcademicoInstitucion.Id = id
+		if err := models.UpdateTransaccionProyectoAcademicoEnfasis(&v); err == nil {
+			c.Data["json"] = v
+		} else {
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
+			c.Abort("400")
+		}
+	} else {
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
+	}
+	c.ServeJSON()
+}
+
