@@ -72,7 +72,6 @@ func (c *TrProyectoAcademicoController) Post() {
 			c.Abort("400")
 		}
 	} else {
-		fmt.Println("ojo")
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
 		c.Data["system"] = err

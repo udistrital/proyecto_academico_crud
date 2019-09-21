@@ -268,7 +268,7 @@ CREATE TABLE proyecto_academico.proyecto_academico_enfasis(
 	fecha_modificacion timestamp NOT NULL,
 	proyecto_academico_institucion_id integer,
 	enfasis_id integer,
-	CONSTRAINT pk_institucion_enfasis PRIMARY KEY (id)
+	CONSTRAINT pk_proyecto_academico_enfasis PRIMARY KEY (id)
 
 );
 -- ddl-end --

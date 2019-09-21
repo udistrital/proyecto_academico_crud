@@ -10,7 +10,7 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type InstitucionEnfasis struct {
+type ProyectoAcademicoEnfasis struct {
 	Id                             int                           `orm:"column(id);pk;auto"`
 	Activo                         bool                          `orm:"column(activo)"`
 	FechaCreacion                  time.Time                     `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
@@ -19,39 +19,39 @@ type InstitucionEnfasis struct {
 	EnfasisId                      *Enfasis                      `orm:"column(enfasis_id);rel(fk)"`
 }
 
-func (t *InstitucionEnfasis) TableName() string {
-	return "institucion_enfasis"
+func (t *ProyectoAcademicoEnfasis) TableName() string {
+	return "proyecto_academico_enfasis"
 }
 
 func init() {
-	orm.RegisterModel(new(InstitucionEnfasis))
+	orm.RegisterModel(new(ProyectoAcademicoEnfasis))
 }
 
-// AddInstitucionEnfasis insert a new InstitucionEnfasis into database and returns
+// AddProyectoAcademicoEnfasis insert a new ProyectoAcademicoEnfasis into database and returns
 // last inserted Id on success.
-func AddInstitucionEnfasis(m *InstitucionEnfasis) (id int64, err error) {
+func AddProyectoAcademicoEnfasis(m *ProyectoAcademicoEnfasis) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetInstitucionEnfasisById retrieves InstitucionEnfasis by Id. Returns error if
+// GetProyectoAcademicoEnfasisById retrieves ProyectoAcademicoEnfasis by Id. Returns error if
 // Id doesn't exist
-func GetInstitucionEnfasisById(id int) (v *InstitucionEnfasis, err error) {
+func GetProyectoAcademicoEnfasisById(id int) (v *ProyectoAcademicoEnfasis, err error) {
 	o := orm.NewOrm()
-	v = &InstitucionEnfasis{Id: id}
+	v = &ProyectoAcademicoEnfasis{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllInstitucionEnfasis retrieves all InstitucionEnfasis matches certain condition. Returns empty list if
+// GetAllProyectoAcademicoEnfasis retrieves all ProyectoAcademicoEnfasis matches certain condition. Returns empty list if
 // no records exist
-func GetAllInstitucionEnfasis(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllProyectoAcademicoEnfasis(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(InstitucionEnfasis)).RelatedSel()
+	qs := o.QueryTable(new(ProyectoAcademicoEnfasis)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -101,7 +101,7 @@ func GetAllInstitucionEnfasis(query map[string]string, fields []string, sortby [
 		}
 	}
 
-	var l []InstitucionEnfasis
+	var l []ProyectoAcademicoEnfasis
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -124,11 +124,11 @@ func GetAllInstitucionEnfasis(query map[string]string, fields []string, sortby [
 	return nil, err
 }
 
-// UpdateInstitucionEnfasis updates InstitucionEnfasis by Id and returns error if
+// UpdateProyectoAcademicoEnfasis updates ProyectoAcademicoEnfasis by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateInstitucionEnfasisById(m *InstitucionEnfasis) (err error) {
+func UpdateProyectoAcademicoEnfasisById(m *ProyectoAcademicoEnfasis) (err error) {
 	o := orm.NewOrm()
-	v := InstitucionEnfasis{Id: m.Id}
+	v := ProyectoAcademicoEnfasis{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -139,15 +139,15 @@ func UpdateInstitucionEnfasisById(m *InstitucionEnfasis) (err error) {
 	return
 }
 
-// DeleteInstitucionEnfasis deletes InstitucionEnfasis by Id and returns error if
+// DeleteProyectoAcademicoEnfasis deletes ProyectoAcademicoEnfasis by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteInstitucionEnfasis(id int) (err error) {
+func DeleteProyectoAcademicoEnfasis(id int) (err error) {
 	o := orm.NewOrm()
-	v := InstitucionEnfasis{Id: id}
+	v := ProyectoAcademicoEnfasis{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&InstitucionEnfasis{Id: id}); err == nil {
+		if num, err = o.Delete(&ProyectoAcademicoEnfasis{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
