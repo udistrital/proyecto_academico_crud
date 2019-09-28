@@ -19,6 +19,7 @@ type TrProyectoAcademicoController struct {
 func (c *TrProyectoAcademicoController) URLMapping() {
 	c.Mapping("Post", c.Post)
 	c.Mapping("GetById", c.GetById)
+	c.Mapping("GetAll", c.GetAll)
 	c.Mapping("PutInformacionBasica", c.PutInformacionBasica)
 	c.Mapping("PutProyectoEnfasis", c.PutProyectoEnfasis)
 	c.Mapping("PutProyectoRegistro", c.PutProyectoRegistro)
@@ -36,6 +37,35 @@ func (c *TrProyectoAcademicoController) GetById() {
 	idProyectoStr := c.Ctx.Input.Param(":id")
 	idProyecto, _ := strconv.Atoi(idProyectoStr)
 	l, err := models.GetProyectoAcademicasById(idProyecto)
+	if err != nil {
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
+	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
+		c.Data["json"] = l
+	}
+	c.ServeJSON()
+}
+
+// GetAll ...
+// @Title Get All
+// @Description get ProyectoAcademico
+// @Param	query	query	string	false	"Filter. e.g. col1:v1,col2:v2 ..."
+// @Param	fields	query	string	false	"Fields returned. e.g. col1,col2 ..."
+// @Param	sortby	query	string	false	"Sorted-by fields. e.g. col1,col2 ..."
+// @Param	order	query	string	false	"Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ..."
+// @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
+// @Param	offset	query	string	false	"Start position of result set. Must be an integer"
+// @Success 200 {object} models.TrProyectoAcademicoController
+// @Failure 404 not found resource
+// @router / [get]
+func (c *TrProyectoAcademicoController) GetAll() {
+	fmt.Println("entro a getall")
+	l, err := models.GetProyectoAcademicasAll()
 	if err != nil {
 		logs.Error(err)
 		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}

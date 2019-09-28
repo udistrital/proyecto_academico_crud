@@ -51,16 +51,45 @@ func GetProyectoAcademicasById(id int) (v []interface{}, err error) {
 			if _, err := o.QueryTable(new(ProyectoAcademicoEnfasis)).RelatedSel().Filter("Id", id).All(&enfasiproyectos); err != nil {
 				return nil, err
 			}
+			var titulacionproyectos []Titulacion
+			if _, err := o.QueryTable(new(Titulacion)).RelatedSel().Filter("Id", id).All(&titulacionproyectos); err != nil {
+				return nil, err
+			}
 
 			v = append(v, map[string]interface{}{
-				"Id":           proyectoAcademico.Id,
-				"Codigo":       proyectoAcademico.Codigo,
-				"Nombre":       proyectoAcademico.Nombre,
-				"Codigo SNIES": proyectoAcademico.CodigoSnies,
-				"Duracion":     proyectoAcademico.Duracion,
-				"Año Acto":     proyectoAcademico.AnoActoAdministrativo,
-				"Registro":     &registroProyectos,
-				"Enfasis":      &enfasiproyectos,
+				"ProyectoAcademico": proyectoAcademico,
+				"Registro":          &registroProyectos,
+				"Enfasis":           &enfasiproyectos,
+				"Titulaciones":      titulacionproyectos,
+			})
+		}
+
+		return v, nil
+	}
+	return nil, err
+}
+
+// GetProyectoAcademicasAll Transacción para consultar todas las proyectos academicos con toda la información de las mismas
+func GetProyectoAcademicasAll() (v []interface{}, err error) {
+	fmt.Println("entro al modelo")
+	o := orm.NewOrm()
+	var proyectos []*ProyectoAcademicoInstitucion
+
+	if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Activo", true).All(&proyectos); err == nil {
+
+		for _, proyecto := range proyectos {
+
+			proyectoAcademico := proyecto
+			id := proyectoAcademico.Id
+			var registroProyectos []RegistroCalificadoAcreditacion
+			if _, err := o.QueryTable(new(RegistroCalificadoAcreditacion)).RelatedSel().Filter("Id", id).All(&registroProyectos); err != nil {
+				//fmt.Println("registro/n", registroProyectos)
+				return nil, err
+			}
+
+			v = append(v, map[string]interface{}{
+				"ProyectoAcademico": proyectoAcademico,
+				"Registro":          registroProyectos,
 			})
 		}
 
