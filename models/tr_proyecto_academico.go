@@ -42,17 +42,17 @@ func GetProyectoAcademicasById(id int) (v []interface{}, err error) {
 			fmt.Println("err ojoooo /n", proyecto)
 
 			var registroProyectos []RegistroCalificadoAcreditacion
-			if _, err := o.QueryTable(new(RegistroCalificadoAcreditacion)).RelatedSel().Filter("Id", id).All(&registroProyectos); err != nil {
+			if _, err := o.QueryTable(new(RegistroCalificadoAcreditacion)).RelatedSel().Filter("ProyectoAcademicoInstitucionId__Id", id).All(&registroProyectos); err != nil {
 				//fmt.Println("registro/n", registroProyectos)
 				return nil, err
 			}
 
 			var enfasiproyectos []ProyectoAcademicoEnfasis
-			if _, err := o.QueryTable(new(ProyectoAcademicoEnfasis)).RelatedSel().Filter("Id", id).All(&enfasiproyectos); err != nil {
+			if _, err := o.QueryTable(new(ProyectoAcademicoEnfasis)).RelatedSel().Filter("ProyectoAcademicoInstitucionId__Id", id).All(&enfasiproyectos); err != nil {
 				return nil, err
 			}
 			var titulacionproyectos []Titulacion
-			if _, err := o.QueryTable(new(Titulacion)).RelatedSel().Filter("Id", id).All(&titulacionproyectos); err != nil {
+			if _, err := o.QueryTable(new(Titulacion)).RelatedSel().Filter("ProyectoAcademicoInstitucionId__Id", id).All(&titulacionproyectos); err != nil {
 				return nil, err
 			}
 
