@@ -33,8 +33,8 @@ func GetProyectoAcademicasById(id int) (v []interface{}, err error) {
 	fmt.Println("entro al modelo")
 	o := orm.NewOrm()
 	var proyectos []*ProyectoAcademicoInstitucion
-
-	if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Id", id).Filter("Activo", true).All(&proyectos); err == nil {
+	// if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Id", id).Filter("Activo", true).All(&proyectos); err == nil {
+	if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Id", id).All(&proyectos); err == nil {
 
 		for _, proyecto := range proyectos {
 
