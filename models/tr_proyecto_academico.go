@@ -75,7 +75,8 @@ func GetProyectoAcademicasAll() (v []interface{}, err error) {
 	o := orm.NewOrm()
 	var proyectos []*ProyectoAcademicoInstitucion
 
-	if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Activo", true).All(&proyectos); err == nil {
+	// if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Activo", true).All(&proyectos); err == nil {
+		if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().All(&proyectos); err == nil {
 
 		for _, proyecto := range proyectos {
 
