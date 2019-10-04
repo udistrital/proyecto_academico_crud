@@ -1990,11 +1990,15 @@
             "title": "Titulacion",
             "type": "object"
         },
-        "51552.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "51441.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "51723.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+        "51611.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+            "title": "ProyectoAcademicoEnfasis",
+            "type": "object"
+        },
+        "51782.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
             "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
@@ -2431,7 +2435,7 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/51552.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/51611.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
@@ -2442,6 +2446,9 @@
             "title": "TrProyectoAcademicoPutInfoBasica",
             "type": "object",
             "properties": {
+                "Enfasis": {
+                    "$ref": "#/definitions/51441.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
@@ -2458,7 +2465,7 @@
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Registro": {
-                    "$ref": "#/definitions/51723.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                    "$ref": "#/definitions/51782.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 }
             }
         }

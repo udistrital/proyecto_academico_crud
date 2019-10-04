@@ -16,6 +16,7 @@ type TrProyectoAcademico struct {
 type TrProyectoAcademicoPutInfoBasica struct {
 	ProyectoAcademicoInstitucion *ProyectoAcademicoInstitucion
 	Titulaciones                 *[]Titulacion
+	Enfasis                      *[]ProyectoAcademicoEnfasis
 }
 
 type TrProyectoAcademicoPutEnfasis struct {
@@ -189,6 +190,41 @@ func UpdateTransaccionProyectoAcademico(m *TrProyectoAcademicoPutInfoBasica) (er
 				}
 			}
 		}
+
+		for _, v := range *m.Enfasis {
+			var institucionEnfasis ProyectoAcademicoEnfasis
+			fmt.Println("EnfasisId__Id", v.EnfasisId.Id, "ProyectoAcademicoInstitucionId__Id", v.ProyectoAcademicoInstitucionId.Id)
+			if errTr := o.QueryTable(new(ProyectoAcademicoEnfasis)).RelatedSel().Filter("EnfasisId__Id", v.EnfasisId.Id).Filter("ProyectoAcademicoInstitucionId__Id", v.ProyectoAcademicoInstitucionId.Id).One(&institucionEnfasis); errTr == nil {
+				// Si existe hace update
+				v.Id = institucionEnfasis.Id
+				if _, errTr = o.Update(&v, "Activo"); errTr != nil {
+					err = errTr
+					fmt.Println(err)
+					_ = o.Rollback()
+					return
+				} else {
+					fmt.Println("update para enfasis", institucionEnfasis.Id)
+				}
+			} else {
+				if errTr == orm.ErrNoRows {
+					v.ProyectoAcademicoInstitucionId.Id = m.ProyectoAcademicoInstitucion.Id
+					if idEnfasis, errTr := o.Insert(&v); errTr != nil {
+						err = errTr
+						fmt.Println(err)
+						_ = o.Rollback()
+						return
+					} else {
+						fmt.Println("insert para enfasis", idEnfasis)
+					}
+				} else {
+					err = errTr
+					fmt.Println(err)
+					_ = o.Rollback()
+					return
+				}
+			}
+		}
+
 		_ = o.Commit()
 	} else {
 		err = errTr
