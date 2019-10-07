@@ -459,6 +459,15 @@ func init() {
 
     beego.GlobalControllerRouter["github.com/udistrital/proyecto_academico_crud/controllers:TrProyectoAcademicoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/proyecto_academico_crud/controllers:TrProyectoAcademicoController"],
         beego.ControllerComments{
+            Method: "GetAll",
+            Router: `/`,
+            AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/proyecto_academico_crud/controllers:TrProyectoAcademicoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/proyecto_academico_crud/controllers:TrProyectoAcademicoController"],
+        beego.ControllerComments{
             Method: "Post",
             Router: `/`,
             AllowHTTPMethods: []string{"post"},
@@ -471,6 +480,33 @@ func init() {
             Method: "GetById",
             Router: `/:id`,
             AllowHTTPMethods: []string{"get"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/proyecto_academico_crud/controllers:TrProyectoAcademicoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/proyecto_academico_crud/controllers:TrProyectoAcademicoController"],
+        beego.ControllerComments{
+            Method: "PutProyectoEnfasis",
+            Router: `/enfasis/:id`,
+            AllowHTTPMethods: []string{"put"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/proyecto_academico_crud/controllers:TrProyectoAcademicoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/proyecto_academico_crud/controllers:TrProyectoAcademicoController"],
+        beego.ControllerComments{
+            Method: "PutInformacionBasica",
+            Router: `/informacion_basica/:id`,
+            AllowHTTPMethods: []string{"put"},
+            MethodParams: param.Make(),
+            Filters: nil,
+            Params: nil})
+
+    beego.GlobalControllerRouter["github.com/udistrital/proyecto_academico_crud/controllers:TrProyectoAcademicoController"] = append(beego.GlobalControllerRouter["github.com/udistrital/proyecto_academico_crud/controllers:TrProyectoAcademicoController"],
+        beego.ControllerComments{
+            Method: "PutProyectoRegistro",
+            Router: `/registro/:id`,
+            AllowHTTPMethods: []string{"put"},
             MethodParams: param.Make(),
             Filters: nil,
             Params: nil})

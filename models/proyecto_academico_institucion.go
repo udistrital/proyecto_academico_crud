@@ -28,10 +28,10 @@ type ProyectoAcademicoInstitucion struct {
 	FechaModificacion        time.Time       `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
 	UnidadTiempoId           int             `orm:"column(unidad_tiempo_id)"`
 	AnoActoAdministrativo    string          `orm:"column(ano_acto_administrativo)"`
+	Oferta                   bool            `orm:"column(oferta)"`
 	DependenciaId            int             `orm:"column(dependencia_id)"`
 	AreaConocimientoId       int             `orm:"column(area_conocimiento_id)"`
 	NucleoBaseId             int             `orm:"column(nucleo_base_id)"`
-	TitulacionId             *Titulacion     `orm:"column(titulacion_id);rel(fk)"`
 	MetodologiaId            *Metodologia    `orm:"column(metodologia_id);rel(fk)"`
 	NivelFormacionId         *NivelFormacion `orm:"column(nivel_formacion_id);rel(fk)"`
 }
