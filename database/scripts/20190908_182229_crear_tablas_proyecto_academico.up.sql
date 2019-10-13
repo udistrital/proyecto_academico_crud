@@ -364,6 +364,7 @@ CREATE TABLE proyecto_academico.proyecto_academico_rol_persona_dependecia(
 	dependencia_id integer NOT NULL,
 	rol_id integer NOT NULL,
 	activo boolean NOT NULL,
+	fecha_inicio timestamp NOT NULL,
 	fecha_creacion timestamp NOT NULL,
 	fecha_modificacion timestamp NOT NULL,
 	proyecto_academico_institucion_id integer NOT NULL,
@@ -382,6 +383,8 @@ COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.d
 COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.rol_id IS 'Campo que referencia el rol que tiene la persona en WSO2';
 -- ddl-end --
 COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.activo IS 'Campo que indica si el parámetro está activo';
+-- ddl-end --
+COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.fecha_inicio IS 'Campo para el registro de fecha de inicio de asignacion del coordinador al proyecto académico';
 -- ddl-end --
 COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.fecha_creacion IS 'Fecha de creacion del registro';
 -- ddl-end --

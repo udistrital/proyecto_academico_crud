@@ -84,14 +84,14 @@ func GetProyectoAcademicasAll() (v []interface{}, err error) {
 			proyectoAcademico := proyecto
 			id := proyectoAcademico.Id
 			var registroProyectos []RegistroCalificadoAcreditacion
-			if _, err := o.QueryTable(new(RegistroCalificadoAcreditacion)).RelatedSel().Filter("Id", id).All(&registroProyectos); err != nil {
+			if _, err := o.QueryTable(new(RegistroCalificadoAcreditacion)).RelatedSel().Filter("ProyectoAcademicoInstitucionId__Id", id).All(&registroProyectos); err != nil {
 				//fmt.Println("registro/n", registroProyectos)
 				return nil, err
 			}
 
 			v = append(v, map[string]interface{}{
 				"ProyectoAcademico": proyectoAcademico,
-				"Registro":          registroProyectos,
+				"Registro":          &registroProyectos,
 			})
 		}
 
