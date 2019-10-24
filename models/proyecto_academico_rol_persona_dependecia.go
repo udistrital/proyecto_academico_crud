@@ -135,6 +135,7 @@ func GetAllProyectoAcademicoRolPersonaDependecia(query map[string]string, fields
 // UpdateProyectoAcademicoRolPersonaDependecia updates ProyectoAcademicoRolPersonaDependecia by Id and returns error if
 // the record to be updated doesn't exist
 func UpdateProyectoAcademicoRolPersonaDependeciaById(m *ProyectoAcademicoRolPersonaDependecia) (err error) {
+	// prueba
 	m.FechaModificacion = time_bogota.Tiempo_bogota()
 	o := orm.NewOrm()
 	v := ProyectoAcademicoRolPersonaDependecia{Id: m.Id}
