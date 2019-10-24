@@ -15,6 +15,7 @@ type ProyectoAcademicoRolPersonaDependecia struct {
 	PersonaId                      int                           `orm:"column(persona_id)"`
 	DependenciaId                  int                           `orm:"column(dependencia_id)"`
 	RolId                          int                           `orm:"column(rol_id)"`
+	ResolucionAsignacionId         int                           `orm:"column(resolucion_asignacion_id)"`
 	Activo                         bool                          `orm:"column(activo)"`
 	FechaInicio                    time.Time                     `orm:"column(fecha_inicio);type(timestamp without time zone)"`
 	FechaFinalizacion              time.Time                     `orm:"column(fecha_finalizacion);type(timestamp without time zone)"`
