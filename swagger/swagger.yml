@@ -1312,25 +1312,25 @@ paths:
         "400":
           description: the request contains incorrect syntax
 definitions:
-  19308.<nil>.RegistroCalificadoAcreditacion:
+  51475.<nil>.RegistroCalificadoAcreditacion:
     title: RegistroCalificadoAcreditacion
     type: object
-  19372.<nil>.ProyectoAcademicoEnfasis:
+  51540.<nil>.ProyectoAcademicoEnfasis:
     title: ProyectoAcademicoEnfasis
     type: object
-  19430.<nil>.Titulacion:
+  51599.<nil>.Titulacion:
     title: Titulacion
     type: object
-  19584.<nil>.Titulacion:
+  51758.<nil>.Titulacion:
     title: Titulacion
     type: object
-  19628.<nil>.ProyectoAcademicoEnfasis:
+  51803.<nil>.ProyectoAcademicoEnfasis:
     title: ProyectoAcademicoEnfasis
     type: object
-  19793.<nil>.ProyectoAcademicoEnfasis:
+  51973.<nil>.ProyectoAcademicoEnfasis:
     title: ProyectoAcademicoEnfasis
     type: object
-  19959.<nil>.RegistroCalificadoAcreditacion:
+  52144.<nil>.RegistroCalificadoAcreditacion:
     title: RegistroCalificadoAcreditacion
     type: object
   models.Enfasis:
@@ -1513,6 +1513,9 @@ definitions:
         format: int64
       ProyectoAcademicoInstitucionId:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
+      ResolucionAsignacionId:
+        type: integer
+        format: int64
       RolId:
         type: integer
         format: int64
@@ -1631,13 +1634,13 @@ definitions:
     type: object
     properties:
       Enfasis:
-        $ref: '#/definitions/19372.<nil>.ProyectoAcademicoEnfasis'
+        $ref: '#/definitions/51540.<nil>.ProyectoAcademicoEnfasis'
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       Registro:
-        $ref: '#/definitions/19308.<nil>.RegistroCalificadoAcreditacion'
+        $ref: '#/definitions/51475.<nil>.RegistroCalificadoAcreditacion'
       Titulaciones:
-        $ref: '#/definitions/19430.<nil>.Titulacion'
+        $ref: '#/definitions/51599.<nil>.Titulacion'
   models.TrProyectoAcademicoController:
     title: TrProyectoAcademicoController
     type: object
@@ -1646,7 +1649,7 @@ definitions:
     type: object
     properties:
       Enfasis:
-        $ref: '#/definitions/19793.<nil>.ProyectoAcademicoEnfasis'
+        $ref: '#/definitions/51973.<nil>.ProyectoAcademicoEnfasis'
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
   models.TrProyectoAcademicoPutInfoBasica:
@@ -1654,11 +1657,11 @@ definitions:
     type: object
     properties:
       Enfasis:
-        $ref: '#/definitions/19628.<nil>.ProyectoAcademicoEnfasis'
+        $ref: '#/definitions/51803.<nil>.ProyectoAcademicoEnfasis'
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       Titulaciones:
-        $ref: '#/definitions/19584.<nil>.Titulacion'
+        $ref: '#/definitions/51758.<nil>.Titulacion'
   models.TrProyectoAcademicoPutRegistro:
     title: TrProyectoAcademicoPutRegistro
     type: object
@@ -1666,7 +1669,7 @@ definitions:
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       Registro:
-        $ref: '#/definitions/19959.<nil>.RegistroCalificadoAcreditacion'
+        $ref: '#/definitions/52144.<nil>.RegistroCalificadoAcreditacion'
 tags:
 - name: metodologia
   description: |

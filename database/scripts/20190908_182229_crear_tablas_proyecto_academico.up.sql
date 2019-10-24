@@ -363,6 +363,7 @@ CREATE TABLE proyecto_academico.proyecto_academico_rol_persona_dependecia(
 	persona_id integer NOT NULL,
 	dependencia_id integer NOT NULL,
 	rol_id integer NOT NULL,
+	resolucion_asignacion_id integer NOT NULL,
 	activo boolean NOT NULL,
 	fecha_inicio timestamp NOT NULL,
 	fecha_finalizacion timestamp,
