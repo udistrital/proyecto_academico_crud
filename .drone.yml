@@ -21,49 +21,7 @@ steps:
       event:
       - push
 
-  - name: beego_migrate
-    image: golang:1.9
-    environment:
-      PG_MIGRATION_USER:
-        from_secret: PG_MIGRATION_USER
-      PG_MIGRATION_PASS:
-        from_secret: PG_MIGRATION_PASS
-      PG_MIGRATION_URL:
-        from_secret: PG_MIGRATION_URL
-      PG_MIGRATION_DBNAME:
-        from_secret: PG_MIGRATION_DBNAME
-    commands:
-     - go get -t
-     - go get -u github.com/beego/bee
-     - bee migrate -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
-    when:
-      branch:
-      - test
-      - master
-      event:
-      - push      
-
-  - name: beego_rollback
-    image: golang:1.9
-    environment:
-      PG_MIGRATION_USER:
-        from_secret: PG_MIGRATION_USER
-      PG_MIGRATION_PASS:
-        from_secret: PG_MIGRATION_PASS
-      PG_MIGRATION_URL:
-        from_secret: PG_MIGRATION_URL
-      PG_MIGRATION_DBNAME:
-        from_secret: PG_MIGRATION_DBNAME
-    commands:
-     - go get -t
-     - go get -u github.com/beego/bee
-     - bee migrate rollback -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
-    when:
-      branch:
-        - test
-        - master    
-      status:
-        - failure
+ 
 
   - name: publish_dockerhub  
     image: plugins/docker
