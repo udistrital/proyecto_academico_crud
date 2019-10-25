@@ -1,5 +1,5 @@
 Feature: Validate API responses
-    PROYECTO_ACADEMICO_CRUD
+    PROYECTO_ACADEMICO_CRUD Controlador enfasis
     probe JSON responses
 
 Scenario Outline: To probe route code response /enfasis
@@ -17,8 +17,8 @@ Scenario Outline: To probe route code response /enfasis
     |DELETE |/v1/enfasi           |./assets/requests/empty.json  |404 Not Found  |
     |DELETE |/v1/enfasis          |./assets/requests/empty.json  |404 Not Found  |
 
-
-Scenario Outline: To probe response route /enfasis        
+   
+Scenario Outline: To probe response route /enfasis      Probe method GET, POST, PUT, DELETE   
     When I send "<method>" request to "<route>" where body is json "<bodyreq>"
     Then the response code should be "<codres>"      
     And the response should match json "<bodyres>"

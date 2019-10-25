@@ -166,7 +166,6 @@ func gen_files() {
 	}
 
 	rankingsJson, _ := json.Marshal(atributo)
-	fmt.Println(rankingsJson)
 	ioutil.WriteFile("./assets/requests/BodyGen1.json", rankingsJson, 0644)
 }
 
