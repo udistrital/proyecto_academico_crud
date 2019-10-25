@@ -34,5 +34,5 @@ Scenario Outline: To probe response route /tipo_registro      Probe method GET, 
     |POST   |/v1/tipo_registro           |./assets/requests/Nt4.json       |400 Bad Request  |./assets/responses/Ierr4.json   |
     |POST   |/v1/tipo_registro           |./assets/requests/Nt5.json       |400 Bad Request  |./assets/responses/Ierr5.json   | 
     |PUT    |/v1/tipo_registro           |./assets/requests/BodyRec2.json  |200 OK           |./assets/responses/Vok1.json    |
-    |GETID  |/v1/tipo_registro           |./assets/requests/BodyGen1.json  |200 OK           |./assets/responses/Vok1.json    |
+    |GETID  |/v1/tipo_registro           |./assets/requests/BodyGen3.json  |200 OK           |./assets/responses/Vok1.json    |
     |DELETE |/v1/tipo_registro           |./assets/requests/empty.json     |200 OK           |./assets/responses/Ino.json     |

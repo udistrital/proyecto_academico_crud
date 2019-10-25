@@ -172,6 +172,7 @@ func gen_files() {
 	ioutil.WriteFile("./assets/requests/BodyGen1.json", rankingsJson, 0644)
 	ioutil.WriteFile("./assets/requests/BodyGen2.json", rankingsJson, 0644)
 	ioutil.WriteFile("./assets/requests/BodyGen3.json", rankingsJson, 0644)
+	ioutil.WriteFile("./assets/requests/BodyGen4.json", rankingsJson, 0644)
 }
 
 /*------------------------------
