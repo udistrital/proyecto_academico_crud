@@ -104,8 +104,8 @@ func run_bee() {
 		go exe_cmd(str, wg)
 	}
 
-	time.Sleep(18 * time.Second)
-
+	time.Sleep(20 * time.Second)
+	fmt.Println("Obteniendo respuesta de http://" + beego.AppConfig.String("appurl") + ":" + beego.AppConfig.String("httpport"))
 	errApi := request.GetJson("http://"+beego.AppConfig.String("PGurls")+":"+beego.AppConfig.String("httpport"), &resultado)
 	if errApi == nil && resultado != nil {
 		fmt.Println("El API se Encuentra en Estado OK")
@@ -170,6 +170,7 @@ func gen_files() {
 
 	rankingsJson, _ := json.Marshal(atributo)
 	ioutil.WriteFile("./assets/requests/BodyGen1.json", rankingsJson, 0644)
+	ioutil.WriteFile("./assets/requests/BodyGen2.json", rankingsJson, 0644)
 }
 
 /*------------------------------
