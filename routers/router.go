@@ -34,9 +34,9 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/institucion_enfasis",
+		beego.NSNamespace("/proyecto_academico_enfasis",
 			beego.NSInclude(
-				&controllers.InstitucionEnfasisController{},
+				&controllers.ProyectoAcademicoEnfasisController{},
 			),
 		),
 
@@ -46,9 +46,9 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/registro_calificado_acreditaciÛn",
+		beego.NSNamespace("/registro_calificado_acreditacion",
 			beego.NSInclude(
-				&controllers.RegistroCalificadoAcreditaciÛnController{},
+				&controllers.RegistroCalificadoAcreditacionController{},
 			),
 		),
 
@@ -67,6 +67,11 @@ func init() {
 		beego.NSNamespace("/proyecto_academico_institucion",
 			beego.NSInclude(
 				&controllers.ProyectoAcademicoInstitucionController{},
+			),
+		),
+		beego.NSNamespace("/tr_proyecto_academico",
+			beego.NSInclude(
+				&controllers.TrProyectoAcademicoController{},
 			),
 		),
 

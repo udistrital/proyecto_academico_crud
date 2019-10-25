@@ -11,7 +11,7 @@ import (
 )
 
 type ProyectoAcademicoInstitucion struct {
-	Id                       int             `orm:"column(id);pk"`
+	Id                       int             `orm:"column(id);pk;auto"`
 	Codigo                   string          `orm:"column(codigo)"`
 	Nombre                   string          `orm:"column(nombre)"`
 	CodigoSnies              string          `orm:"column(codigo_snies)"`
@@ -24,14 +24,14 @@ type ProyectoAcademicoInstitucion struct {
 	Competencias             string          `orm:"column(competencias)"`
 	CodigoAbreviacion        string          `orm:"column(codigo_abreviacion);null"`
 	Activo                   bool            `orm:"column(activo)"`
-	FechaCreacion            time.Time       `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion        time.Time       `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion            time.Time       `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
+	FechaModificacion        time.Time       `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
 	UnidadTiempoId           int             `orm:"column(unidad_tiempo_id)"`
-	AnoActoAdministrativoId  int             `orm:"column(ano_acto_administrativo_id)"`
+	AnoActoAdministrativo    string          `orm:"column(ano_acto_administrativo)"`
+	Oferta                   bool            `orm:"column(oferta)"`
 	DependenciaId            int             `orm:"column(dependencia_id)"`
 	AreaConocimientoId       int             `orm:"column(area_conocimiento_id)"`
 	NucleoBaseId             int             `orm:"column(nucleo_base_id)"`
-	TitulacionId             *Titulacion     `orm:"column(titulacion_id);rel(fk)"`
 	MetodologiaId            *Metodologia    `orm:"column(metodologia_id);rel(fk)"`
 	NivelFormacionId         *NivelFormacion `orm:"column(nivel_formacion_id);rel(fk)"`
 }
@@ -68,7 +68,7 @@ func GetProyectoAcademicoInstitucionById(id int) (v *ProyectoAcademicoInstitucio
 func GetAllProyectoAcademicoInstitucion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ProyectoAcademicoInstitucion))
+	qs := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

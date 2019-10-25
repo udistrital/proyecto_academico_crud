@@ -11,13 +11,14 @@ import (
 )
 
 type ProyectoAcademicoRolPersonaDependecia struct {
-	Id                             int                           `orm:"column(id);pk"`
+	Id                             int                           `orm:"column(id);pk;auto"`
 	PersonaId                      int                           `orm:"column(persona_id)"`
 	DependenciaId                  int                           `orm:"column(dependencia_id)"`
 	RolId                          int                           `orm:"column(rol_id)"`
 	Activo                         bool                          `orm:"column(activo)"`
-	FechaCreacion                  time.Time                     `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion              time.Time                     `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaInicio                    time.Time                     `orm:"column(fecha_inicio);type(timestamp without time zone)"`
+	FechaCreacion                  time.Time                     `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
+	FechaModificacion              time.Time                     `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
 	ProyectoAcademicoInstitucionId *ProyectoAcademicoInstitucion `orm:"column(proyecto_academico_institucion_id);rel(fk)"`
 }
 
@@ -53,7 +54,7 @@ func GetProyectoAcademicoRolPersonaDependeciaById(id int) (v *ProyectoAcademicoR
 func GetAllProyectoAcademicoRolPersonaDependecia(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ProyectoAcademicoRolPersonaDependecia))
+	qs := o.QueryTable(new(ProyectoAcademicoRolPersonaDependecia)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

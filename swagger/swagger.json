@@ -1,0 +1,2515 @@
+{
+    "swagger": "2.0",
+    "info": {
+        "title": "beego Test API",
+        "description": "beego has a very cool tools to autogenerate documents for your API",
+        "version": "1.0.0",
+        "termsOfService": "http://beego.me/",
+        "contact": {
+            "email": "astaxie@gmail.com"
+        },
+        "license": {
+            "name": "Apache 2.0",
+            "url": "http://www.apache.org/licenses/LICENSE-2.0.html"
+        }
+    },
+    "basePath": "/v1",
+    "paths": {
+        "/enfasis/": {
+            "get": {
+                "tags": [
+                    "enfasis"
+                ],
+                "description": "get Enfasis",
+                "operationId": "EnfasisController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Enfasis"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "enfasis"
+                ],
+                "description": "create Enfasis",
+                "operationId": "EnfasisController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Enfasis content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Enfasis"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.Enfasis"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/enfasis/{id}": {
+            "get": {
+                "tags": [
+                    "enfasis"
+                ],
+                "description": "get Enfasis by id",
+                "operationId": "EnfasisController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Enfasis"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "enfasis"
+                ],
+                "description": "update the Enfasis",
+                "operationId": "EnfasisController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Enfasis content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Enfasis"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Enfasis"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "enfasis"
+                ],
+                "description": "delete the Enfasis",
+                "operationId": "EnfasisController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/metodologia/": {
+            "get": {
+                "tags": [
+                    "metodologia"
+                ],
+                "description": "get Metodologia",
+                "operationId": "MetodologiaController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Metodologia"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "metodologia"
+                ],
+                "description": "create Metodologia",
+                "operationId": "MetodologiaController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Metodologia content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Metodologia"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.Metodologia"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/metodologia/{id}": {
+            "get": {
+                "tags": [
+                    "metodologia"
+                ],
+                "description": "get Metodologia by id",
+                "operationId": "MetodologiaController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Metodologia"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "metodologia"
+                ],
+                "description": "update the Metodologia",
+                "operationId": "MetodologiaController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Metodologia content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Metodologia"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Metodologia"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "metodologia"
+                ],
+                "description": "delete the Metodologia",
+                "operationId": "MetodologiaController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/nivel_formacion/": {
+            "get": {
+                "tags": [
+                    "nivel_formacion"
+                ],
+                "description": "get NivelFormacion",
+                "operationId": "NivelFormacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NivelFormacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "nivel_formacion"
+                ],
+                "description": "create NivelFormacion",
+                "operationId": "NivelFormacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NivelFormacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NivelFormacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.NivelFormacion"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/nivel_formacion/{id}": {
+            "get": {
+                "tags": [
+                    "nivel_formacion"
+                ],
+                "description": "get NivelFormacion by id",
+                "operationId": "NivelFormacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NivelFormacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "nivel_formacion"
+                ],
+                "description": "update the NivelFormacion",
+                "operationId": "NivelFormacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for NivelFormacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.NivelFormacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.NivelFormacion"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "nivel_formacion"
+                ],
+                "description": "delete the NivelFormacion",
+                "operationId": "NivelFormacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/proyecto_academico_enfasis/": {
+            "get": {
+                "tags": [
+                    "proyecto_academico_enfasis"
+                ],
+                "description": "get ProyectoAcademicoEnfasis",
+                "operationId": "ProyectoAcademicoEnfasisController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoEnfasis"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "proyecto_academico_enfasis"
+                ],
+                "description": "create ProyectoAcademicoEnfasis",
+                "operationId": "ProyectoAcademicoEnfasisController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ProyectoAcademicoEnfasis content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoEnfasis"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.ProyectoAcademicoEnfasis"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/proyecto_academico_enfasis/{id}": {
+            "get": {
+                "tags": [
+                    "proyecto_academico_enfasis"
+                ],
+                "description": "get ProyectoAcademicoEnfasis by id",
+                "operationId": "ProyectoAcademicoEnfasisController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoEnfasis"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "proyecto_academico_enfasis"
+                ],
+                "description": "update the ProyectoAcademicoEnfasis",
+                "operationId": "ProyectoAcademicoEnfasisController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ProyectoAcademicoEnfasis content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoEnfasis"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoEnfasis"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "proyecto_academico_enfasis"
+                ],
+                "description": "delete the ProyectoAcademicoEnfasis",
+                "operationId": "ProyectoAcademicoEnfasisController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/proyecto_academico_institucion/": {
+            "get": {
+                "tags": [
+                    "proyecto_academico_institucion"
+                ],
+                "description": "get ProyectoAcademicoInstitucion",
+                "operationId": "ProyectoAcademicoInstitucionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "proyecto_academico_institucion"
+                ],
+                "description": "create ProyectoAcademicoInstitucion",
+                "operationId": "ProyectoAcademicoInstitucionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ProyectoAcademicoInstitucion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.ProyectoAcademicoInstitucion"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/proyecto_academico_institucion/{id}": {
+            "get": {
+                "tags": [
+                    "proyecto_academico_institucion"
+                ],
+                "description": "get ProyectoAcademicoInstitucion by id",
+                "operationId": "ProyectoAcademicoInstitucionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "proyecto_academico_institucion"
+                ],
+                "description": "update the ProyectoAcademicoInstitucion",
+                "operationId": "ProyectoAcademicoInstitucionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ProyectoAcademicoInstitucion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "proyecto_academico_institucion"
+                ],
+                "description": "delete the ProyectoAcademicoInstitucion",
+                "operationId": "ProyectoAcademicoInstitucionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/proyecto_academico_rol_persona_dependecia/": {
+            "get": {
+                "tags": [
+                    "proyecto_academico_rol_persona_dependecia"
+                ],
+                "description": "get ProyectoAcademicoRolPersonaDependecia",
+                "operationId": "ProyectoAcademicoRolPersonaDependeciaController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoRolPersonaDependecia"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "proyecto_academico_rol_persona_dependecia"
+                ],
+                "description": "create ProyectoAcademicoRolPersonaDependecia",
+                "operationId": "ProyectoAcademicoRolPersonaDependeciaController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ProyectoAcademicoRolPersonaDependecia content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoRolPersonaDependecia"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.ProyectoAcademicoRolPersonaDependecia"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/proyecto_academico_rol_persona_dependecia/{id}": {
+            "get": {
+                "tags": [
+                    "proyecto_academico_rol_persona_dependecia"
+                ],
+                "description": "get ProyectoAcademicoRolPersonaDependecia by id",
+                "operationId": "ProyectoAcademicoRolPersonaDependeciaController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoRolPersonaDependecia"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "proyecto_academico_rol_persona_dependecia"
+                ],
+                "description": "update the ProyectoAcademicoRolPersonaDependecia",
+                "operationId": "ProyectoAcademicoRolPersonaDependeciaController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for ProyectoAcademicoRolPersonaDependecia content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoRolPersonaDependecia"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.ProyectoAcademicoRolPersonaDependecia"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "proyecto_academico_rol_persona_dependecia"
+                ],
+                "description": "delete the ProyectoAcademicoRolPersonaDependecia",
+                "operationId": "ProyectoAcademicoRolPersonaDependeciaController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/registro_calificado_acreditacion/": {
+            "get": {
+                "tags": [
+                    "registro_calificado_acreditacion"
+                ],
+                "description": "get RegistroCalificadoAcreditacion",
+                "operationId": "RegistroCalificadoAcreditacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.RegistroCalificadoAcreditacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "registro_calificado_acreditacion"
+                ],
+                "description": "create RegistroCalificadoAcreditacion",
+                "operationId": "RegistroCalificadoAcreditacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for RegistroCalificadoAcreditacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.RegistroCalificadoAcreditacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.RegistroCalificadoAcreditacion"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/registro_calificado_acreditacion/{id}": {
+            "get": {
+                "tags": [
+                    "registro_calificado_acreditacion"
+                ],
+                "description": "get RegistroCalificadoAcreditacion by id",
+                "operationId": "RegistroCalificadoAcreditacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.RegistroCalificadoAcreditacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "registro_calificado_acreditacion"
+                ],
+                "description": "update the RegistroCalificadoAcreditacion",
+                "operationId": "RegistroCalificadoAcreditacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for RegistroCalificadoAcreditacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.RegistroCalificadoAcreditacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.RegistroCalificadoAcreditacion"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "registro_calificado_acreditacion"
+                ],
+                "description": "delete the RegistroCalificadoAcreditacion",
+                "operationId": "RegistroCalificadoAcreditacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/tipo_registro/": {
+            "get": {
+                "tags": [
+                    "tipo_registro"
+                ],
+                "description": "get TipoRegistro",
+                "operationId": "TipoRegistroController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoRegistro"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tipo_registro"
+                ],
+                "description": "create TipoRegistro",
+                "operationId": "TipoRegistroController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoRegistro content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoRegistro"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TipoRegistro"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/tipo_registro/{id}": {
+            "get": {
+                "tags": [
+                    "tipo_registro"
+                ],
+                "description": "get TipoRegistro by id",
+                "operationId": "TipoRegistroController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoRegistro"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "tipo_registro"
+                ],
+                "description": "update the TipoRegistro",
+                "operationId": "TipoRegistroController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoRegistro content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoRegistro"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoRegistro"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tipo_registro"
+                ],
+                "description": "delete the TipoRegistro",
+                "operationId": "TipoRegistroController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/tipo_titulacion/": {
+            "get": {
+                "tags": [
+                    "tipo_titulacion"
+                ],
+                "description": "get TipoTitulacion",
+                "operationId": "TipoTitulacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoTitulacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tipo_titulacion"
+                ],
+                "description": "create TipoTitulacion",
+                "operationId": "TipoTitulacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoTitulacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoTitulacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TipoTitulacion"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/tipo_titulacion/{id}": {
+            "get": {
+                "tags": [
+                    "tipo_titulacion"
+                ],
+                "description": "get TipoTitulacion by id",
+                "operationId": "TipoTitulacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoTitulacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "tipo_titulacion"
+                ],
+                "description": "update the TipoTitulacion",
+                "operationId": "TipoTitulacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TipoTitulacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoTitulacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TipoTitulacion"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "tipo_titulacion"
+                ],
+                "description": "delete the TipoTitulacion",
+                "operationId": "TipoTitulacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/titulacion/": {
+            "get": {
+                "tags": [
+                    "titulacion"
+                ],
+                "description": "get Titulacion",
+                "operationId": "TitulacionController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Titulacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "titulacion"
+                ],
+                "description": "create Titulacion",
+                "operationId": "TitulacionController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Titulacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Titulacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.Titulacion"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/titulacion/{id}": {
+            "get": {
+                "tags": [
+                    "titulacion"
+                ],
+                "description": "get Titulacion by id",
+                "operationId": "TitulacionController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Titulacion"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "titulacion"
+                ],
+                "description": "update the Titulacion",
+                "operationId": "TitulacionController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Titulacion content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Titulacion"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Titulacion"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "titulacion"
+                ],
+                "description": "delete the Titulacion",
+                "operationId": "TitulacionController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
+        "/tr_proyecto_academico/": {
+            "get": {
+                "tags": [
+                    "tr_proyecto_academico"
+                ],
+                "description": "get ProyectoAcademico",
+                "operationId": "TrProyectoAcademicoController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoController"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "tr_proyecto_academico"
+                ],
+                "description": "create the TrProyectoAcademico",
+                "operationId": "TrProyectoAcademicoController.PostTrProyectoAcademica",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TrProyectoAcademica content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademico"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.TrProyectoAcademica"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/tr_proyecto_academico/enfasis/{id}": {
+            "put": {
+                "tags": [
+                    "tr_proyecto_academico"
+                ],
+                "description": "update the TrProyectoAcademicoPutEnfasis",
+                "operationId": "TrProyectoAcademicoController.PutProyectoEnfasis",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TrProyectoAcademicoPutEnfasis content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoPutEnfasis"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoPutEnfasis"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/tr_proyecto_academico/informacion_basica/{id}": {
+            "put": {
+                "tags": [
+                    "tr_proyecto_academico"
+                ],
+                "description": "update the TrProyectoAcademicoPutInfoBasica",
+                "operationId": "TrProyectoAcademicoController.PutInformacionBasica",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TrProyectoAcademicoPutInfoBasica content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoPutInfoBasica"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoPutInfoBasica"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/tr_proyecto_academico/registro/{id}": {
+            "put": {
+                "tags": [
+                    "tr_proyecto_academico"
+                ],
+                "description": "update the TrProyectoAcademicoPutRegistro",
+                "operationId": "TrProyectoAcademicoController.PutProyectoRegistro",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for TrProyectoAcademicoPutRegistro content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoPutRegistro"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoPutRegistro"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/tr_proyecto_academico/{id}": {
+            "get": {
+                "tags": [
+                    "tr_proyecto_academico"
+                ],
+                "description": "get TrProyectoAcademicoController",
+                "operationId": "TrProyectoAcademicoController.Get  By Id",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "Id",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.TrProyectoAcademicoController"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        }
+    },
+    "definitions": {
+        "19541.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+            "title": "RegistroCalificadoAcreditacion",
+            "type": "object"
+        },
+        "19605.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+            "title": "ProyectoAcademicoEnfasis",
+            "type": "object"
+        },
+        "19663.\u003cnil\u003e.Titulacion": {
+            "title": "Titulacion",
+            "type": "object"
+        },
+        "19817.\u003cnil\u003e.Titulacion": {
+            "title": "Titulacion",
+            "type": "object"
+        },
+        "19968.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+            "title": "ProyectoAcademicoEnfasis",
+            "type": "object"
+        },
+        "20134.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+            "title": "RegistroCalificadoAcreditacion",
+            "type": "object"
+        },
+        "models.Enfasis": {
+            "title": "Enfasis",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.Metodologia": {
+            "title": "Metodologia",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.NivelFormacion": {
+            "title": "NivelFormacion",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.ProyectoAcademicoEnfasis": {
+            "title": "ProyectoAcademicoEnfasis",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "EnfasisId": {
+                    "$ref": "#/definitions/models.Enfasis"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ProyectoAcademicoInstitucionId": {
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                }
+            }
+        },
+        "models.ProyectoAcademicoInstitucion": {
+            "title": "ProyectoAcademicoInstitucion",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "AnoActoAdministrativo": {
+                    "type": "string"
+                },
+                "AreaConocimientoId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "CiclosPropedeuticos": {
+                    "type": "boolean"
+                },
+                "Codigo": {
+                    "type": "string"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "CodigoSnies": {
+                    "type": "string"
+                },
+                "Competencias": {
+                    "type": "string"
+                },
+                "CorreoElectronico": {
+                    "type": "string"
+                },
+                "DependenciaId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Duracion": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "EnlaceActoAdministrativo": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "MetodologiaId": {
+                    "$ref": "#/definitions/models.Metodologia"
+                },
+                "NivelFormacionId": {
+                    "$ref": "#/definitions/models.NivelFormacion"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NucleoBaseId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "NumeroActoAdministrativo": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "NumeroCreditos": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "Oferta": {
+                    "type": "boolean"
+                },
+                "UnidadTiempoId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.ProyectoAcademicoRolPersonaDependecia": {
+            "title": "ProyectoAcademicoRolPersonaDependecia",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "DependenciaId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "PersonaId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "ProyectoAcademicoInstitucionId": {
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                },
+                "RolId": {
+                    "type": "integer",
+                    "format": "int64"
+                }
+            }
+        },
+        "models.RegistroCalificadoAcreditacion": {
+            "title": "RegistroCalificadoAcreditacion",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "AnoActoAdministrativoId": {
+                    "type": "string"
+                },
+                "EnlaceActo": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaCreacionActoAdministrativo": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "NumeroActoAdministrativo": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ProyectoAcademicoInstitucionId": {
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                },
+                "TipoRegistroId": {
+                    "$ref": "#/definitions/models.TipoRegistro"
+                },
+                "VencimientoActoAdministrativo": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "VigenciaActoAdministrativo": {
+                    "type": "string"
+                }
+            }
+        },
+        "models.TipoRegistro": {
+            "title": "TipoRegistro",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.TipoTitulacion": {
+            "title": "TipoTitulacion",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.Titulacion": {
+            "title": "Titulacion",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "FechaModificacion": {
+                    "type": "string",
+                    "format": "datetime"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                },
+                "ProyectoAcademicoInstitucionId": {
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                },
+                "TipoTitulacionId": {
+                    "$ref": "#/definitions/models.TipoTitulacion"
+                }
+            }
+        },
+        "models.TrProyectoAcademico": {
+            "title": "TrProyectoAcademico",
+            "type": "object",
+            "properties": {
+                "Enfasis": {
+                    "$ref": "#/definitions/19605.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                },
+                "ProyectoAcademicoInstitucion": {
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                },
+                "Registro": {
+                    "$ref": "#/definitions/19541.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                },
+                "Titulaciones": {
+                    "$ref": "#/definitions/19663.\u003cnil\u003e.Titulacion"
+                }
+            }
+        },
+        "models.TrProyectoAcademicoController": {
+            "title": "TrProyectoAcademicoController",
+            "type": "object"
+        },
+        "models.TrProyectoAcademicoPutEnfasis": {
+            "title": "TrProyectoAcademicoPutEnfasis",
+            "type": "object",
+            "properties": {
+                "Enfasis": {
+                    "$ref": "#/definitions/19968.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                },
+                "ProyectoAcademicoInstitucion": {
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                }
+            }
+        },
+        "models.TrProyectoAcademicoPutInfoBasica": {
+            "title": "TrProyectoAcademicoPutInfoBasica",
+            "type": "object",
+            "properties": {
+                "Enfasis": {
+                    "$ref": "#/definitions/51441.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                },
+                "ProyectoAcademicoInstitucion": {
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                },
+                "Titulaciones": {
+                    "$ref": "#/definitions/19817.\u003cnil\u003e.Titulacion"
+                }
+            }
+        },
+        "models.TrProyectoAcademicoPutRegistro": {
+            "title": "TrProyectoAcademicoPutRegistro",
+            "type": "object",
+            "properties": {
+                "ProyectoAcademicoInstitucion": {
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
+                },
+                "Registro": {
+                    "$ref": "#/definitions/20134.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                }
+            }
+        }
+    },
+    "tags": [
+        {
+            "name": "metodologia",
+            "description": "MetodologiaController operations for Metodologia\n"
+        },
+        {
+            "name": "nivel_formacion",
+            "description": "NivelFormacionController operations for NivelFormacion\n"
+        },
+        {
+            "name": "enfasis",
+            "description": "EnfasisController operations for Enfasis\n"
+        },
+        {
+            "name": "proyecto_academico_enfasis",
+            "description": "ProyectoAcademicoEnfasisController operations for ProyectoAcademicoEnfasis\n"
+        },
+        {
+            "name": "tipo_registro",
+            "description": "TipoRegistroController operations for TipoRegistro\n"
+        },
+        {
+            "name": "registro_calificado_acreditacion",
+            "description": "RegistroCalificadoAcreditacionController operations for RegistroCalificadoAcreditacion\n"
+        },
+        {
+            "name": "tipo_titulacion",
+            "description": "TipoTitulacionController operations for TipoTitulacion\n"
+        },
+        {
+            "name": "titulacion",
+            "description": "TitulacionController operations for Titulacion\n"
+        },
+        {
+            "name": "proyecto_academico_institucion",
+            "description": "ProyectoAcademicoInstitucionController operations for ProyectoAcademicoInstitucion\n"
+        },
+        {
+            "name": "tr_proyecto_academico",
+            "description": "Operations for TrProyectoAcademico\n"
+        },
+        {
+            "name": "proyecto_academico_rol_persona_dependecia",
+            "description": "ProyectoAcademicoRolPersonaDependeciaController operations for ProyectoAcademicoRolPersonaDependecia\n"
+        }
+    ]
+}

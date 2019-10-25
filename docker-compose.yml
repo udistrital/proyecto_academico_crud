@@ -1,0 +1,40 @@
+version: '3.4'
+
+services: 
+  api:
+    build: ./bee_build
+    image: ${SERVICE_NAME}
+    container_name: ${SERVICE_NAME}
+    volumes:
+      - gosrc:/go
+      - .:/go/src/${API_BASE_DIR}/${API_NAME}
+    env_file: 
+      - custom.env
+      - .env
+    ports: 
+      - "${API_PORT}:${API_PORT}"
+    command: sh -c 'cd ${API_BASE_DIR}/${API_NAME};go get -v ./...; bee migrate -driver=postgres -conn="postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@${POSTGRES_HOST}/${POSTGRES_DB}?sslmode=disable&search_path=public" || true; bee run -downdoc=true -gendoc=true'
+    depends_on: 
+      - db
+    networks: 
+      - back_end
+  db:
+    container_name: ${POSTGRES_HOST}
+    image: postgres:10
+    ports:
+      - "${POSTGRES_PORT}:5432"
+    volumes: 
+      - postgres_data:/var/lib/postgresql/data
+    environment:
+      - POSTGRES_DB=${POSTGRES_DB}
+      - POSTGRES_USER=${POSTGRES_USER}
+      - POSTGRES_PASSWORD=${POSTGRES_PASSWORD}
+    networks: 
+      - back_end
+
+volumes:
+  gosrc:
+  postgres_data:
+networks: 
+  back_end:
+    external: true

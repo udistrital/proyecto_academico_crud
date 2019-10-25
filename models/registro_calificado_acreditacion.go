@@ -10,54 +10,54 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type RegistroCalificadoAcreditaciÛn struct {
-	Id                              int                           `orm:"column(id);pk"`
+type RegistroCalificadoAcreditacion struct {
+	Id                              int                           `orm:"column(id);pk;auto"`
 	NumeroActoAdministrativo        float64                       `orm:"column(numero_acto_administrativo)"`
-	AnoActoAdministrativoId         int                           `orm:"column(ano_acto_administrativo_id)"`
+	AnoActoAdministrativoId         string                        `orm:"column(ano_acto_administrativo_id)"`
 	FechaCreacionActoAdministrativo time.Time                     `orm:"column(fecha_creacion_acto_administrativo);type(timestamp without time zone)"`
 	VigenciaActoAdministrativo      string                        `orm:"column(vigencia_acto_administrativo)"`
 	VencimientoActoAdministrativo   time.Time                     `orm:"column(vencimiento_acto_administrativo);type(timestamp without time zone)"`
 	EnlaceActo                      string                        `orm:"column(enlace_acto)"`
 	Activo                          bool                          `orm:"column(activo)"`
-	FechaCreacion                   time.Time                     `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion               time.Time                     `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion                   time.Time                     `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
+	FechaModificacion               time.Time                     `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
 	ProyectoAcademicoInstitucionId  *ProyectoAcademicoInstitucion `orm:"column(proyecto_academico_institucion_id);rel(fk)"`
 	TipoRegistroId                  *TipoRegistro                 `orm:"column(tipo_registro_id);rel(fk)"`
 }
 
-func (t *RegistroCalificadoAcreditaciÛn) TableName() string {
-	return "registro_calificado_acreditaciÛn"
+func (t *RegistroCalificadoAcreditacion) TableName() string {
+	return "registro_calificado_acreditacion"
 }
 
 func init() {
-	orm.RegisterModel(new(RegistroCalificadoAcreditaciÛn))
+	orm.RegisterModel(new(RegistroCalificadoAcreditacion))
 }
 
-// AddRegistroCalificadoAcreditaciÛn insert a new RegistroCalificadoAcreditaciÛn into database and returns
+// AddRegistroCalificadoAcreditacion insert a new RegistroCalificadoAcreditacion into database and returns
 // last inserted Id on success.
-func AddRegistroCalificadoAcreditaciÛn(m *RegistroCalificadoAcreditaciÛn) (id int64, err error) {
+func AddRegistroCalificadoAcreditacion(m *RegistroCalificadoAcreditacion) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetRegistroCalificadoAcreditaciÛnById retrieves RegistroCalificadoAcreditaciÛn by Id. Returns error if
+// GetRegistroCalificadoAcreditacionById retrieves RegistroCalificadoAcreditacion by Id. Returns error if
 // Id doesn't exist
-func GetRegistroCalificadoAcreditaciÛnById(id int) (v *RegistroCalificadoAcreditaciÛn, err error) {
+func GetRegistroCalificadoAcreditacionById(id int) (v *RegistroCalificadoAcreditacion, err error) {
 	o := orm.NewOrm()
-	v = &RegistroCalificadoAcreditaciÛn{Id: id}
+	v = &RegistroCalificadoAcreditacion{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllRegistroCalificadoAcreditaciÛn retrieves all RegistroCalificadoAcreditaciÛn matches certain condition. Returns empty list if
+// GetAllRegistroCalificadoAcreditacion retrieves all RegistroCalificadoAcreditacion matches certain condition. Returns empty list if
 // no records exist
-func GetAllRegistroCalificadoAcreditaciÛn(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllRegistroCalificadoAcreditacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(RegistroCalificadoAcreditaciÛn))
+	qs := o.QueryTable(new(RegistroCalificadoAcreditacion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -107,7 +107,7 @@ func GetAllRegistroCalificadoAcreditaciÛn(query map[string]string, fields []str
 		}
 	}
 
-	var l []RegistroCalificadoAcreditaciÛn
+	var l []RegistroCalificadoAcreditacion
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -130,11 +130,11 @@ func GetAllRegistroCalificadoAcreditaciÛn(query map[string]string, fields []str
 	return nil, err
 }
 
-// UpdateRegistroCalificadoAcreditaciÛn updates RegistroCalificadoAcreditaciÛn by Id and returns error if
+// UpdateRegistroCalificadoAcreditacion updates RegistroCalificadoAcreditacion by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateRegistroCalificadoAcreditaciÛnById(m *RegistroCalificadoAcreditaciÛn) (err error) {
+func UpdateRegistroCalificadoAcreditacionById(m *RegistroCalificadoAcreditacion) (err error) {
 	o := orm.NewOrm()
-	v := RegistroCalificadoAcreditaciÛn{Id: m.Id}
+	v := RegistroCalificadoAcreditacion{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -145,15 +145,15 @@ func UpdateRegistroCalificadoAcreditaciÛnById(m *RegistroCalificadoAcreditaciÛ
 	return
 }
 
-// DeleteRegistroCalificadoAcreditaciÛn deletes RegistroCalificadoAcreditaciÛn by Id and returns error if
+// DeleteRegistroCalificadoAcreditacion deletes RegistroCalificadoAcreditacion by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteRegistroCalificadoAcreditaciÛn(id int) (err error) {
+func DeleteRegistroCalificadoAcreditacion(id int) (err error) {
 	o := orm.NewOrm()
-	v := RegistroCalificadoAcreditaciÛn{Id: id}
+	v := RegistroCalificadoAcreditacion{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&RegistroCalificadoAcreditaciÛn{Id: id}); err == nil {
+		if num, err = o.Delete(&RegistroCalificadoAcreditacion{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
