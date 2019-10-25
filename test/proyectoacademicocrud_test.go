@@ -171,6 +171,7 @@ func gen_files() {
 	rankingsJson, _ := json.Marshal(atributo)
 	ioutil.WriteFile("./assets/requests/BodyGen1.json", rankingsJson, 0644)
 	ioutil.WriteFile("./assets/requests/BodyGen2.json", rankingsJson, 0644)
+	ioutil.WriteFile("./assets/requests/BodyGen3.json", rankingsJson, 0644)
 }
 
 /*------------------------------
