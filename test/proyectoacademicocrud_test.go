@@ -85,7 +85,7 @@ func deleteFile(path string) {
 func run_bee() {
 	var resultado map[string]interface{}
 
-	parametros := "CORE_CRUD_HTTP_PORT=" + beego.AppConfig.String("httpport") + "CORE_CRUD__PGUSER=" + beego.AppConfig.String("PGuser") + " CORE_CRUD__PGPASS=" + beego.AppConfig.String("PGpass") + " CORE_CRUD__PGURLS=" + beego.AppConfig.String("PGurls") + " CORE_CRUD__PGDB=" + beego.AppConfig.String("PGdb") + " CORE_CRUD__SCHEMA=" + beego.AppConfig.String("PGschemas") + " bee run"
+	parametros := "API_PORT=" + beego.AppConfig.String("httpport") + "PROYECTO_ACADEMICO_CRUD__PGUSER=" + beego.AppConfig.String("PGuser") + " PROYECTO_ACADEMICO_CRUD__PGPASS=" + beego.AppConfig.String("PGpass") + " PROYECTO_ACADEMICO_CRUD__PGURLS=" + beego.AppConfig.String("PGurls") + " PROYECTO_ACADEMICO_CRUD__PGDB=" + beego.AppConfig.String("PGdb") + " PROYECTO_ACADEMICO_CRUD__PGSCHEMA=" + beego.AppConfig.String("PGschemas") + " bee run"
 	file, err := os.Create("script.sh")
 	if err != nil {
 		log.Fatal("Cannot create file", err)
@@ -151,7 +151,7 @@ func TestMain(m *testing.M) {
 
 //@gen_files genera los archivos de ejemplos
 func gen_files() {
-
+	fmt.Println("Genera los archivos")
 	t := time.Now()
 
 	nombre := t.Format(especificacion)
@@ -164,8 +164,10 @@ func gen_files() {
 		FechaCreacion:     t,
 		FechaModificacion: t,
 	}
+
 	rankingsJson, _ := json.Marshal(atributo)
-	ioutil.WriteFile("./files/req/Yt1.json", rankingsJson, 0644)
+	fmt.Println(rankingsJson)
+	ioutil.WriteFile("./assets/requests/BodyGen1.json", rankingsJson, 0644)
 }
 
 /*------------------------------
@@ -242,7 +244,7 @@ func iSendRequestToWhereBodyIsJson(method, endpoint, bodyreq string) error {
 		str := strconv.FormatFloat(Id, 'f', 0, 64)
 		url = "http://" + beego.AppConfig.String("PGurls") + ":" + beego.AppConfig.String("httpport") + endpoint + "/" + str
 		resDelete = "{\"Id\":" + str + "}"
-		ioutil.WriteFile("./files/res0/Ino.json", []byte(resDelete), 0644)
+		ioutil.WriteFile("./assets/responses/Ino.json", []byte(resDelete), 0644)
 
 	}
 
@@ -264,7 +266,7 @@ func iSendRequestToWhereBodyIsJson(method, endpoint, bodyreq string) error {
 	resBody = bodyr
 
 	if method == "POST" && resStatus == "201 Created" {
-		ioutil.WriteFile("./files/req/Yt2.json", resBody, 0644)
+		ioutil.WriteFile("./assets/requests/BodyRec2.json", resBody, 0644)
 		json.Unmarshal([]byte(bodyr), &savepostres)
 		Id = savepostres["Id"].(float64)
 
