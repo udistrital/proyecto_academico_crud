@@ -455,6 +455,6 @@ ON DELETE RESTRICT ON UPDATE CASCADE;
 
 
 -- Permisos de usuario
-GRANT USAGE ON SCHEMA proyecto_academico TO test;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA proyecto_academico TO test;
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA proyecto_academico TO test;
+GRANT USAGE ON SCHEMA proyecto_academico TO desarrollooas;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA proyecto_academico TO desarrollooas;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA proyecto_academico TO desarrollooas;
