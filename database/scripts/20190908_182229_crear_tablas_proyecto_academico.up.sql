@@ -1,11 +1,3 @@
--- Database generated with pgModeler (PostgreSQL Database Modeler).
--- pgModeler  version: 0.9.1
--- PostgreSQL version: 9.5
--- Project Site: pgmodeler.io
--- Model Author: ---
-
-
-
 -- object: proyecto_academico | type: SCHEMA --
 -- DROP SCHEMA IF EXISTS proyecto_academico CASCADE;
 CREATE SCHEMA proyecto_academico;
@@ -457,8 +449,7 @@ REFERENCES proyecto_academico.proyecto_academico_institucion (id) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
 
-
 -- Permisos de usuario
-GRANT USAGE ON SCHEMA proyecto_academico TO test;
-GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA proyecto_academico TO test;
-GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA proyecto_academico TO test;
+GRANT USAGE ON SCHEMA proyecto_academico TO desarrollooas;
+GRANT SELECT, INSERT, UPDATE, DELETE ON ALL TABLES IN SCHEMA proyecto_academico TO desarrollooas;
+GRANT USAGE, SELECT ON ALL SEQUENCES IN SCHEMA proyecto_academico TO desarrollooas;
