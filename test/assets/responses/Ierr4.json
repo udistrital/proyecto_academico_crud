@@ -1,0 +1,12 @@
+{
+    "Development": null,
+    "Message": "The request contains incorrect syntax",
+    "Status": "400",
+    "System": {
+        "Value": "string",
+        "Type": {},
+        "Offset": 97,
+        "Struct": "TipoInscripcion",
+        "Field": "Activo"
+    }
+}
