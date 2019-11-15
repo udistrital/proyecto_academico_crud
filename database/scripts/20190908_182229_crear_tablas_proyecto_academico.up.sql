@@ -1,5 +1,5 @@
 -- object: proyecto_academico | type: SCHEMA --
--- DROP SCHEMA IF EXISTS proyecto_academico CASCADE;
+DROP SCHEMA IF EXISTS proyecto_academico CASCADE;
 CREATE SCHEMA proyecto_academico;
 -- ddl-end --
 
