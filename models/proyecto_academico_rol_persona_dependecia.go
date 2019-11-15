@@ -8,6 +8,7 @@ import (
 	"time"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type ProyectoAcademicoRolPersonaDependecia struct {
@@ -15,10 +16,12 @@ type ProyectoAcademicoRolPersonaDependecia struct {
 	PersonaId                      int                           `orm:"column(persona_id)"`
 	DependenciaId                  int                           `orm:"column(dependencia_id)"`
 	RolId                          int                           `orm:"column(rol_id)"`
+	ResolucionAsignacionId         int                           `orm:"column(resolucion_asignacion_id)"`
 	Activo                         bool                          `orm:"column(activo)"`
 	FechaInicio                    time.Time                     `orm:"column(fecha_inicio);type(timestamp without time zone)"`
-	FechaCreacion                  time.Time                     `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
-	FechaModificacion              time.Time                     `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
+	FechaFinalizacion              time.Time                     `orm:"column(fecha_finalizacion);type(timestamp without time zone)""`
+	FechaCreacion                  time.Time                     `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion              time.Time                     `orm:"column(fecha_modificacion);type(timestamp without time zone)`
 	ProyectoAcademicoInstitucionId *ProyectoAcademicoInstitucion `orm:"column(proyecto_academico_institucion_id);rel(fk)"`
 }
 
@@ -33,6 +36,8 @@ func init() {
 // AddProyectoAcademicoRolPersonaDependecia insert a new ProyectoAcademicoRolPersonaDependecia into database and returns
 // last inserted Id on success.
 func AddProyectoAcademicoRolPersonaDependecia(m *ProyectoAcademicoRolPersonaDependecia) (id int64, err error) {
+	m.FechaCreacion = time_bogota.Tiempo_bogota()
+	m.FechaModificacion = time_bogota.Tiempo_bogota()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -130,6 +135,8 @@ func GetAllProyectoAcademicoRolPersonaDependecia(query map[string]string, fields
 // UpdateProyectoAcademicoRolPersonaDependecia updates ProyectoAcademicoRolPersonaDependecia by Id and returns error if
 // the record to be updated doesn't exist
 func UpdateProyectoAcademicoRolPersonaDependeciaById(m *ProyectoAcademicoRolPersonaDependecia) (err error) {
+	// prueba
+	m.FechaModificacion = time_bogota.Tiempo_bogota()
 	o := orm.NewOrm()
 	v := ProyectoAcademicoRolPersonaDependecia{Id: m.Id}
 	// ascertain id exists in the database

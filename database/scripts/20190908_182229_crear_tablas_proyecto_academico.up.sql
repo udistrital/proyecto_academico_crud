@@ -1,13 +1,5 @@
--- Database generated with pgModeler (PostgreSQL Database Modeler).
--- pgModeler  version: 0.9.1
--- PostgreSQL version: 9.5
--- Project Site: pgmodeler.io
--- Model Author: ---
-
-
-
 -- object: proyecto_academico | type: SCHEMA --
--- DROP SCHEMA IF EXISTS proyecto_academico CASCADE;
+DROP SCHEMA IF EXISTS proyecto_academico CASCADE;
 CREATE SCHEMA proyecto_academico;
 -- ddl-end --
 
@@ -363,12 +355,14 @@ CREATE TABLE proyecto_academico.proyecto_academico_rol_persona_dependecia(
 	persona_id integer NOT NULL,
 	dependencia_id integer NOT NULL,
 	rol_id integer NOT NULL,
+	resolucion_asignacion_id integer NOT NULL,
 	activo boolean NOT NULL,
 	fecha_inicio timestamp NOT NULL,
+	fecha_finalizacion timestamp,
 	fecha_creacion timestamp NOT NULL,
 	fecha_modificacion timestamp NOT NULL,
 	proyecto_academico_institucion_id integer NOT NULL,
-	CONSTRAINT pk_proyecto_academico_dependecia PRIMARY KEY (id)
+	CONSTRAINT pk_proyecto_academico_rol_persona_dependecia PRIMARY KEY (id)
 
 );
 -- ddl-end --
@@ -385,6 +379,8 @@ COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.r
 COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.activo IS 'Campo que indica si el parámetro está activo';
 -- ddl-end --
 COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.fecha_inicio IS 'Campo para el registro de fecha de inicio de asignacion del coordinador al proyecto académico';
+-- ddl-end --
+COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.fecha_finalizacion IS 'Campo parae el registro de la fecha de finalización de asiganción de un coordinador, este se registra desde el mid al reaizar una nueva asiginacion de un coordinador.';
 -- ddl-end --
 COMMENT ON COLUMN proyecto_academico.proyecto_academico_rol_persona_dependecia.fecha_creacion IS 'Fecha de creacion del registro';
 -- ddl-end --
@@ -452,7 +448,6 @@ ALTER TABLE proyecto_academico.titulacion ADD CONSTRAINT fk_proyecto_academico_i
 REFERENCES proyecto_academico.proyecto_academico_institucion (id) MATCH FULL
 ON DELETE RESTRICT ON UPDATE CASCADE;
 -- ddl-end --
-
 
 -- Permisos de usuario
 GRANT USAGE ON SCHEMA proyecto_academico TO desarrollooas;
