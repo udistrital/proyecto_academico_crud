@@ -39,6 +39,7 @@ steps:
     when:
       branch:
       - test
+      - master
       event:
       - push      
 
@@ -59,7 +60,8 @@ steps:
      - bee migrate rollback -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
     when:
       branch:
-        - test    
+        - test
+        - master
       status:
         - failure
 
@@ -101,7 +103,10 @@ steps:
      - SERVICE=${DRONE_REPO##udistrital/}_$AMBIENTE
      - MYCONTAINER=oas0/${DRONE_REPO##udistrital/}:${DRONE_COMMIT:0:7}
      - container_name=${DRONE_REPO##udistrital/}
-     - go get -v -u -t github.com/udistrital/go-awsecs/cmd/update-aws-ecs-service
+     - apt-get update
+     - apt-get install unzip
+     - wget https://github.com/Autodesk/go-awsecs/releases/download/v1.1/update-aws-ecs-service-linux-amd64.zip
+     - unzip update-aws-ecs-service-linux-amd64.zip -d /go/bin
      - AWS_ACCESS_KEY_ID=$${AWS_ACCESS_KEY_ID} AWS_SECRET_ACCESS_KEY=$${AWS_SECRET_ACCESS_KEY} AWS_REGION=$AWS_REGION
        $GOPATH/bin/update-aws-ecs-service -cluster $CLUSTER -service $SERVICE -container-image $container_name=$MYCONTAINER    
     when:
@@ -130,7 +135,6 @@ steps:
     when:
       branch:
       - master
-      - test
       status:
       - failure
       - success
