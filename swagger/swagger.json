@@ -2215,8 +2215,7 @@
                     "type": "boolean"
                 },
                 "ProyectoPadreId": {
-                    "type": "integer",
-                    "format": "int64"
+                    "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "UnidadTiempoId": {
                     "type": "integer",
