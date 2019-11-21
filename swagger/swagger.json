@@ -2174,6 +2174,10 @@
                 "EnlaceActoAdministrativo": {
                     "type": "string"
                 },
+                "FacultadId": {
+                    "type": "integer",
+                    "format": "int64"
+                },
                 "FechaCreacion": {
                     "type": "string",
                     "format": "datetime"
@@ -2209,6 +2213,10 @@
                 },
                 "Oferta": {
                     "type": "boolean"
+                },
+                "ProyectoPadreId": {
+                    "type": "integer",
+                    "format": "int64"
                 },
                 "UnidadTiempoId": {
                     "type": "integer",
