@@ -1974,31 +1974,31 @@
         }
     },
     "definitions": {
-        "19308.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+        "28505.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
             "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
-        "19372.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "28569.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "19430.\u003cnil\u003e.Titulacion": {
+        "28627.\u003cnil\u003e.Titulacion": {
             "title": "Titulacion",
             "type": "object"
         },
-        "19584.\u003cnil\u003e.Titulacion": {
+        "28781.\u003cnil\u003e.Titulacion": {
             "title": "Titulacion",
             "type": "object"
         },
-        "19628.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "28825.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "19793.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "28990.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "19959.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+        "29156.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
             "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
@@ -2425,16 +2425,16 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/19372.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/28569.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Registro": {
-                    "$ref": "#/definitions/19308.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                    "$ref": "#/definitions/28505.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 },
                 "Titulaciones": {
-                    "$ref": "#/definitions/19430.\u003cnil\u003e.Titulacion"
+                    "$ref": "#/definitions/28627.\u003cnil\u003e.Titulacion"
                 }
             }
         },
@@ -2447,7 +2447,7 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/19793.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/28990.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
@@ -2459,13 +2459,13 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/19628.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/28825.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Titulaciones": {
-                    "$ref": "#/definitions/19584.\u003cnil\u003e.Titulacion"
+                    "$ref": "#/definitions/28781.\u003cnil\u003e.Titulacion"
                 }
             }
         },
@@ -2477,7 +2477,7 @@
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Registro": {
-                    "$ref": "#/definitions/19959.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                    "$ref": "#/definitions/29156.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 }
             }
         }
