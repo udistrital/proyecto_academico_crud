@@ -29,6 +29,7 @@ go get github.com/udistrital/proyecto_academico_crud
  - `PROYECTO_ACADEMICO_CRUD__PGSCHEMA`: Esquema a utilizar en la base de datos
 
 #### Example:
+
 ```bash
 PROYECTO_ACADEMICO_API_PORT=8080 PROYECTO_ACADEMICO_CRUD__PGUSER=postgres PROYECTO_ACADEMICO_CRUD__PGPASS=**** PROYECTO_ACADEMICO_CRUD__PGURLS=localhost PROYECTO_ACADEMICO_CRUD__PGDB=proyecto_academico PROYECTO_ACADEMICO_CRUD__PGSCHEMA=proyecto_academico RUN_MODE=dev bee run -downdoc=true -gendoc=true
 ```
