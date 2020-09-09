@@ -8,16 +8,20 @@ import (
 	"time"
 
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type ProyectoAcademicoRolPersonaDependecia struct {
-	Id                             int                           `orm:"column(id);pk"`
+	Id                             int                           `orm:"column(id);pk;auto"`
 	PersonaId                      int                           `orm:"column(persona_id)"`
 	DependenciaId                  int                           `orm:"column(dependencia_id)"`
 	RolId                          int                           `orm:"column(rol_id)"`
+	ResolucionAsignacionId         int                           `orm:"column(resolucion_asignacion_id)"`
 	Activo                         bool                          `orm:"column(activo)"`
+	FechaInicio                    time.Time                     `orm:"column(fecha_inicio);type(timestamp without time zone)"`
+	FechaFinalizacion              time.Time                     `orm:"column(fecha_finalizacion);type(timestamp without time zone)""`
 	FechaCreacion                  time.Time                     `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion              time.Time                     `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaModificacion              time.Time                     `orm:"column(fecha_modificacion);type(timestamp without time zone)`
 	ProyectoAcademicoInstitucionId *ProyectoAcademicoInstitucion `orm:"column(proyecto_academico_institucion_id);rel(fk)"`
 }
 
@@ -32,6 +36,8 @@ func init() {
 // AddProyectoAcademicoRolPersonaDependecia insert a new ProyectoAcademicoRolPersonaDependecia into database and returns
 // last inserted Id on success.
 func AddProyectoAcademicoRolPersonaDependecia(m *ProyectoAcademicoRolPersonaDependecia) (id int64, err error) {
+	m.FechaCreacion = time_bogota.Tiempo_bogota()
+	m.FechaModificacion = time_bogota.Tiempo_bogota()
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
@@ -53,7 +59,7 @@ func GetProyectoAcademicoRolPersonaDependeciaById(id int) (v *ProyectoAcademicoR
 func GetAllProyectoAcademicoRolPersonaDependecia(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ProyectoAcademicoRolPersonaDependecia))
+	qs := o.QueryTable(new(ProyectoAcademicoRolPersonaDependecia)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -129,6 +135,8 @@ func GetAllProyectoAcademicoRolPersonaDependecia(query map[string]string, fields
 // UpdateProyectoAcademicoRolPersonaDependecia updates ProyectoAcademicoRolPersonaDependecia by Id and returns error if
 // the record to be updated doesn't exist
 func UpdateProyectoAcademicoRolPersonaDependeciaById(m *ProyectoAcademicoRolPersonaDependecia) (err error) {
+	// prueba
+	m.FechaModificacion = time_bogota.Tiempo_bogota()
 	o := orm.NewOrm()
 	v := ProyectoAcademicoRolPersonaDependecia{Id: m.Id}
 	// ascertain id exists in the database

@@ -11,15 +11,16 @@ import (
 )
 
 type Titulacion struct {
-	Id                int             `orm:"column(id);pk"`
+	Id                int             `orm:"column(id);pk;auto"`
 	Nombre            string          `orm:"column(nombre)"`
 	Descripcion       string          `orm:"column(descripcion);null"`
 	CodigoAbreviacion string          `orm:"column(codigo_abreviacion);null"`
 	Activo            bool            `orm:"column(activo)"`
 	NumeroOrden       float64         `orm:"column(numero_orden);null"`
-	FechaCreacion     time.Time       `orm:"column(fecha_creacion);type(timestamp without time zone)"`
-	FechaModificacion time.Time       `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	FechaCreacion     time.Time       `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
+	FechaModificacion time.Time       `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
 	TipoTitulacionId  *TipoTitulacion `orm:"column(tipo_titulacion_id);rel(fk)"`
+	ProyectoAcademicoInstitucionId *ProyectoAcademicoInstitucion `orm:"column(proyecto_academico_institucion_id);rel(fk)"`
 }
 
 func (t *Titulacion) TableName() string {
@@ -54,7 +55,7 @@ func GetTitulacionById(id int) (v *Titulacion, err error) {
 func GetAllTitulacion(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(Titulacion))
+	qs := o.QueryTable(new(Titulacion)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute

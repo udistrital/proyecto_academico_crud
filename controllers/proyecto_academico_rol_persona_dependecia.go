@@ -3,11 +3,13 @@ package controllers
 import (
 	"encoding/json"
 	"errors"
-	"github.com/udistrital/proyecto_academico_crud/models"
 	"strconv"
 	"strings"
 
+	"github.com/udistrital/proyecto_academico_crud/models"
+
 	"github.com/astaxie/beego"
+	"github.com/astaxie/beego/logs"
 )
 
 // ProyectoAcademicoRolPersonaDependeciaController operations for ProyectoAcademicoRolPersonaDependecia
@@ -29,7 +31,7 @@ func (c *ProyectoAcademicoRolPersonaDependeciaController) URLMapping() {
 // @Description create ProyectoAcademicoRolPersonaDependecia
 // @Param	body		body 	models.ProyectoAcademicoRolPersonaDependecia	true		"body for ProyectoAcademicoRolPersonaDependecia content"
 // @Success 201 {int} models.ProyectoAcademicoRolPersonaDependecia
-// @Failure 403 body is empty
+// @Failure 400 the request contains incorrect syntax
 // @router / [post]
 func (c *ProyectoAcademicoRolPersonaDependeciaController) Post() {
 	var v models.ProyectoAcademicoRolPersonaDependecia
@@ -38,10 +40,16 @@ func (c *ProyectoAcademicoRolPersonaDependeciaController) Post() {
 			c.Ctx.Output.SetStatus(201)
 			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -51,14 +59,17 @@ func (c *ProyectoAcademicoRolPersonaDependeciaController) Post() {
 // @Description get ProyectoAcademicoRolPersonaDependecia by id
 // @Param	id		path 	string	true		"The key for staticblock"
 // @Success 200 {object} models.ProyectoAcademicoRolPersonaDependecia
-// @Failure 403 :id is empty
+// @Failure 404 not found resource
 // @router /:id [get]
 func (c *ProyectoAcademicoRolPersonaDependeciaController) GetOne() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	v, err := models.GetProyectoAcademicoRolPersonaDependeciaById(id)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	} else {
 		c.Data["json"] = v
 	}
@@ -75,7 +86,7 @@ func (c *ProyectoAcademicoRolPersonaDependeciaController) GetOne() {
 // @Param	limit	query	string	false	"Limit the size of result set. Must be an integer"
 // @Param	offset	query	string	false	"Start position of result set. Must be an integer"
 // @Success 200 {object} models.ProyectoAcademicoRolPersonaDependecia
-// @Failure 403
+// @Failure 404 not found resource
 // @router / [get]
 func (c *ProyectoAcademicoRolPersonaDependeciaController) GetAll() {
 	var fields []string
@@ -121,8 +132,14 @@ func (c *ProyectoAcademicoRolPersonaDependeciaController) GetAll() {
 
 	l, err := models.GetAllProyectoAcademicoRolPersonaDependecia(query, fields, sortby, order, offset, limit)
 	if err != nil {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	} else {
+		if l == nil {
+			l = append(l, map[string]interface{}{})
+		}
 		c.Data["json"] = l
 	}
 	c.ServeJSON()
@@ -134,7 +151,7 @@ func (c *ProyectoAcademicoRolPersonaDependeciaController) GetAll() {
 // @Param	id		path 	string	true		"The id you want to update"
 // @Param	body		body 	models.ProyectoAcademicoRolPersonaDependecia	true		"body for ProyectoAcademicoRolPersonaDependecia content"
 // @Success 200 {object} models.ProyectoAcademicoRolPersonaDependecia
-// @Failure 403 :id is not int
+// @Failure 400 the request contains incorrect syntax
 // @router /:id [put]
 func (c *ProyectoAcademicoRolPersonaDependeciaController) Put() {
 	idStr := c.Ctx.Input.Param(":id")
@@ -142,12 +159,18 @@ func (c *ProyectoAcademicoRolPersonaDependeciaController) Put() {
 	v := models.ProyectoAcademicoRolPersonaDependecia{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
 		if err := models.UpdateProyectoAcademicoRolPersonaDependeciaById(&v); err == nil {
-			c.Data["json"] = "OK"
+			c.Data["json"] = v
 		} else {
-			c.Data["json"] = err.Error()
+			logs.Error(err)
+			//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+			c.Data["system"] = err
+			c.Abort("400")
 		}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("400")
 	}
 	c.ServeJSON()
 }
@@ -157,15 +180,18 @@ func (c *ProyectoAcademicoRolPersonaDependeciaController) Put() {
 // @Description delete the ProyectoAcademicoRolPersonaDependecia
 // @Param	id		path 	string	true		"The id you want to delete"
 // @Success 200 {string} delete success!
-// @Failure 403 id is empty
+// @Failure 404 not found resource
 // @router /:id [delete]
 func (c *ProyectoAcademicoRolPersonaDependeciaController) Delete() {
 	idStr := c.Ctx.Input.Param(":id")
 	id, _ := strconv.Atoi(idStr)
 	if err := models.DeleteProyectoAcademicoRolPersonaDependecia(id); err == nil {
-		c.Data["json"] = "OK"
+		c.Data["json"] = map[string]interface{}{"Id": id}
 	} else {
-		c.Data["json"] = err.Error()
+		logs.Error(err)
+		//c.Data["development"] = map[string]interface{}{"Code": "000", "Body": err.Error(), "Type": "error"}
+		c.Data["system"] = err
+		c.Abort("404")
 	}
 	c.ServeJSON()
 }
