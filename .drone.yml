@@ -50,7 +50,7 @@ steps:
 - name: go_build
   image: golang:1.14
   commands:
-  - go get -t
+  - GO111MODULE=on go get -t
   - GOOS=linux GOARCH=amd64 go build -o main
   when:
     branch:
