@@ -50,8 +50,8 @@ steps:
 - name: go_build
   image: golang:1.14
   commands:
-  - go get github.com/cucumber/godog/cmd/godog
   - go get -t
+  - GO111MODULE=on go get github.com/cucumber/godog/cmd/godog
   - GOOS=linux GOARCH=amd64 go build -o main
   when:
     branch:
