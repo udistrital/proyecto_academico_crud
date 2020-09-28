@@ -51,7 +51,7 @@ steps:
   image: golang:1.14
   commands:
   - go get -t
-  - go get github.com/cucumber/godog/cmd/godog@v0.10.0
+  - go get github.com/cucumber/godog/cmd/godog
   - GOOS=linux GOARCH=amd64 go build -o main
   when:
     branch:
