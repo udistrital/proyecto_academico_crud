@@ -5,21 +5,20 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
 type Titulacion struct {
-	Id                int             `orm:"column(id);pk;auto"`
-	Nombre            string          `orm:"column(nombre)"`
-	Descripcion       string          `orm:"column(descripcion);null"`
-	CodigoAbreviacion string          `orm:"column(codigo_abreviacion);null"`
-	Activo            bool            `orm:"column(activo)"`
-	NumeroOrden       float64         `orm:"column(numero_orden);null"`
-	FechaCreacion     time.Time       `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
-	FechaModificacion time.Time       `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
-	TipoTitulacionId  *TipoTitulacion `orm:"column(tipo_titulacion_id);rel(fk)"`
+	Id                             int                           `orm:"column(id);pk;auto"`
+	Nombre                         string                        `orm:"column(nombre)"`
+	Descripcion                    string                        `orm:"column(descripcion);null"`
+	CodigoAbreviacion              string                        `orm:"column(codigo_abreviacion);null"`
+	Activo                         bool                          `orm:"column(activo)"`
+	NumeroOrden                    float64                       `orm:"column(numero_orden);null"`
+	FechaCreacion                  string                        `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion              string                        `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	TipoTitulacionId               *TipoTitulacion               `orm:"column(tipo_titulacion_id);rel(fk)"`
 	ProyectoAcademicoInstitucionId *ProyectoAcademicoInstitucion `orm:"column(proyecto_academico_institucion_id);rel(fk)"`
 }
 

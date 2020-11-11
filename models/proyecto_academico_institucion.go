@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -24,8 +23,8 @@ type ProyectoAcademicoInstitucion struct {
 	Competencias             string          							 `orm:"column(competencias)"`
 	CodigoAbreviacion        string          							 `orm:"column(codigo_abreviacion);null"`
 	Activo                   bool            							 `orm:"column(activo)"`
-	FechaCreacion            time.Time       							 `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
-	FechaModificacion        time.Time       							 `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
+	FechaCreacion            string         							 `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion        string         							 `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 	UnidadTiempoId           int             							 `orm:"column(unidad_tiempo_id)"`
 	AnoActoAdministrativo    string          							 `orm:"column(ano_acto_administrativo)"`
 	Oferta                   bool            							 `orm:"column(oferta)"`
@@ -33,7 +32,7 @@ type ProyectoAcademicoInstitucion struct {
 	AreaConocimientoId       int             							 `orm:"column(area_conocimiento_id)"`
 	NucleoBaseId             int             							 `orm:"column(nucleo_base_id)"`
 	MetodologiaId            *Metodologia    							 `orm:"column(metodologia_id);rel(fk)"`
-	NivelFormacionId         *NivelFormacion  						 `orm:"column(nivel_formacion_id);rel(fk)"`
+	NivelFormacionId         *NivelFormacion    						 `orm:"column(nivel_formacion_id);rel(fk)"`
 	FacultadId               int             							 `orm:"column(facultad_id)"`
 	ProyectoPadreId          *ProyectoAcademicoInstitucion `orm:"column(proyecto_padre_id);rel(fk);null"`
 }
