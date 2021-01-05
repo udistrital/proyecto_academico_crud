@@ -18,6 +18,7 @@ type NivelFormacion struct {
 	NumeroOrden       float64   `orm:"column(numero_orden);null"`
 	FechaCreacion     string    `orm:"column(fecha_creacion);type(timestamp without time zone)"`
 	FechaModificacion string    `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	NivelFormacionPadreId *NivelFormacion `orm:"column(nivel_formacion_padre_id);rel(fk)"`
 }
 
 func (t *NivelFormacion) TableName() string {
