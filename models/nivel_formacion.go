@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -17,8 +16,9 @@ type NivelFormacion struct {
 	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
 	Activo            bool      `orm:"column(activo)"`
 	NumeroOrden       float64   `orm:"column(numero_orden);null"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
+	FechaCreacion     string    `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion string    `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+	NivelFormacionPadreId *NivelFormacion `orm:"column(nivel_formacion_padre_id);rel(fk)"`
 }
 
 func (t *NivelFormacion) TableName() string {
