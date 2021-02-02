@@ -1974,31 +1974,31 @@
         }
     },
     "definitions": {
-        "28505.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+        "51894.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
             "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
-        "28569.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "51959.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "28627.\u003cnil\u003e.Titulacion": {
+        "52018.\u003cnil\u003e.Titulacion": {
             "title": "Titulacion",
             "type": "object"
         },
-        "28781.\u003cnil\u003e.Titulacion": {
+        "52177.\u003cnil\u003e.Titulacion": {
             "title": "Titulacion",
             "type": "object"
         },
-        "28825.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "52222.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "28990.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "52392.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "29156.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+        "52563.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
             "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
@@ -2016,12 +2016,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2050,12 +2048,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2084,16 +2080,17 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
                     "format": "int64"
+                },
+                "NivelFormacionPadreId": {
+                    "$ref": "#/definitions/models.NivelFormacion"
                 },
                 "Nombre": {
                     "type": "string"
@@ -2115,12 +2112,10 @@
                     "$ref": "#/definitions/models.Enfasis"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2179,12 +2174,10 @@
                     "format": "int64"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2235,8 +2228,7 @@
                     "format": "int64"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaFinalizacion": {
                     "type": "string",
@@ -2247,8 +2239,7 @@
                     "format": "datetime"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2285,16 +2276,14 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaCreacionActoAdministrativo": {
                     "type": "string",
                     "format": "datetime"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2333,12 +2322,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2367,12 +2354,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2401,12 +2386,10 @@
                     "type": "string"
                 },
                 "FechaCreacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "Id": {
                     "type": "integer",
@@ -2432,16 +2415,16 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/28569.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/51959.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Registro": {
-                    "$ref": "#/definitions/28505.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                    "$ref": "#/definitions/51894.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 },
                 "Titulaciones": {
-                    "$ref": "#/definitions/28627.\u003cnil\u003e.Titulacion"
+                    "$ref": "#/definitions/52018.\u003cnil\u003e.Titulacion"
                 }
             }
         },
@@ -2454,7 +2437,7 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/28990.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/52392.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
@@ -2466,13 +2449,13 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/28825.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/52222.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Titulaciones": {
-                    "$ref": "#/definitions/28781.\u003cnil\u003e.Titulacion"
+                    "$ref": "#/definitions/52177.\u003cnil\u003e.Titulacion"
                 }
             }
         },
@@ -2484,7 +2467,7 @@
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Registro": {
-                    "$ref": "#/definitions/29156.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                    "$ref": "#/definitions/52563.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 }
             }
         }
