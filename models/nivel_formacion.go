@@ -5,20 +5,22 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
 )
 
 type NivelFormacion struct {
-	Id                int       `orm:"column(id);pk;auto"`
-	Nombre            string    `orm:"column(nombre)"`
-	Descripcion       string    `orm:"column(descripcion);null"`
-	CodigoAbreviacion string    `orm:"column(codigo_abreviacion);null"`
-	Activo            bool      `orm:"column(activo)"`
-	NumeroOrden       float64   `orm:"column(numero_orden);null"`
-	FechaCreacion     time.Time `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
-	FechaModificacion time.Time `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
+
+	Id                    int             `orm:"column(id);pk;auto"`
+	Nombre                string          `orm:"column(nombre)"`
+	Descripcion           string          `orm:"column(descripcion);null"`
+	CodigoAbreviacion     string          `orm:"column(codigo_abreviacion);null"`
+	Activo                bool            `orm:"column(activo)"`
+	NumeroOrden           float64         `orm:"column(numero_orden);null"`
+	FechaCreacion         string          `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion     string          `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
+
+	NivelFormacionPadreId *NivelFormacion `orm:"column(nivel_formacion_padre_id);rel(fk);null"`
 }
 
 func (t *NivelFormacion) TableName() string {
@@ -64,6 +66,7 @@ func GetAllNivelFormacion(query map[string]string, fields []string, sortby []str
 			qs = qs.Filter(k, v)
 		}
 	}
+
 	// order by:
 	var sortFields []string
 	if len(sortby) != 0 {
@@ -121,6 +124,7 @@ func GetAllNivelFormacion(query map[string]string, fields []string, sortby []str
 				ml = append(ml, m)
 			}
 		}
+
 		return ml, nil
 	}
 	return nil, err

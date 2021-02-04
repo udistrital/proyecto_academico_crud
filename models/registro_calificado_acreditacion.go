@@ -19,8 +19,8 @@ type RegistroCalificadoAcreditacion struct {
 	VencimientoActoAdministrativo   time.Time                     `orm:"column(vencimiento_acto_administrativo);type(timestamp without time zone)"`
 	EnlaceActo                      string                        `orm:"column(enlace_acto)"`
 	Activo                          bool                          `orm:"column(activo)"`
-	FechaCreacion                   time.Time                     `orm:"column(fecha_creacion);type(timestamp without time zone);auto_now_add"`
-	FechaModificacion               time.Time                     `orm:"column(fecha_modificacion);type(timestamp without time zone);auto_now"`
+	FechaCreacion                   string                        `orm:"column(fecha_creacion);type(timestamp without time zone)"`
+	FechaModificacion               string                        `orm:"column(fecha_modificacion);type(timestamp without time zone)"`
 	ProyectoAcademicoInstitucionId  *ProyectoAcademicoInstitucion `orm:"column(proyecto_academico_institucion_id);rel(fk)"`
 	TipoRegistroId                  *TipoRegistro                 `orm:"column(tipo_registro_id);rel(fk)"`
 }
