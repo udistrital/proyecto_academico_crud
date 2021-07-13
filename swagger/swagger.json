@@ -880,13 +880,13 @@
                 }
             }
         },
-        "/proyecto_academico_rol_persona_dependecia/": {
+        "/proyecto_academico_rol_tercero_dependencia/": {
             "get": {
                 "tags": [
-                    "proyecto_academico_rol_persona_dependecia"
+                    "proyecto_academico_rol_tercero_dependencia"
                 ],
-                "description": "get ProyectoAcademicoRolPersonaDependecia",
-                "operationId": "ProyectoAcademicoRolPersonaDependeciaController.Get All",
+                "description": "get ProyectoAcademicoRolTerceroDependencia",
+                "operationId": "ProyectoAcademicoRolTerceroDependenciaController.Get All",
                 "parameters": [
                     {
                         "in": "query",
@@ -929,7 +929,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.ProyectoAcademicoRolPersonaDependecia"
+                            "$ref": "#/definitions/models.ProyectoAcademicoRolTerceroDependencia"
                         }
                     },
                     "404": {
@@ -939,24 +939,24 @@
             },
             "post": {
                 "tags": [
-                    "proyecto_academico_rol_persona_dependecia"
+                    "proyecto_academico_rol_tercero_dependencia"
                 ],
-                "description": "create ProyectoAcademicoRolPersonaDependecia",
-                "operationId": "ProyectoAcademicoRolPersonaDependeciaController.Post",
+                "description": "create ProyectoAcademicoRolTerceroDependencia",
+                "operationId": "ProyectoAcademicoRolTerceroDependenciaController.Post",
                 "parameters": [
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for ProyectoAcademicoRolPersonaDependecia content",
+                        "description": "body for ProyectoAcademicoRolTerceroDependencia content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.ProyectoAcademicoRolPersonaDependecia"
+                            "$ref": "#/definitions/models.ProyectoAcademicoRolTerceroDependencia"
                         }
                     }
                 ],
                 "responses": {
                     "201": {
-                        "description": "{int} models.ProyectoAcademicoRolPersonaDependecia"
+                        "description": "{int} models.ProyectoAcademicoRolTerceroDependencia"
                     },
                     "400": {
                         "description": "the request contains incorrect syntax"
@@ -964,13 +964,13 @@
                 }
             }
         },
-        "/proyecto_academico_rol_persona_dependecia/{id}": {
+        "/proyecto_academico_rol_tercero_dependencia/{id}": {
             "get": {
                 "tags": [
-                    "proyecto_academico_rol_persona_dependecia"
+                    "proyecto_academico_rol_tercero_dependencia"
                 ],
-                "description": "get ProyectoAcademicoRolPersonaDependecia by id",
-                "operationId": "ProyectoAcademicoRolPersonaDependeciaController.Get One",
+                "description": "get ProyectoAcademicoRolTerceroDependencia by id",
+                "operationId": "ProyectoAcademicoRolTerceroDependenciaController.Get One",
                 "parameters": [
                     {
                         "in": "path",
@@ -984,7 +984,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.ProyectoAcademicoRolPersonaDependecia"
+                            "$ref": "#/definitions/models.ProyectoAcademicoRolTerceroDependencia"
                         }
                     },
                     "404": {
@@ -994,10 +994,10 @@
             },
             "put": {
                 "tags": [
-                    "proyecto_academico_rol_persona_dependecia"
+                    "proyecto_academico_rol_tercero_dependencia"
                 ],
-                "description": "update the ProyectoAcademicoRolPersonaDependecia",
-                "operationId": "ProyectoAcademicoRolPersonaDependeciaController.Put",
+                "description": "update the ProyectoAcademicoRolTerceroDependencia",
+                "operationId": "ProyectoAcademicoRolTerceroDependenciaController.Put",
                 "parameters": [
                     {
                         "in": "path",
@@ -1009,10 +1009,10 @@
                     {
                         "in": "body",
                         "name": "body",
-                        "description": "body for ProyectoAcademicoRolPersonaDependecia content",
+                        "description": "body for ProyectoAcademicoRolTerceroDependencia content",
                         "required": true,
                         "schema": {
-                            "$ref": "#/definitions/models.ProyectoAcademicoRolPersonaDependecia"
+                            "$ref": "#/definitions/models.ProyectoAcademicoRolTerceroDependencia"
                         }
                     }
                 ],
@@ -1020,7 +1020,7 @@
                     "200": {
                         "description": "",
                         "schema": {
-                            "$ref": "#/definitions/models.ProyectoAcademicoRolPersonaDependecia"
+                            "$ref": "#/definitions/models.ProyectoAcademicoRolTerceroDependencia"
                         }
                     },
                     "400": {
@@ -1030,10 +1030,10 @@
             },
             "delete": {
                 "tags": [
-                    "proyecto_academico_rol_persona_dependecia"
+                    "proyecto_academico_rol_tercero_dependencia"
                 ],
-                "description": "delete the ProyectoAcademicoRolPersonaDependecia",
-                "operationId": "ProyectoAcademicoRolPersonaDependeciaController.Delete",
+                "description": "delete the ProyectoAcademicoRolTerceroDependencia",
+                "operationId": "ProyectoAcademicoRolTerceroDependenciaController.Delete",
                 "parameters": [
                     {
                         "in": "path",
@@ -1974,31 +1974,31 @@
         }
     },
     "definitions": {
-        "51894.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+        "50328.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
             "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
-        "51959.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "50392.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "52018.\u003cnil\u003e.Titulacion": {
+        "50450.\u003cnil\u003e.Titulacion": {
             "title": "Titulacion",
             "type": "object"
         },
-        "52177.\u003cnil\u003e.Titulacion": {
+        "50604.\u003cnil\u003e.Titulacion": {
             "title": "Titulacion",
             "type": "object"
         },
-        "52222.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "50648.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "52392.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "50813.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "52563.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+        "50979.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
             "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
@@ -2216,8 +2216,8 @@
                 }
             }
         },
-        "models.ProyectoAcademicoRolPersonaDependecia": {
-            "title": "ProyectoAcademicoRolPersonaDependecia",
+        "models.ProyectoAcademicoRolTerceroDependencia": {
+            "title": "ProyectoAcademicoRolTerceroDependencia",
             "type": "object",
             "properties": {
                 "Activo": {
@@ -2245,10 +2245,6 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "PersonaId": {
-                    "type": "integer",
-                    "format": "int64"
-                },
                 "ProyectoAcademicoInstitucionId": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
@@ -2256,7 +2252,7 @@
                     "type": "integer",
                     "format": "int64"
                 },
-                "RolId": {
+                "TerceroId": {
                     "type": "integer",
                     "format": "int64"
                 }
@@ -2415,16 +2411,16 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/51959.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/50392.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Registro": {
-                    "$ref": "#/definitions/51894.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                    "$ref": "#/definitions/50328.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 },
                 "Titulaciones": {
-                    "$ref": "#/definitions/52018.\u003cnil\u003e.Titulacion"
+                    "$ref": "#/definitions/50450.\u003cnil\u003e.Titulacion"
                 }
             }
         },
@@ -2437,7 +2433,7 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/52392.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/50813.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
@@ -2449,13 +2445,13 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/52222.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/50648.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Titulaciones": {
-                    "$ref": "#/definitions/52177.\u003cnil\u003e.Titulacion"
+                    "$ref": "#/definitions/50604.\u003cnil\u003e.Titulacion"
                 }
             }
         },
@@ -2467,7 +2463,7 @@
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Registro": {
-                    "$ref": "#/definitions/52563.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                    "$ref": "#/definitions/50979.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 }
             }
         }
@@ -2514,8 +2510,8 @@
             "description": "Operations for TrProyectoAcademico\n"
         },
         {
-            "name": "proyecto_academico_rol_persona_dependecia",
-            "description": "ProyectoAcademicoRolPersonaDependeciaController operations for ProyectoAcademicoRolPersonaDependecia\n"
+            "name": "proyecto_academico_rol_tercero_dependencia",
+            "description": "ProyectoAcademicoRolTerceroDependenciaController operations for ProyectoAcademicoRolTerceroDependencia\n"
         }
     ]
 }

@@ -581,12 +581,12 @@ paths:
           description: '{string} delete success!'
         "404":
           description: not found resource
-  /proyecto_academico_rol_persona_dependecia/:
+  /proyecto_academico_rol_tercero_dependencia/:
     get:
       tags:
-      - proyecto_academico_rol_persona_dependecia
-      description: get ProyectoAcademicoRolPersonaDependecia
-      operationId: ProyectoAcademicoRolPersonaDependeciaController.Get All
+      - proyecto_academico_rol_tercero_dependencia
+      description: get ProyectoAcademicoRolTerceroDependencia
+      operationId: ProyectoAcademicoRolTerceroDependenciaController.Get All
       parameters:
       - in: query
         name: query
@@ -616,32 +616,32 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.ProyectoAcademicoRolPersonaDependecia'
+            $ref: '#/definitions/models.ProyectoAcademicoRolTerceroDependencia'
         "404":
           description: not found resource
     post:
       tags:
-      - proyecto_academico_rol_persona_dependecia
-      description: create ProyectoAcademicoRolPersonaDependecia
-      operationId: ProyectoAcademicoRolPersonaDependeciaController.Post
+      - proyecto_academico_rol_tercero_dependencia
+      description: create ProyectoAcademicoRolTerceroDependencia
+      operationId: ProyectoAcademicoRolTerceroDependenciaController.Post
       parameters:
       - in: body
         name: body
-        description: body for ProyectoAcademicoRolPersonaDependecia content
+        description: body for ProyectoAcademicoRolTerceroDependencia content
         required: true
         schema:
-          $ref: '#/definitions/models.ProyectoAcademicoRolPersonaDependecia'
+          $ref: '#/definitions/models.ProyectoAcademicoRolTerceroDependencia'
       responses:
         "201":
-          description: '{int} models.ProyectoAcademicoRolPersonaDependecia'
+          description: '{int} models.ProyectoAcademicoRolTerceroDependencia'
         "400":
           description: the request contains incorrect syntax
-  /proyecto_academico_rol_persona_dependecia/{id}:
+  /proyecto_academico_rol_tercero_dependencia/{id}:
     get:
       tags:
-      - proyecto_academico_rol_persona_dependecia
-      description: get ProyectoAcademicoRolPersonaDependecia by id
-      operationId: ProyectoAcademicoRolPersonaDependeciaController.Get One
+      - proyecto_academico_rol_tercero_dependencia
+      description: get ProyectoAcademicoRolTerceroDependencia by id
+      operationId: ProyectoAcademicoRolTerceroDependenciaController.Get One
       parameters:
       - in: path
         name: id
@@ -652,14 +652,14 @@ paths:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.ProyectoAcademicoRolPersonaDependecia'
+            $ref: '#/definitions/models.ProyectoAcademicoRolTerceroDependencia'
         "404":
           description: not found resource
     put:
       tags:
-      - proyecto_academico_rol_persona_dependecia
-      description: update the ProyectoAcademicoRolPersonaDependecia
-      operationId: ProyectoAcademicoRolPersonaDependeciaController.Put
+      - proyecto_academico_rol_tercero_dependencia
+      description: update the ProyectoAcademicoRolTerceroDependencia
+      operationId: ProyectoAcademicoRolTerceroDependenciaController.Put
       parameters:
       - in: path
         name: id
@@ -668,22 +668,22 @@ paths:
         type: string
       - in: body
         name: body
-        description: body for ProyectoAcademicoRolPersonaDependecia content
+        description: body for ProyectoAcademicoRolTerceroDependencia content
         required: true
         schema:
-          $ref: '#/definitions/models.ProyectoAcademicoRolPersonaDependecia'
+          $ref: '#/definitions/models.ProyectoAcademicoRolTerceroDependencia'
       responses:
         "200":
           description: ""
           schema:
-            $ref: '#/definitions/models.ProyectoAcademicoRolPersonaDependecia'
+            $ref: '#/definitions/models.ProyectoAcademicoRolTerceroDependencia'
         "400":
           description: the request contains incorrect syntax
     delete:
       tags:
-      - proyecto_academico_rol_persona_dependecia
-      description: delete the ProyectoAcademicoRolPersonaDependecia
-      operationId: ProyectoAcademicoRolPersonaDependeciaController.Delete
+      - proyecto_academico_rol_tercero_dependencia
+      description: delete the ProyectoAcademicoRolTerceroDependencia
+      operationId: ProyectoAcademicoRolTerceroDependenciaController.Delete
       parameters:
       - in: path
         name: id
@@ -1301,25 +1301,25 @@ paths:
         "400":
           description: the request contains incorrect syntax
 definitions:
-  51894.<nil>.RegistroCalificadoAcreditacion:
+  50328.<nil>.RegistroCalificadoAcreditacion:
     title: RegistroCalificadoAcreditacion
     type: object
-  51959.<nil>.ProyectoAcademicoEnfasis:
+  50392.<nil>.ProyectoAcademicoEnfasis:
     title: ProyectoAcademicoEnfasis
     type: object
-  52018.<nil>.Titulacion:
+  50450.<nil>.Titulacion:
     title: Titulacion
     type: object
-  52177.<nil>.Titulacion:
+  50604.<nil>.Titulacion:
     title: Titulacion
     type: object
-  52222.<nil>.ProyectoAcademicoEnfasis:
+  50648.<nil>.ProyectoAcademicoEnfasis:
     title: ProyectoAcademicoEnfasis
     type: object
-  52392.<nil>.ProyectoAcademicoEnfasis:
+  50813.<nil>.ProyectoAcademicoEnfasis:
     title: ProyectoAcademicoEnfasis
     type: object
-  52563.<nil>.RegistroCalificadoAcreditacion:
+  50979.<nil>.RegistroCalificadoAcreditacion:
     title: RegistroCalificadoAcreditacion
     type: object
   models.Enfasis:
@@ -1470,8 +1470,8 @@ definitions:
       UnidadTiempoId:
         type: integer
         format: int64
-  models.ProyectoAcademicoRolPersonaDependecia:
-    title: ProyectoAcademicoRolPersonaDependecia
+  models.ProyectoAcademicoRolTerceroDependencia:
+    title: ProyectoAcademicoRolTerceroDependencia
     type: object
     properties:
       Activo:
@@ -1492,15 +1492,12 @@ definitions:
       Id:
         type: integer
         format: int64
-      PersonaId:
-        type: integer
-        format: int64
       ProyectoAcademicoInstitucionId:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       ResolucionAsignacionId:
         type: integer
         format: int64
-      RolId:
+      TerceroId:
         type: integer
         format: int64
   models.RegistroCalificadoAcreditacion:
@@ -1610,13 +1607,13 @@ definitions:
     type: object
     properties:
       Enfasis:
-        $ref: '#/definitions/51959.<nil>.ProyectoAcademicoEnfasis'
+        $ref: '#/definitions/50392.<nil>.ProyectoAcademicoEnfasis'
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       Registro:
-        $ref: '#/definitions/51894.<nil>.RegistroCalificadoAcreditacion'
+        $ref: '#/definitions/50328.<nil>.RegistroCalificadoAcreditacion'
       Titulaciones:
-        $ref: '#/definitions/52018.<nil>.Titulacion'
+        $ref: '#/definitions/50450.<nil>.Titulacion'
   models.TrProyectoAcademicoController:
     title: TrProyectoAcademicoController
     type: object
@@ -1625,7 +1622,7 @@ definitions:
     type: object
     properties:
       Enfasis:
-        $ref: '#/definitions/52392.<nil>.ProyectoAcademicoEnfasis'
+        $ref: '#/definitions/50813.<nil>.ProyectoAcademicoEnfasis'
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
   models.TrProyectoAcademicoPutInfoBasica:
@@ -1633,11 +1630,11 @@ definitions:
     type: object
     properties:
       Enfasis:
-        $ref: '#/definitions/52222.<nil>.ProyectoAcademicoEnfasis'
+        $ref: '#/definitions/50648.<nil>.ProyectoAcademicoEnfasis'
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       Titulaciones:
-        $ref: '#/definitions/52177.<nil>.Titulacion'
+        $ref: '#/definitions/50604.<nil>.Titulacion'
   models.TrProyectoAcademicoPutRegistro:
     title: TrProyectoAcademicoPutRegistro
     type: object
@@ -1645,7 +1642,7 @@ definitions:
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       Registro:
-        $ref: '#/definitions/52563.<nil>.RegistroCalificadoAcreditacion'
+        $ref: '#/definitions/50979.<nil>.RegistroCalificadoAcreditacion'
 tags:
 - name: metodologia
   description: |
@@ -1677,6 +1674,6 @@ tags:
 - name: tr_proyecto_academico
   description: |
     Operations for TrProyectoAcademico
-- name: proyecto_academico_rol_persona_dependecia
+- name: proyecto_academico_rol_tercero_dependencia
   description: |
-    ProyectoAcademicoRolPersonaDependeciaController operations for ProyectoAcademicoRolPersonaDependecia
+    ProyectoAcademicoRolTerceroDependenciaController operations for ProyectoAcademicoRolTerceroDependencia
