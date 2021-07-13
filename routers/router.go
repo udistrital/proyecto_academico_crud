@@ -75,9 +75,9 @@ func init() {
 			),
 		),
 
-		beego.NSNamespace("/proyecto_academico_rol_persona_dependecia",
+		beego.NSNamespace("/proyecto_academico_rol_tercero_dependencia",
 			beego.NSInclude(
-				&controllers.ProyectoAcademicoRolPersonaDependeciaController{},
+				&controllers.ProyectoAcademicoRolTerceroDependenciaController{},
 			),
 		),
 	)
