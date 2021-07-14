@@ -1,4 +1,5 @@
 -- Nombre de la tabla
+
 ALTER TABLE proyecto_academico.proyecto_academico_rol_tercero_dependencia
     RENAME TO proyecto_academico_rol_persona_dependecia;
 
