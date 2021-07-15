@@ -64,14 +64,13 @@ steps:
 - name: go_run_test
   image: golang:1.14
   commands:
-  - go mod init
   - go get -t
   - go get github.com/smartystreets/goconvey/convey
   - curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.41.1
   - go get github.com/axw/gocov/...
   - go get github.com/AlekSi/gocov-xml
   - go get -u github.com/jstemmer/go-junit-report
-  - golangci-lint run -v ./... | tee report.xml
+  - golangci-lint run ./... | tee report.xml
   # - gocov test ./... | gocov-xml > coverage.xml
   # - go test -v ./... | go-junit-report > test.xml
   when:
