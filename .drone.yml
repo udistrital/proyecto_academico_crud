@@ -70,7 +70,7 @@ steps:
   - go get github.com/axw/gocov/...
   - go get github.com/AlekSi/gocov-xml
   - go get -u github.com/jstemmer/go-junit-report
-  - GO111MODULES=off golangci-lint run -v ./... | tee report.xml
+  - GO111MODULES=off golangci-lint run -v | tee report.xml
   # - gocov test ./... | gocov-xml > coverage.xml
   # - go test -v ./... | go-junit-report > test.xml
   when:
