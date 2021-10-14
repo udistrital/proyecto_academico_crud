@@ -2,7 +2,6 @@ package models
 
 import (
 	"fmt"
-
 	"github.com/astaxie/beego/orm"
 	"github.com/udistrital/utils_oas/time_bogota"
 )
@@ -105,8 +104,10 @@ func GetProyectoAcademicasAll() (v []interface{}, err error) {
 func AddTransaccionProyectoAcademica(m *TrProyectoAcademico) (err error) {
 	o := orm.NewOrm()
 	err = o.Begin()
+
 	m.ProyectoAcademicoInstitucion.FechaCreacion = time_bogota.TiempoBogotaFormato()
 	m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+
 	if idProyecto, errTr := o.Insert(m.ProyectoAcademicoInstitucion); errTr == nil {
 		fmt.Println("id del proyecto", idProyecto)
 
@@ -167,6 +168,8 @@ func UpdateTransaccionProyectoAcademico(m *TrProyectoAcademicoPutInfoBasica) (er
 	err = o.Begin()
 
 	//Actualizar el proyecto academico
+	m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+
 	if idProyecto, errTr := o.Update(m.ProyectoAcademicoInstitucion); errTr == nil {
 		fmt.Println(idProyecto)
 
@@ -253,6 +256,8 @@ func UpdateTransaccionProyectoAcademicoEnfasis(m *TrProyectoAcademicoPutEnfasis)
 	o := orm.NewOrm()
 	err = o.Begin()
 
+	m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+
 	for _, v := range *m.Enfasis {
 		var institucionEnfasis ProyectoAcademicoEnfasis
 		fmt.Println("EnfasisId__Id", v.EnfasisId.Id, "ProyectoAcademicoInstitucionId__Id", v.ProyectoAcademicoInstitucionId.Id)
@@ -295,6 +300,8 @@ func UpdateTransaccionProyectoAcademicoEnfasis(m *TrProyectoAcademicoPutEnfasis)
 func UpdateTransaccionProyectoAcademicoRegistro(m *TrProyectoAcademicoPutRegistro) (err error) {
 	o := orm.NewOrm()
 	err = o.Begin()
+
+	m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
 
 	for _, v := range *m.Registro {
 		var registro RegistroCalificadoAcreditacion

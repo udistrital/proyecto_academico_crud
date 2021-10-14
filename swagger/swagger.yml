@@ -32,7 +32,8 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -146,7 +147,8 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -260,7 +262,8 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -374,7 +377,8 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -488,7 +492,8 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -602,7 +607,8 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -716,7 +722,8 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -830,7 +837,8 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -944,7 +952,8 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1058,7 +1067,8 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1172,7 +1182,8 @@ paths:
         type: string
       - in: query
         name: order
-        description: Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...
+        description: Order corresponding to each sortby field, if single value, apply
+          to all sortby fields. e.g. desc,asc ...
         type: string
       - in: query
         name: limit
@@ -1301,25 +1312,25 @@ paths:
         "400":
           description: the request contains incorrect syntax
 definitions:
-  50328.<nil>.RegistroCalificadoAcreditacion:
+  50510.<nil>.RegistroCalificadoAcreditacion:
     title: RegistroCalificadoAcreditacion
     type: object
-  50392.<nil>.ProyectoAcademicoEnfasis:
+  50574.<nil>.ProyectoAcademicoEnfasis:
     title: ProyectoAcademicoEnfasis
     type: object
-  50450.<nil>.Titulacion:
+  50632.<nil>.Titulacion:
     title: Titulacion
     type: object
-  50604.<nil>.Titulacion:
+  50786.<nil>.Titulacion:
     title: Titulacion
     type: object
-  50648.<nil>.ProyectoAcademicoEnfasis:
+  50830.<nil>.ProyectoAcademicoEnfasis:
     title: ProyectoAcademicoEnfasis
     type: object
-  50813.<nil>.ProyectoAcademicoEnfasis:
+  50995.<nil>.ProyectoAcademicoEnfasis:
     title: ProyectoAcademicoEnfasis
     type: object
-  50979.<nil>.RegistroCalificadoAcreditacion:
+  51161.<nil>.RegistroCalificadoAcreditacion:
     title: RegistroCalificadoAcreditacion
     type: object
   models.Enfasis:
@@ -1514,7 +1525,6 @@ definitions:
         type: string
       FechaCreacionActoAdministrativo:
         type: string
-        format: datetime
       FechaModificacion:
         type: string
       Id:
@@ -1529,7 +1539,6 @@ definitions:
         $ref: '#/definitions/models.TipoRegistro'
       VencimientoActoAdministrativo:
         type: string
-        format: datetime
       VigenciaActoAdministrativo:
         type: string
   models.TipoRegistro:
@@ -1607,13 +1616,13 @@ definitions:
     type: object
     properties:
       Enfasis:
-        $ref: '#/definitions/50392.<nil>.ProyectoAcademicoEnfasis'
+        $ref: '#/definitions/50574.<nil>.ProyectoAcademicoEnfasis'
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       Registro:
-        $ref: '#/definitions/50328.<nil>.RegistroCalificadoAcreditacion'
+        $ref: '#/definitions/50510.<nil>.RegistroCalificadoAcreditacion'
       Titulaciones:
-        $ref: '#/definitions/50450.<nil>.Titulacion'
+        $ref: '#/definitions/50632.<nil>.Titulacion'
   models.TrProyectoAcademicoController:
     title: TrProyectoAcademicoController
     type: object
@@ -1622,7 +1631,7 @@ definitions:
     type: object
     properties:
       Enfasis:
-        $ref: '#/definitions/50813.<nil>.ProyectoAcademicoEnfasis'
+        $ref: '#/definitions/50995.<nil>.ProyectoAcademicoEnfasis'
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
   models.TrProyectoAcademicoPutInfoBasica:
@@ -1630,11 +1639,11 @@ definitions:
     type: object
     properties:
       Enfasis:
-        $ref: '#/definitions/50648.<nil>.ProyectoAcademicoEnfasis'
+        $ref: '#/definitions/50830.<nil>.ProyectoAcademicoEnfasis'
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       Titulaciones:
-        $ref: '#/definitions/50604.<nil>.Titulacion'
+        $ref: '#/definitions/50786.<nil>.Titulacion'
   models.TrProyectoAcademicoPutRegistro:
     title: TrProyectoAcademicoPutRegistro
     type: object
@@ -1642,7 +1651,7 @@ definitions:
       ProyectoAcademicoInstitucion:
         $ref: '#/definitions/models.ProyectoAcademicoInstitucion'
       Registro:
-        $ref: '#/definitions/50979.<nil>.RegistroCalificadoAcreditacion'
+        $ref: '#/definitions/51161.<nil>.RegistroCalificadoAcreditacion'
 tags:
 - name: metodologia
   description: |
