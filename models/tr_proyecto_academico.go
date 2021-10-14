@@ -167,9 +167,14 @@ func UpdateTransaccionProyectoAcademico(m *TrProyectoAcademicoPutInfoBasica) (er
 	o := orm.NewOrm()
 	err = o.Begin()
 
-	//Actualizar el proyecto academico
-	m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+	var proyectos []*ProyectoAcademicoInstitucion
+	if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Id", m.ProyectoAcademicoInstitucion.Id).All(&proyectos); err == nil {
+		m.ProyectoAcademicoInstitucion.FechaCreacion = time_bogota.TiempoCorreccionFormato(proyectos[0].FechaCreacion)
+		m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+	}
 
+	//Actualizar el proyecto academico
+	fmt.Println("Mira aqui: ", m.ProyectoAcademicoInstitucion, m.Titulaciones, m.Enfasis)
 	if idProyecto, errTr := o.Update(m.ProyectoAcademicoInstitucion); errTr == nil {
 		fmt.Println(idProyecto)
 
@@ -256,7 +261,11 @@ func UpdateTransaccionProyectoAcademicoEnfasis(m *TrProyectoAcademicoPutEnfasis)
 	o := orm.NewOrm()
 	err = o.Begin()
 
-	m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+	var proyectos []*ProyectoAcademicoInstitucion
+	if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Id", m.ProyectoAcademicoInstitucion.Id).All(&proyectos); err == nil {
+		m.ProyectoAcademicoInstitucion.FechaCreacion = time_bogota.TiempoCorreccionFormato(proyectos[0].FechaCreacion)
+		m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+	}
 
 	for _, v := range *m.Enfasis {
 		var institucionEnfasis ProyectoAcademicoEnfasis
@@ -301,7 +310,11 @@ func UpdateTransaccionProyectoAcademicoRegistro(m *TrProyectoAcademicoPutRegistr
 	o := orm.NewOrm()
 	err = o.Begin()
 
-	m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+	var proyectos []*ProyectoAcademicoInstitucion
+	if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Id", m.ProyectoAcademicoInstitucion.Id).All(&proyectos); err == nil {
+		m.ProyectoAcademicoInstitucion.FechaCreacion = time_bogota.TiempoCorreccionFormato(proyectos[0].FechaCreacion)
+		m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+	}
 
 	for _, v := range *m.Registro {
 		var registro RegistroCalificadoAcreditacion
