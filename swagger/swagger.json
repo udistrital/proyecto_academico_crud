@@ -1974,31 +1974,31 @@
         }
     },
     "definitions": {
-        "50328.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+        "50510.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
             "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
-        "50392.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "50574.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "50450.\u003cnil\u003e.Titulacion": {
+        "50632.\u003cnil\u003e.Titulacion": {
             "title": "Titulacion",
             "type": "object"
         },
-        "50604.\u003cnil\u003e.Titulacion": {
+        "50786.\u003cnil\u003e.Titulacion": {
             "title": "Titulacion",
             "type": "object"
         },
-        "50648.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "50830.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "50813.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "50995.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "50979.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+        "51161.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
             "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
@@ -2275,8 +2275,7 @@
                     "type": "string"
                 },
                 "FechaCreacionActoAdministrativo": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "FechaModificacion": {
                     "type": "string"
@@ -2296,8 +2295,7 @@
                     "$ref": "#/definitions/models.TipoRegistro"
                 },
                 "VencimientoActoAdministrativo": {
-                    "type": "string",
-                    "format": "datetime"
+                    "type": "string"
                 },
                 "VigenciaActoAdministrativo": {
                     "type": "string"
@@ -2411,16 +2409,16 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/50392.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/50574.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Registro": {
-                    "$ref": "#/definitions/50328.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                    "$ref": "#/definitions/50510.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 },
                 "Titulaciones": {
-                    "$ref": "#/definitions/50450.\u003cnil\u003e.Titulacion"
+                    "$ref": "#/definitions/50632.\u003cnil\u003e.Titulacion"
                 }
             }
         },
@@ -2433,7 +2431,7 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/50813.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/50995.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
@@ -2445,13 +2443,13 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/50648.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/50830.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Titulaciones": {
-                    "$ref": "#/definitions/50604.\u003cnil\u003e.Titulacion"
+                    "$ref": "#/definitions/50786.\u003cnil\u003e.Titulacion"
                 }
             }
         },
@@ -2463,7 +2461,7 @@
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Registro": {
-                    "$ref": "#/definitions/50979.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                    "$ref": "#/definitions/51161.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 }
             }
         }
