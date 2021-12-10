@@ -13,14 +13,15 @@ Api CRUD para el manejo de la información de los proyectos académicos de la Un
 
 ### Variables de Entorno
 ```shell
-PROYECTO_ACADEMICO_API_PORT: Puerto asignado para la ejecución del API
-PROYECTO_ACADEMICO_CRUD__PGUSER: Usuario de la base de datos
-PROYECTO_ACADEMICO_CRUD__PGPASS: Clave del usuario para la conexión a la base de datos  
-PROYECTO_ACADEMICO_CRUD__PGURLS: Host de conexión
-PROYECTO_ACADEMICO_CRUD__PGDB: Nombre de la base de datos
-PROYECTO_ACADEMICO_CRUD__PGSCHEMA: Esquema a utilizar en la base de datos
+PROYECTO_ACADEMICO_CRUD_HTTP_PORT: [Puerto asignado para la ejecución del API]
+PROYECTO_ACADEMICO_CRUD_PGUSER: [Usuario de la base de datos]
+PROYECTO_ACADEMICO_CRUD_PGPASS: [Clave del usuario para la conexión a la base de datos]
+PROYECTO_ACADEMICO_CRUD_PGHOST: [Host de conexión]
+PROYECTO_ACADEMICO_CRUD_PGPORT: [Puerto de conexión a la base de datos]
+PROYECTO_ACADEMICO_CRUD_PGDB: [Nombre de la base de datos]
+PROYECTO_ACADEMICO_CRUD_PGSCHEMA: [Esquema a utilizar en la base de datos]
 ```
-**NOTA:** Las variables se pueden ver en el fichero conf/app.conf y están identificadas con PROYECTO_ACADEMICO_CRUD__...
+**NOTA:** Las variables se pueden ver en el fichero conf/app.conf y están identificadas con PROYECTO_ACADEMICO_CRUD_...
 
 ### Ejecución del Proyecto
 ```shell
@@ -34,7 +35,7 @@ cd $GOPATH/src/github.com/udistrital/proyecto_academico_crud
 git pull origin develop && git checkout develop
 
 # 4. alimentar todas las variables de entorno que utiliza el proyecto.
-PROYECTO_ACADEMICO_CRUD_PORT=8080 PROYECTO_ACADEMICO_CRUD_DB_HOST=127.0.0.1:27017 PROYECTO_ACADEMICO_CRUD_SOME_VARIABLE=some_value bee run
+PROYECTO_ACADEMICO_CRUD_HTTP_PORT=8080 PROYECTO_ACADEMICO_CRUD_PGHOST=127.0.0.1:27017 PROYECTO_ACADEMICO_CRUD_SOME_VARIABLE=some_value bee run
 ```
 ### Ejecución Dockerfile
 ```shell

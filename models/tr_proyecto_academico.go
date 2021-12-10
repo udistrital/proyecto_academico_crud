@@ -2,8 +2,8 @@ package models
 
 import (
 	"fmt"
-
 	"github.com/astaxie/beego/orm"
+	"github.com/udistrital/utils_oas/time_bogota"
 )
 
 type TrProyectoAcademico struct {
@@ -77,7 +77,7 @@ func GetProyectoAcademicasAll() (v []interface{}, err error) {
 	var proyectos []*ProyectoAcademicoInstitucion
 
 	// if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Activo", true).All(&proyectos); err == nil {
-		if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().All(&proyectos); err == nil {
+	if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().All(&proyectos); err == nil {
 
 		for _, proyecto := range proyectos {
 
@@ -105,13 +105,21 @@ func AddTransaccionProyectoAcademica(m *TrProyectoAcademico) (err error) {
 	o := orm.NewOrm()
 	err = o.Begin()
 
+	m.ProyectoAcademicoInstitucion.FechaCreacion = time_bogota.TiempoBogotaFormato()
+	m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+
 	if idProyecto, errTr := o.Insert(m.ProyectoAcademicoInstitucion); errTr == nil {
-		fmt.Println(idProyecto)
+		fmt.Println("id del proyecto", idProyecto)
 
 		for _, v := range *m.Registro {
 			v.ProyectoAcademicoInstitucionId.Id = int(idProyecto)
+			v.FechaCreacionActoAdministrativo = time_bogota.TiempoCorreccionFormato(v.FechaCreacionActoAdministrativo)
+			v.VencimientoActoAdministrativo = time_bogota.TiempoCorreccionFormato(v.VencimientoActoAdministrativo)
+			v.FechaCreacion = time_bogota.TiempoBogotaFormato()
+			v.FechaModificacion = time_bogota.TiempoBogotaFormato()
 			if _, errTr = o.Insert(&v); errTr != nil {
 				err = errTr
+				fmt.Println("Registro", idProyecto)
 				fmt.Println(err)
 				_ = o.Rollback()
 				return
@@ -120,8 +128,11 @@ func AddTransaccionProyectoAcademica(m *TrProyectoAcademico) (err error) {
 
 		for _, v := range *m.Enfasis {
 			v.ProyectoAcademicoInstitucionId.Id = int(idProyecto)
+			v.FechaCreacion = time_bogota.TiempoBogotaFormato()
+			v.FechaModificacion = time_bogota.TiempoBogotaFormato()
 			if _, errTr = o.Insert(&v); errTr != nil {
 				err = errTr
+				fmt.Println("Enfasis", idProyecto)
 				fmt.Println(err)
 				_ = o.Rollback()
 				return
@@ -130,8 +141,11 @@ func AddTransaccionProyectoAcademica(m *TrProyectoAcademico) (err error) {
 
 		for _, v := range *m.Titulaciones {
 			v.ProyectoAcademicoInstitucionId.Id = int(idProyecto)
+			v.FechaCreacion = time_bogota.TiempoBogotaFormato()
+			v.FechaModificacion = time_bogota.TiempoBogotaFormato()
 			if _, errTr = o.Insert(&v); errTr != nil {
 				err = errTr
+				fmt.Println("Titulaciones", idProyecto)
 				fmt.Println(err)
 				_ = o.Rollback()
 				return
@@ -141,7 +155,7 @@ func AddTransaccionProyectoAcademica(m *TrProyectoAcademico) (err error) {
 		_ = o.Commit()
 	} else {
 		err = errTr
-		fmt.Println(err)
+		fmt.Println("error 1", err)
 		_ = o.Rollback()
 	}
 
@@ -153,7 +167,14 @@ func UpdateTransaccionProyectoAcademico(m *TrProyectoAcademicoPutInfoBasica) (er
 	o := orm.NewOrm()
 	err = o.Begin()
 
+	var proyectos []*ProyectoAcademicoInstitucion
+	if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Id", m.ProyectoAcademicoInstitucion.Id).All(&proyectos); err == nil {
+		m.ProyectoAcademicoInstitucion.FechaCreacion = time_bogota.TiempoCorreccionFormato(proyectos[0].FechaCreacion)
+		m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+	}
+
 	//Actualizar el proyecto academico
+	fmt.Println("Mira aqui: ", m.ProyectoAcademicoInstitucion, m.Titulaciones, m.Enfasis)
 	if idProyecto, errTr := o.Update(m.ProyectoAcademicoInstitucion); errTr == nil {
 		fmt.Println(idProyecto)
 
@@ -240,6 +261,12 @@ func UpdateTransaccionProyectoAcademicoEnfasis(m *TrProyectoAcademicoPutEnfasis)
 	o := orm.NewOrm()
 	err = o.Begin()
 
+	var proyectos []*ProyectoAcademicoInstitucion
+	if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Id", m.ProyectoAcademicoInstitucion.Id).All(&proyectos); err == nil {
+		m.ProyectoAcademicoInstitucion.FechaCreacion = time_bogota.TiempoCorreccionFormato(proyectos[0].FechaCreacion)
+		m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+	}
+
 	for _, v := range *m.Enfasis {
 		var institucionEnfasis ProyectoAcademicoEnfasis
 		fmt.Println("EnfasisId__Id", v.EnfasisId.Id, "ProyectoAcademicoInstitucionId__Id", v.ProyectoAcademicoInstitucionId.Id)
@@ -282,6 +309,12 @@ func UpdateTransaccionProyectoAcademicoEnfasis(m *TrProyectoAcademicoPutEnfasis)
 func UpdateTransaccionProyectoAcademicoRegistro(m *TrProyectoAcademicoPutRegistro) (err error) {
 	o := orm.NewOrm()
 	err = o.Begin()
+
+	var proyectos []*ProyectoAcademicoInstitucion
+	if _, err := o.QueryTable(new(ProyectoAcademicoInstitucion)).RelatedSel().Filter("Id", m.ProyectoAcademicoInstitucion.Id).All(&proyectos); err == nil {
+		m.ProyectoAcademicoInstitucion.FechaCreacion = time_bogota.TiempoCorreccionFormato(proyectos[0].FechaCreacion)
+		m.ProyectoAcademicoInstitucion.FechaModificacion = time_bogota.TiempoBogotaFormato()
+	}
 
 	for _, v := range *m.Registro {
 		var registro RegistroCalificadoAcreditacion

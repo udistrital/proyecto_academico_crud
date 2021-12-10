@@ -5,7 +5,6 @@ import (
 	"fmt"
 	"reflect"
 	"strings"
-	"time"
 
 	"github.com/astaxie/beego/orm"
 )
@@ -14,9 +13,9 @@ type RegistroCalificadoAcreditacion struct {
 	Id                              int                           `orm:"column(id);pk;auto"`
 	NumeroActoAdministrativo        float64                       `orm:"column(numero_acto_administrativo)"`
 	AnoActoAdministrativoId         string                        `orm:"column(ano_acto_administrativo_id)"`
-	FechaCreacionActoAdministrativo time.Time                     `orm:"column(fecha_creacion_acto_administrativo);type(timestamp without time zone)"`
+	FechaCreacionActoAdministrativo string                        `orm:"column(fecha_creacion_acto_administrativo);type(timestamp without time zone)"`
 	VigenciaActoAdministrativo      string                        `orm:"column(vigencia_acto_administrativo)"`
-	VencimientoActoAdministrativo   time.Time                     `orm:"column(vencimiento_acto_administrativo);type(timestamp without time zone)"`
+	VencimientoActoAdministrativo   string                        `orm:"column(vencimiento_acto_administrativo);type(timestamp without time zone)"`
 	EnlaceActo                      string                        `orm:"column(enlace_acto)"`
 	Activo                          bool                          `orm:"column(activo)"`
 	FechaCreacion                   string                        `orm:"column(fecha_creacion);type(timestamp without time zone)"`

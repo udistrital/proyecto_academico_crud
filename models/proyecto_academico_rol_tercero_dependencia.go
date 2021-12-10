@@ -10,11 +10,10 @@ import (
 	"github.com/astaxie/beego/orm"
 )
 
-type ProyectoAcademicoRolPersonaDependecia struct {
+type ProyectoAcademicoRolTerceroDependencia struct {
 	Id                             int                           `orm:"column(id);pk;auto"`
-	PersonaId                      int                           `orm:"column(persona_id)"`
+	TerceroId                      int                           `orm:"column(tercero_id)"`
 	DependenciaId                  int                           `orm:"column(dependencia_id)"`
-	RolId                          int                           `orm:"column(rol_id)"`
 	ResolucionAsignacionId         int                           `orm:"column(resolucion_asignacion_id)"`
 	Activo                         bool                          `orm:"column(activo)"`
 	FechaInicio                    time.Time                     `orm:"column(fecha_inicio);type(timestamp without time zone)"`
@@ -24,39 +23,39 @@ type ProyectoAcademicoRolPersonaDependecia struct {
 	ProyectoAcademicoInstitucionId *ProyectoAcademicoInstitucion `orm:"column(proyecto_academico_institucion_id);rel(fk)"`
 }
 
-func (t *ProyectoAcademicoRolPersonaDependecia) TableName() string {
-	return "proyecto_academico_rol_persona_dependecia"
+func (t *ProyectoAcademicoRolTerceroDependencia) TableName() string {
+	return "proyecto_academico_rol_tercero_dependencia"
 }
 
 func init() {
-	orm.RegisterModel(new(ProyectoAcademicoRolPersonaDependecia))
+	orm.RegisterModel(new(ProyectoAcademicoRolTerceroDependencia))
 }
 
-// AddProyectoAcademicoRolPersonaDependecia insert a new ProyectoAcademicoRolPersonaDependecia into database and returns
+// AddProyectoAcademicoRolTerceroDependencia insert a new ProyectoAcademicoRolTerceroDependencia into database and returns
 // last inserted Id on success.
-func AddProyectoAcademicoRolPersonaDependecia(m *ProyectoAcademicoRolPersonaDependecia) (id int64, err error) {
+func AddProyectoAcademicoRolTerceroDependencia(m *ProyectoAcademicoRolTerceroDependencia) (id int64, err error) {
 	o := orm.NewOrm()
 	id, err = o.Insert(m)
 	return
 }
 
-// GetProyectoAcademicoRolPersonaDependeciaById retrieves ProyectoAcademicoRolPersonaDependecia by Id. Returns error if
+// GetProyectoAcademicoRolTerceroDependenciaById retrieves ProyectoAcademicoRolTerceroDependencia by Id. Returns error if
 // Id doesn't exist
-func GetProyectoAcademicoRolPersonaDependeciaById(id int) (v *ProyectoAcademicoRolPersonaDependecia, err error) {
+func GetProyectoAcademicoRolTerceroDependenciaById(id int) (v *ProyectoAcademicoRolTerceroDependencia, err error) {
 	o := orm.NewOrm()
-	v = &ProyectoAcademicoRolPersonaDependecia{Id: id}
+	v = &ProyectoAcademicoRolTerceroDependencia{Id: id}
 	if err = o.Read(v); err == nil {
 		return v, nil
 	}
 	return nil, err
 }
 
-// GetAllProyectoAcademicoRolPersonaDependecia retrieves all ProyectoAcademicoRolPersonaDependecia matches certain condition. Returns empty list if
+// GetAllProyectoAcademicoRolTerceroDependencia retrieves all ProyectoAcademicoRolTerceroDependencia matches certain condition. Returns empty list if
 // no records exist
-func GetAllProyectoAcademicoRolPersonaDependecia(query map[string]string, fields []string, sortby []string, order []string,
+func GetAllProyectoAcademicoRolTerceroDependencia(query map[string]string, fields []string, sortby []string, order []string,
 	offset int64, limit int64) (ml []interface{}, err error) {
 	o := orm.NewOrm()
-	qs := o.QueryTable(new(ProyectoAcademicoRolPersonaDependecia)).RelatedSel()
+	qs := o.QueryTable(new(ProyectoAcademicoRolTerceroDependencia)).RelatedSel()
 	// query k=v
 	for k, v := range query {
 		// rewrite dot-notation to Object__Attribute
@@ -106,7 +105,7 @@ func GetAllProyectoAcademicoRolPersonaDependecia(query map[string]string, fields
 		}
 	}
 
-	var l []ProyectoAcademicoRolPersonaDependecia
+	var l []ProyectoAcademicoRolTerceroDependencia
 	qs = qs.OrderBy(sortFields...)
 	if _, err = qs.Limit(limit, offset).All(&l, fields...); err == nil {
 		if len(fields) == 0 {
@@ -129,12 +128,12 @@ func GetAllProyectoAcademicoRolPersonaDependecia(query map[string]string, fields
 	return nil, err
 }
 
-// UpdateProyectoAcademicoRolPersonaDependecia updates ProyectoAcademicoRolPersonaDependecia by Id and returns error if
+// UpdateProyectoAcademicoRolTerceroDependencia updates ProyectoAcademicoRolTerceroDependencia by Id and returns error if
 // the record to be updated doesn't exist
-func UpdateProyectoAcademicoRolPersonaDependeciaById(m *ProyectoAcademicoRolPersonaDependecia) (err error) {
+func UpdateProyectoAcademicoRolTerceroDependenciaById(m *ProyectoAcademicoRolTerceroDependencia) (err error) {
 	// prueba
 	o := orm.NewOrm()
-	v := ProyectoAcademicoRolPersonaDependecia{Id: m.Id}
+	v := ProyectoAcademicoRolTerceroDependencia{Id: m.Id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
@@ -145,15 +144,15 @@ func UpdateProyectoAcademicoRolPersonaDependeciaById(m *ProyectoAcademicoRolPers
 	return
 }
 
-// DeleteProyectoAcademicoRolPersonaDependecia deletes ProyectoAcademicoRolPersonaDependecia by Id and returns error if
+// DeleteProyectoAcademicoRolTerceroDependencia deletes ProyectoAcademicoRolTerceroDependencia by Id and returns error if
 // the record to be deleted doesn't exist
-func DeleteProyectoAcademicoRolPersonaDependecia(id int) (err error) {
+func DeleteProyectoAcademicoRolTerceroDependencia(id int) (err error) {
 	o := orm.NewOrm()
-	v := ProyectoAcademicoRolPersonaDependecia{Id: id}
+	v := ProyectoAcademicoRolTerceroDependencia{Id: id}
 	// ascertain id exists in the database
 	if err = o.Read(&v); err == nil {
 		var num int64
-		if num, err = o.Delete(&ProyectoAcademicoRolPersonaDependecia{Id: id}); err == nil {
+		if num, err = o.Delete(&ProyectoAcademicoRolTerceroDependencia{Id: id}); err == nil {
 			fmt.Println("Number of records deleted in database:", num)
 		}
 	}
