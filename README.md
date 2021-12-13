@@ -11,6 +11,7 @@ Api CRUD para el manejo de la información de los proyectos académicos de la Un
 * [Docker Compose](https://docs.docker.com/compose/)
 
 
+
 ### Variables de Entorno
 ```shell
 PROYECTO_ACADEMICO_CRUD_HTTP_PORT: [Puerto asignado para la ejecución del API]
