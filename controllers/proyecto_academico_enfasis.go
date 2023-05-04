@@ -161,8 +161,10 @@ func (c *ProyectoAcademicoEnfasisController) Put() {
 	id, _ := strconv.Atoi(idStr)
 	v := models.ProyectoAcademicoEnfasis{Id: id}
 	if err := json.Unmarshal(c.Ctx.Input.RequestBody, &v); err == nil {
-		v.FechaCreacion = time_bogota.TiempoCorreccionFormato(v.FechaCreacion)
-		v.FechaModificacion = time_bogota.TiempoBogotaFormato()
+		if get, errGet := models.GetProyectoAcademicoEnfasisById(id); errGet == nil {
+			v.FechaCreacion = time_bogota.TiempoCorreccionFormato(get.FechaCreacion)
+			v.FechaModificacion = time_bogota.TiempoBogotaFormato()
+		}
 		if err := models.UpdateProyectoAcademicoEnfasisById(&v); err == nil {
 			c.Data["json"] = v
 		} else {
