@@ -62,7 +62,7 @@ steps:
     - push
 
 - name: go_run_test
-  image: golang:1.14
+  image: golang:1.18
   commands:
   - go mod tidy
   - curl -sSfL https://raw.githubusercontent.com/golangci/golangci-lint/master/install.sh | sh -s -- -b $(go env GOPATH)/bin v1.41.1
