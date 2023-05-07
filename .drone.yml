@@ -48,7 +48,7 @@ steps:
     - push
 
 - name: go_build
-  image: golang:1.14
+  image: golang:1.18
   commands:
   - go mod init
   - go get -t
@@ -95,7 +95,7 @@ steps:
     - release/*
 
 - name: beego_migrate
-  image: golang:1.14
+  image: golang:1.18
   environment:
     PG_MIGRATION_USER:
       from_secret: PG_MIGRATION_USER
@@ -106,8 +106,8 @@ steps:
     PG_MIGRATION_DBNAME:
       from_secret: PG_MIGRATION_DBNAME
   commands:
-  - go get -t
-  - go get -u github.com/beego/bee
+  - go install github.com/beego/bee@v1.12.3
+  - go get
   - bee migrate -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
   when:
     branch:
@@ -116,7 +116,7 @@ steps:
     - push
 
 - name: beego_rollback
-  image: golang:1.14
+  image: golang:1.18
   environment:
     PG_MIGRATION_USER:
       from_secret: PG_MIGRATION_USER
@@ -127,8 +127,8 @@ steps:
     PG_MIGRATION_DBNAME:
       from_secret: PG_MIGRATION_DBNAME
   commands:
-  - go get -t
-  - GO111MODULE=on go get -u github.com/beego/bee
+  - go install github.com/beego/bee@v1.12.3
+  - go get
   - bee migrate rollback -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
   when:
     branch:
@@ -175,7 +175,7 @@ steps:
     - push
 
 - name: update_aws_ecs
-  image: golang:1.9
+  image: golang:1.18
   environment:
     AWS_ACCESS_KEY_ID:
       from_secret: AWS_ACCESS_KEY_ID
