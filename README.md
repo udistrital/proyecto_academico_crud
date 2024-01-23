@@ -79,7 +79,7 @@ Pruebas unitarias
 | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/proyecto_academico_crud/status.svg?ref=refs/heads/develop)](https://hubci.portaloas.udistrital.edu.co/udistrital/proyecto_academico_crud) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/proyecto_academico_crud/status.svg?ref=refs/heads/release/0.0.1)](https://hubci.portaloas.udistrital.edu.co/udistrital/proyecto_academico_crud) | [![Build Status](https://hubci.portaloas.udistrital.edu.co/api/badges/udistrital/proyecto_academico_crud/status.svg)](https://hubci.portaloas.udistrital.edu.co/udistrital/proyecto_academico_crud) |
 
 ## Modelo de Datos
-[Modelo de Datos API CRUD proyecto_academico_crud](https://user-images.githubusercontent.com/14035745/93823393-5e0c2600-fc27-11ea-8e7f-7373cf931631.png)
+[Modelo de Datos API CRUD proyecto_academico_crud](https://github.com/udistrital/proyecto_academico_crud/blob/feature/issues-9/database/proyecto_academico.png?raw=true)
 
 ## Licencia
 
