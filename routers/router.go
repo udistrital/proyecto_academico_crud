@@ -80,6 +80,12 @@ func init() {
 				&controllers.ProyectoAcademicoRolTerceroDependenciaController{},
 			),
 		),
+
+		beego.NSNamespace("/modalidad",
+			beego.NSInclude(
+				&controllers.ModalidadController{},
+			),
+		),
 	)
 	beego.AddNamespace(ns)
 }
