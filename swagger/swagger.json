@@ -361,6 +361,179 @@
                 }
             }
         },
+        "/modalidad/": {
+            "get": {
+                "tags": [
+                    "modalidad"
+                ],
+                "description": "get Modalidad",
+                "operationId": "ModalidadController.Get All",
+                "parameters": [
+                    {
+                        "in": "query",
+                        "name": "query",
+                        "description": "Filter. e.g. col1:v1,col2:v2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "fields",
+                        "description": "Fields returned. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "sortby",
+                        "description": "Sorted-by fields. e.g. col1,col2 ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "order",
+                        "description": "Order corresponding to each sortby field, if single value, apply to all sortby fields. e.g. desc,asc ...",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "limit",
+                        "description": "Limit the size of result set. Must be an integer",
+                        "type": "string"
+                    },
+                    {
+                        "in": "query",
+                        "name": "offset",
+                        "description": "Start position of result set. Must be an integer",
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Modalidad"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "post": {
+                "tags": [
+                    "modalidad"
+                ],
+                "description": "create Modalidad",
+                "operationId": "ModalidadController.Post",
+                "parameters": [
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Modalidad content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Modalidad"
+                        }
+                    }
+                ],
+                "responses": {
+                    "201": {
+                        "description": "{int} models.Modalidad"
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            }
+        },
+        "/modalidad/{id}": {
+            "get": {
+                "tags": [
+                    "modalidad"
+                ],
+                "description": "get Modalidad by id",
+                "operationId": "ModalidadController.Get One",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The key for staticblock",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Modalidad"
+                        }
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            },
+            "put": {
+                "tags": [
+                    "modalidad"
+                ],
+                "description": "update the Modalidad",
+                "operationId": "ModalidadController.Put",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to update",
+                        "required": true,
+                        "type": "string"
+                    },
+                    {
+                        "in": "body",
+                        "name": "body",
+                        "description": "body for Modalidad content",
+                        "required": true,
+                        "schema": {
+                            "$ref": "#/definitions/models.Modalidad"
+                        }
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "",
+                        "schema": {
+                            "$ref": "#/definitions/models.Modalidad"
+                        }
+                    },
+                    "400": {
+                        "description": "the request contains incorrect syntax"
+                    }
+                }
+            },
+            "delete": {
+                "tags": [
+                    "modalidad"
+                ],
+                "description": "delete the Modalidad",
+                "operationId": "ModalidadController.Delete",
+                "parameters": [
+                    {
+                        "in": "path",
+                        "name": "id",
+                        "description": "The id you want to delete",
+                        "required": true,
+                        "type": "string"
+                    }
+                ],
+                "responses": {
+                    "200": {
+                        "description": "{string} delete success!"
+                    },
+                    "404": {
+                        "description": "not found resource"
+                    }
+                }
+            }
+        },
         "/nivel_formacion/": {
             "get": {
                 "tags": [
@@ -1974,31 +2147,31 @@
         }
     },
     "definitions": {
-        "50510.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+        "54958.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
             "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
-        "50574.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "55022.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "50632.\u003cnil\u003e.Titulacion": {
+        "55080.\u003cnil\u003e.Titulacion": {
             "title": "Titulacion",
             "type": "object"
         },
-        "50786.\u003cnil\u003e.Titulacion": {
+        "55234.\u003cnil\u003e.Titulacion": {
             "title": "Titulacion",
             "type": "object"
         },
-        "50830.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "55278.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "50995.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
+        "55443.\u003cnil\u003e.ProyectoAcademicoEnfasis": {
             "title": "ProyectoAcademicoEnfasis",
             "type": "object"
         },
-        "51161.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
+        "55609.\u003cnil\u003e.RegistroCalificadoAcreditacion": {
             "title": "RegistroCalificadoAcreditacion",
             "type": "object"
         },
@@ -2036,6 +2209,38 @@
         },
         "models.Metodologia": {
             "title": "Metodologia",
+            "type": "object",
+            "properties": {
+                "Activo": {
+                    "type": "boolean"
+                },
+                "CodigoAbreviacion": {
+                    "type": "string"
+                },
+                "Descripcion": {
+                    "type": "string"
+                },
+                "FechaCreacion": {
+                    "type": "string"
+                },
+                "FechaModificacion": {
+                    "type": "string"
+                },
+                "Id": {
+                    "type": "integer",
+                    "format": "int64"
+                },
+                "Nombre": {
+                    "type": "string"
+                },
+                "NumeroOrden": {
+                    "type": "number",
+                    "format": "double"
+                }
+            }
+        },
+        "models.Modalidad": {
+            "title": "Modalidad",
             "type": "object",
             "properties": {
                 "Activo": {
@@ -2185,6 +2390,9 @@
                 },
                 "MetodologiaId": {
                     "$ref": "#/definitions/models.Metodologia"
+                },
+                "ModalidadId": {
+                    "$ref": "#/definitions/models.Modalidad"
                 },
                 "NivelFormacionId": {
                     "$ref": "#/definitions/models.NivelFormacion"
@@ -2409,16 +2617,16 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/50574.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/55022.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Registro": {
-                    "$ref": "#/definitions/50510.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                    "$ref": "#/definitions/54958.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 },
                 "Titulaciones": {
-                    "$ref": "#/definitions/50632.\u003cnil\u003e.Titulacion"
+                    "$ref": "#/definitions/55080.\u003cnil\u003e.Titulacion"
                 }
             }
         },
@@ -2431,7 +2639,7 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/50995.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/55443.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
@@ -2443,13 +2651,13 @@
             "type": "object",
             "properties": {
                 "Enfasis": {
-                    "$ref": "#/definitions/50830.\u003cnil\u003e.ProyectoAcademicoEnfasis"
+                    "$ref": "#/definitions/55278.\u003cnil\u003e.ProyectoAcademicoEnfasis"
                 },
                 "ProyectoAcademicoInstitucion": {
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Titulaciones": {
-                    "$ref": "#/definitions/50786.\u003cnil\u003e.Titulacion"
+                    "$ref": "#/definitions/55234.\u003cnil\u003e.Titulacion"
                 }
             }
         },
@@ -2461,7 +2669,7 @@
                     "$ref": "#/definitions/models.ProyectoAcademicoInstitucion"
                 },
                 "Registro": {
-                    "$ref": "#/definitions/51161.\u003cnil\u003e.RegistroCalificadoAcreditacion"
+                    "$ref": "#/definitions/55609.\u003cnil\u003e.RegistroCalificadoAcreditacion"
                 }
             }
         }
@@ -2510,6 +2718,10 @@
         {
             "name": "proyecto_academico_rol_tercero_dependencia",
             "description": "ProyectoAcademicoRolTerceroDependenciaController operations for ProyectoAcademicoRolTerceroDependencia\n"
+        },
+        {
+            "name": "modalidad",
+            "description": "ModalidadController operations for Modalidad\n"
         }
     ]
 }
