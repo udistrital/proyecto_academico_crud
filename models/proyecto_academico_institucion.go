@@ -35,6 +35,7 @@ type ProyectoAcademicoInstitucion struct {
 	NivelFormacionId         *NivelFormacion               `orm:"column(nivel_formacion_id);rel(fk)"`
 	FacultadId               int                           `orm:"column(facultad_id)"`
 	ProyectoPadreId          *ProyectoAcademicoInstitucion `orm:"column(proyecto_padre_id);rel(fk);null"`
+	ModalidadId              *Modalidad                    `orm:"column(modalidad_id);rel(fk);null"`
 }
 
 func (t *ProyectoAcademicoInstitucion) TableName() string {
