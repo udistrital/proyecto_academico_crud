@@ -11,6 +11,7 @@ import (
 	"github.com/astaxie/beego/plugins/cors"
 	_ "github.com/lib/pq"
 	"github.com/udistrital/auditoria"
+	"github.com/udistrital/utils_oas/xray"
 )
 
 func init() {
@@ -21,7 +22,7 @@ func init() {
 		beego.AppConfig.String("PGport")+"/"+
 		beego.AppConfig.String("PGdb")+"?sslmode=disable&search_path="+
 		beego.AppConfig.String("PGschemas")+"")
-		
+
 	if beego.BConfig.RunMode == "dev" {
 		/*
 			// Database alias.
@@ -64,7 +65,7 @@ func main() {
 	// logs.SetLogger(logs.AdapterFile, logPath)
 
 	beego.ErrorController(&customerror.CustomErrorController{})
-
+	xray.InitXRay()
 	apistatus.Init()
 	auditoria.InitMiddleware()
 	beego.Run()
