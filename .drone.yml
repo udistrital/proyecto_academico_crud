@@ -94,47 +94,47 @@ steps:
     - feature/*
     - release/*
 
-- name: beego_migrate
-  image: golang:1.18
-  environment:
-    PG_MIGRATION_USER:
-      from_secret: PG_MIGRATION_USER
-    PG_MIGRATION_PASS:
-      from_secret: PG_MIGRATION_PASS
-    PG_MIGRATION_URL:
-      from_secret: PG_MIGRATION_URL
-    PG_MIGRATION_DBNAME:
-      from_secret: PG_MIGRATION_DBNAME
-  commands:
-  - go install github.com/beego/bee@v1.12.3
-  - go get
-  - bee migrate -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
-  when:
-    branch:
-    - release/*
-    event:
-    - push
+# - name: beego_migrate
+#   image: golang:1.18
+#   environment:
+#     PG_MIGRATION_USER:
+#       from_secret: PG_MIGRATION_USER
+#     PG_MIGRATION_PASS:
+#       from_secret: PG_MIGRATION_PASS
+#     PG_MIGRATION_URL:
+#       from_secret: PG_MIGRATION_URL
+#     PG_MIGRATION_DBNAME:
+#       from_secret: PG_MIGRATION_DBNAME
+#   commands:
+#   - go install github.com/beego/bee@v1.12.3
+#   - go get
+#   - bee migrate -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
+#   when:
+#     branch:
+#     - release/*
+#     event:
+#     - push
 
-- name: beego_rollback
-  image: golang:1.18
-  environment:
-    PG_MIGRATION_USER:
-      from_secret: PG_MIGRATION_USER
-    PG_MIGRATION_PASS:
-      from_secret: PG_MIGRATION_PASS
-    PG_MIGRATION_URL:
-      from_secret: PG_MIGRATION_URL
-    PG_MIGRATION_DBNAME:
-      from_secret: PG_MIGRATION_DBNAME
-  commands:
-  - go install github.com/beego/bee@v1.12.3
-  - go get
-  - bee migrate rollback -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
-  when:
-    branch:
-    - release/*
-    status:
-    - failure
+# - name: beego_rollback
+#   image: golang:1.18
+#   environment:
+#     PG_MIGRATION_USER:
+#       from_secret: PG_MIGRATION_USER
+#     PG_MIGRATION_PASS:
+#       from_secret: PG_MIGRATION_PASS
+#     PG_MIGRATION_URL:
+#       from_secret: PG_MIGRATION_URL
+#     PG_MIGRATION_DBNAME:
+#       from_secret: PG_MIGRATION_DBNAME
+#   commands:
+#   - go install github.com/beego/bee@v1.12.3
+#   - go get
+#   - bee migrate rollback -driver=postgres -conn="postgres://$${PG_MIGRATION_USER}:$${PG_MIGRATION_PASS}@$${PG_MIGRATION_URL}:5432/$${PG_MIGRATION_DBNAME}?sslmode=disable"
+#   when:
+#     branch:
+#     - release/*
+#     status:
+#     - failure
 
 - name: publish_to_ecr_release
   image: plugins/ecr
